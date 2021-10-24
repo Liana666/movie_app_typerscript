@@ -14,6 +14,7 @@ const region = '&region=RU';
 
 // })
 
+
 export const getPopularMovies = () => {
     return axios.get(baseUrl + 'popular?' + key + lang + region)
 }
