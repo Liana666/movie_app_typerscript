@@ -21,6 +21,8 @@
 
 .title {
     font-size: 21px;
+
+    width: 84%;
 }
 
 .movie_img {
@@ -45,11 +47,11 @@
 
 .genre_wrapper {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
 }
 
 .genre {
-    margin-left: 5px;
     padding: 2px 10px;
 
     font-family: 'Nunito';

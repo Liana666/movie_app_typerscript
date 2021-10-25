@@ -14,15 +14,11 @@ const region = '&region=RU';
 
 // })
 
-
-export const getPopularMovies = () => {
-    return axios.get(baseUrl + 'popular?' + key + lang + region)
+export const getMovies = (parametr) => {
+    return axios.get(baseUrl + parametr + key + lang + region)
 }
+
 
 export const getGenres = () => {
-    return axios.get(baseUrl + 'list?' + key + lang + region)
-        .then(response => {
-            return response;
-        });
+    return axios.get('https://api.themoviedb.org/3/genre/movie/list?' + key + lang + region)
 }
-

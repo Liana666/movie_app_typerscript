@@ -1,10 +1,11 @@
 import React from "react";
-import img from "../../../img/The_King_poster.jpg";
+import { useEffect, useState } from "react";
+
 import fire from "../../../img/fire-abs.png";
 import favorites from "../../../img/favorites.png";
 
 import PieChard from "../PieChard";
-import { getGenre } from "../../../api/api";
+import { getGenres } from "../../../api/api";
 
 import card from "./MovieCard.module.css";
 import styled from "styled-components";
@@ -12,8 +13,19 @@ import styled from "styled-components";
 const MovieCard = (props) => {
 
     const imgSrc = 'https://image.tmdb.org/t/p/original/';
+    const [genres, setGenres] = useState([]);
+    let mapGenres = new Map();
 
-    console.log(getGenre());
+    useEffect(() => {
+        getGenres('list?')
+            .then(response => {
+                setGenres(response.data.genres);
+            });
+    })
+
+    genres.map(g => {
+        mapGenres.set(g.id, g.name);
+    })
 
     return (
         <Card>
@@ -24,7 +36,9 @@ const MovieCard = (props) => {
 
 
             <Card_img src={fire} />
-            <Card_age>16+</Card_age>
+            <Card_age>
+                {props.adult === 'true' ? '18+' : null}
+            </Card_age>
 
             <div>
                 <img src={imgSrc + props.poster_path} className={card.movie_img} alt="" />
@@ -34,26 +48,23 @@ const MovieCard = (props) => {
 
                 <Info_movie>
                     <div>
-                        <div>Дата:<span className={card.date}>{props.release_date}</span></div>
+                        <div>Дата: <span className={card.date}>{props.release_date}</span></div>
                         <div className={card.genre_wrapper}>Жанры:
-                            {/* {getGenre().map(genre => {
-                                if (genre.id == props.)
-                            })} */}
-
-                            <span className={card.genre}>драма</span><span className={card.genre}>история</span></div>
+                            {mapGenres.size !== 0 ? props.genre_ids.map(g => mapGenres.has(g) ? <span className={card.genre}>{mapGenres.get(g)}</span>
+                                : null)
+                                : null}
+                        </div>
                     </div>
-
                     <Chard>
                         <PieChard />
                         <span className={card.chard}>{props.vote_average}</span>
                     </Chard>
 
 
-
                 </Info_movie>
 
                 <div className={card.text}>
-                    {props.overview}
+                    {props.overview.slice(0, 145) + '...'}
                 </div>
 
                 <Btn_movie>Подробнее о фильме</Btn_movie>
@@ -62,6 +73,7 @@ const MovieCard = (props) => {
         </Card >
     )
 }
+
 
 const Card = styled.div`
     position: relative;

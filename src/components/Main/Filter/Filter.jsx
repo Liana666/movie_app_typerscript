@@ -26,6 +26,7 @@ const Filter = (props) => {
                     release_date={m.release_date}
                     vote_average={m.vote_average}
                     genre_ids={m.genre_ids}
+                    adult={props.adult}
 
                 />)}
             </MoviesCard>

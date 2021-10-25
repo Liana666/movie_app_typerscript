@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getPopularMovies } from "../../../api/api";
+import { getMovies } from "../../../api/api";
 
 import Filter from "./Filter";
 
@@ -8,7 +8,7 @@ const FilterContainer = (props) => {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-        getPopularMovies()
+        getMovies('popular?')
             .then(response => {
                 setMovies(response.data.results);
             });
