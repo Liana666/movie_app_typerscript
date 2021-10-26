@@ -19,14 +19,15 @@ const Filter = (props) => {
                 </select>
             </FilterWrapper>
             <MoviesCard>
-                {props.movies.map(m => <MovieCard
+                {props.movies.map(m => < MovieCard
+                    key={m.id}
                     title={m.title}
                     overview={m.overview}
                     poster_path={m.poster_path}
                     release_date={m.release_date}
                     vote_average={m.vote_average}
                     genre_ids={m.genre_ids}
-                    adult={props.adult}
+                    adult={m.adult}
 
                 />)}
             </MoviesCard>

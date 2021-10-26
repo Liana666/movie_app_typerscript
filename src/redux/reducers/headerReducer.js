@@ -1,6 +1,8 @@
+
 let initialState = {
    moviesName: ''
 }
+
 
 const headerReducer = (state = initialState, action) => {
    switch (action.type) {
@@ -10,13 +12,15 @@ const headerReducer = (state = initialState, action) => {
             moviesName: action.newMovieRequest
          }
 
+
       default:
          return state;
-
    }
 }
+
 
 
 export const getNewMovieAC = (newMovieRequest) => ({ type: 'GET_NEW_MOVIETITLE', newMovieRequest });
 
 
+export default headerReducer;

@@ -50,7 +50,7 @@ const MovieCard = (props) => {
                     <div>
                         <div>Дата: <span className={card.date}>{props.release_date}</span></div>
                         <div className={card.genre_wrapper}><span className={card.genre_title}>Жанры:</span>
-                            {mapGenres.size !== 0 ? props.genre_ids.map(g => mapGenres.has(g) ? <span className={card.genre}>{mapGenres.get(g)}</span>
+                            {mapGenres.size !== 0 ? props.genre_ids.map(g => mapGenres.has(g) ? <span key={g.id} className={card.genre}>{mapGenres.get(g)}</span>
                                 : null)
                                 : null}
                         </div>
