@@ -1,6 +1,7 @@
 import React from "react";
 
 import logo from "../../img/logo.png";
+import loop from "../../img/lupa.png";
 
 import { NavLink } from "react-router-dom";
 
@@ -21,6 +22,7 @@ const Header = () => {
                 <NavLink to="/main">Фильмы</NavLink>
                 <NavLink className={header.link} to="/profile">Избранное</NavLink>
                 <input className={header.input} placeholder="поиск..." type="text" />
+                <img className={header.loop} src={loop} alt="" />
             </div>
         </HeaderWrapper >
     )

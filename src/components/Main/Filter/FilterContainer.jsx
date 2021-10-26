@@ -8,7 +8,7 @@ const FilterContainer = (props) => {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-        getMovies('popular?')
+        getMovies()
             .then(response => {
                 setMovies(response.data.results);
             });
@@ -19,7 +19,6 @@ const FilterContainer = (props) => {
 
     return (
         <>
-            {/* {console.log(movies)} */}
             {isLoaded ? <Filter movies={movies} /> : null}
 
         </>
