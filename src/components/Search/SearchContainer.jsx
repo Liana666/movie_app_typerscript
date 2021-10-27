@@ -6,19 +6,19 @@ import { getNewMovieAC } from "../../redux/reducers/searchReducer";
 import Search from "./Search";
 
 
-const mapStatetoProps = (state) => {
+const mapStatetoProps = (newState) => {
    return {
-      moviesName: state.SearchPage.moviesName,
-      newMovies: state.SearchPage.newMovies
+      moviesName: newState.SearchPage.moviesName,
    }
-
+   debugger;
 }
 
 
 const mapDispatchtoProps = (dispatch) => {
    return {
-      searchMovie: (newMovieRequest) => {
-         dispatch(getNewMovieAC(newMovieRequest));
+      searchMovie: (moviesName) => {
+         dispatch(getNewMovieAC(moviesName));
+
       }
 
       // addMovies: (newMovies) => {

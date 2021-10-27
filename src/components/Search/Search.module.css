@@ -1,0 +1,81 @@
+.background {
+    position: absolute;
+
+    right: 0;
+    bottom: 0px;
+}
+
+.info {
+    width: 50%;
+}
+
+.img {
+
+    width: 50%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.title {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 31px;
+    line-height: 36px;
+
+    color: #FFF7F7;
+}
+
+.text {
+    font-family: Nunito;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 30px;
+
+    color: #FFF7F7;
+}
+
+.input {
+    padding: 16px 20px;
+
+    width: 70%;
+    
+
+    border: none;
+    background: #212C42;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 29px;
+
+    color: #FFF7F7;
+    font-size: 16px;
+
+    font-family: 'Nunito';
+    font-weight: 400;
+
+    
+    transition: 0.5s ease 0s;
+
+}
+
+.loop {
+    position: relative;
+    top: 15px; 
+    left: 10px;
+}
+
+.loop:hover {
+    cursor: pointer;
+}
+
+.input:active,
+.input:focus-visible {
+    outline: none;
+    border: none;
+    border-radius: 29px;
+    background: #212C42;
+    box-shadow: inset 5px 5px 6px #1e283d,
+            inset -5px -5px 6px #243047;
+
+    transition: 0.5s ease 0s;        
+}

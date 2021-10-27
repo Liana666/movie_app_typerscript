@@ -1,33 +1,28 @@
 
 let initialState = {
-   moviesName: 'название фильма',
-   newMovies: []
+   moviesName: ''
 }
+
 
 
 const searchReducer = (state = initialState, action) => {
-   switch (action.type) {
-      case 'GET_NEW_MOVIETITLE':
-         return {
-            ...state,
-            moviesName: action.newMovieReques
-         }
 
-      // case 'ADD_NEW_MOVIETITLE':
-      //    return {
-      //       ...state,
-      //       newMovies: action.newMovies
-      //    }
+   if (action.type === 'GET_NEW_MOVIETITLE') {
+      state.moviesName = action.moviesName;
 
+      let newState = { ...state };
+      newState.moviesName = state.moviesName;
 
-      default:
-         return state;
+      return newState;
    }
+
+
+   return state;
+
 }
 
 
-
-export const getNewMovieAC = (newMovieRequest) => ({ type: 'GET_NEW_MOVIETITLE', newMovieRequest });
+export const getNewMovieAC = (moviesName) => ({ type: 'GET_NEW_MOVIETITLE', moviesName });
 // export const addNewMovieAC = (newMovies) => ({ type: 'ADD_NEW_MOVIETITLE', newMovies });
 
 
