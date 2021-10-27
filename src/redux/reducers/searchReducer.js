@@ -5,7 +5,7 @@ let initialState = {
 }
 
 
-const headerReducer = (state = initialState, action) => {
+const searchReducer = (state = initialState, action) => {
    switch (action.type) {
       case 'GET_NEW_MOVIETITLE':
          return {
@@ -31,4 +31,4 @@ export const getNewMovieAC = (newMovieRequest) => ({ type: 'GET_NEW_MOVIETITLE',
 // export const addNewMovieAC = (newMovies) => ({ type: 'ADD_NEW_MOVIETITLE', newMovies });
 
 
-export default headerReducer;
+export default searchReducer;
