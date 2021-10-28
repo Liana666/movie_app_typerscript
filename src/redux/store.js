@@ -3,11 +3,13 @@ import headerReducer from "./reducers/headerReducer";
 import mainReducer from "./reducers/mainReducer";
 import profileReducer from "./reducers/profileReducer";
 import searchReducer from "./reducers/searchReducer";
+import paginationReducer from "./reducers/paginationReducer";
 
 let reducers = combineReducers({
    HeaderPage: headerReducer,
-   SearchPage: searchReducer
-   // MainPage: mainReducer,
+   SearchPage: searchReducer,
+   PaginationPage: paginationReducer
+   // MainPage: mainReducer
    // ProfilePage: profileReducer
 })
 

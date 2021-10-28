@@ -11,6 +11,8 @@ import styled from "styled-components";
 import search from "./Search.module.css";
 
 import MovieCard from "../Main/MovieCard/MovieCard";
+import { searchMovies } from "../../api/api";
+import Pagination from "../Main/Pagination/PaginationContainer";
 
 const Search = (props) => {
    let newsPostElement = React.createRef();
@@ -26,12 +28,15 @@ const Search = (props) => {
 
    let addNewMovies = () => {
       let name = props.moviesName;
-      axios.get(`https://api.themoviedb.org/3/search/movie?page=1&query=${name}&api_key=d495d35d47c329b48d81d83ed0f10265&language=ru-RU&region=RU`)
+      searchMovies(name, 1)
          .then(response => {
             let data = response.data.results;
+            let totalPages = response.data.total_pages;
+            props.setToTalPages(totalPages);
             setNewMovies(data);
             setisLoaded(true);
          });
+
 
    }
 
@@ -51,9 +56,6 @@ const Search = (props) => {
 
          </SearchWrapper>
 
-
-
-
          <MovieWrapper>
             {isLoaded ?
                newMovies.map(m => <MovieCard
@@ -65,21 +67,21 @@ const Search = (props) => {
                   vote_average={m.vote_average}
                   genre_ids={m.genre_ids}
                   adult={m.adult}
-
-               />) : null}
+               />)
+               : null}
          </MovieWrapper>
 
-
+         {isLoaded ? < Pagination name={props.moviesName} /> : null}
 
       </>
    )
-
 }
 
 
 const MovieWrapper = styled.div`
     width: 100%;
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
 `
 const SearchWrapper = styled.div`

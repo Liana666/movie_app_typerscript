@@ -17,6 +17,6 @@ export const getGenres = () => {
     return axios.get(genreUrl + key + lang + region)
 }
 
-export const searchMovies = (parametr) => {
-    return axios.get(`https://api.themoviedb.org/3/search/movie?page=1&query=${parametr}&api_key=d495d35d47c329b48d81d83ed0f10265`);
+export const searchMovies = (parametr, page) => {
+    return axios.get(`https://api.themoviedb.org/3/search/movie?page=${page}&query=${parametr}&api_key=d495d35d47c329b48d81d83ed0f10265&language=ru-RU&region=RU`);
 }

@@ -24,6 +24,7 @@ const Movies = (props) => {
 const MoviesCard = styled.div`
     width: 100%;
     display: flex;
+    justify-content:spaxce-between;
     flex-wrap: wrap;
 `
 

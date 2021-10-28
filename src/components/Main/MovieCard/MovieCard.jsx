@@ -77,7 +77,7 @@ const MovieCard = (props) => {
 
 const Card = styled.div`
     position: relative;
-    padding: 20px;
+    padding: 25px;
     margin: 10px;
     margin-bottom: 20px;
 

@@ -1,6 +1,7 @@
 
 let initialState = {
-   moviesName: ''
+   moviesName: '',
+   totalPages: 1,
 }
 
 
@@ -16,14 +17,22 @@ const searchReducer = (state = initialState, action) => {
       return newState;
    }
 
+   else if (action.type === 'GET_TOTAL_PAGES') {
+      state.totalPages = action.totalPages;
+
+      let newState = { ...state };
+      newState.totalPages = state.totalPages;
+
+      return newState;
+   }
+
 
    return state;
 
 }
 
-
+export const getTotalPagesAC = (totalPages) => ({ type: 'GET_TOTAL_PAGES', totalPages });
 export const getNewMovieAC = (moviesName) => ({ type: 'GET_NEW_MOVIETITLE', moviesName });
-// export const addNewMovieAC = (newMovies) => ({ type: 'ADD_NEW_MOVIETITLE', newMovies });
 
 
 export default searchReducer;
