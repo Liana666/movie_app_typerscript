@@ -2,21 +2,30 @@ import React from "react";
 
 import { connect } from "react-redux";
 
-import { getNewMovieAC, getTotalPagesAC } from "../../redux/reducers/searchReducer";
 import Search from "./Search";
-
+import { addMoviesAC, getNewPageAC, getTotalPagesAC, getNewMovieAC } from "../../redux/reducers/searchReducer";
 
 const mapStatetoProps = (state) => {
    return {
+      currentPage: state.SearchPage.currentPage,
+      movies: state.SearchPage.movies,
       moviesName: state.SearchPage.moviesName,
       totalPages: state.SearchPage.totalPages
    }
-   debugger;
-}
 
+}
 
 const mapDispatchtoProps = (dispatch) => {
    return {
+      setCurrentPage: (currentPage) => {
+         dispatch(getNewPageAC(currentPage));
+      },
+
+      addMovies: (movies) => {
+         dispatch(addMoviesAC(movies));
+      },
+
+
       searchMovie: (moviesName) => {
          dispatch(getNewMovieAC(moviesName));
 

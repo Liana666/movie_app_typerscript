@@ -8,7 +8,7 @@ import paginationReducer from "./reducers/paginationReducer";
 let reducers = combineReducers({
    HeaderPage: headerReducer,
    SearchPage: searchReducer,
-   PaginationPage: paginationReducer
+   //PaginationPage: paginationReducer
    // MainPage: mainReducer
    // ProfilePage: profileReducer
 })

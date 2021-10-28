@@ -12,32 +12,43 @@ import search from "./Search.module.css";
 
 import MovieCard from "../Main/MovieCard/MovieCard";
 import { searchMovies } from "../../api/api";
-import Pagination from "../Main/Pagination/PaginationContainer";
 
 const Search = (props) => {
    let newsPostElement = React.createRef();
    let [isLoaded, setisLoaded] = useState(false);
-   let [newMovies, setNewMovies] = useState(false);
+   let pageNumber = props.totalPages;
+   let pages = [];
+
+   for (let i = 1; i <= pageNumber; i++) {
+      pages.push(i);
+   }
 
    let searchMovie = (e) => {
       let newMovieRequest = e.target.value;
-      console.log(newMovieRequest)
       props.searchMovie(newMovieRequest);
 
    }
 
    let addNewMovies = () => {
-      let name = props.moviesName;
-      searchMovies(name, 1)
+      searchMovies(props.moviesName, props.currentPage)
          .then(response => {
             let data = response.data.results;
             let totalPages = response.data.total_pages;
             props.setToTalPages(totalPages);
-            setNewMovies(data);
+            props.addMovies(data);
             setisLoaded(true);
          });
+   }
 
-
+   const onChangePage = (currentPage) => {
+      props.setCurrentPage(currentPage);
+      searchMovies(props.moviesName, currentPage)
+         .then(response => {
+            let data = response.data.results;
+            props.addMovies(data);
+            setisLoaded(true);
+         });
+      window.scrollTo(0, 0);
    }
 
    return (
@@ -57,21 +68,27 @@ const Search = (props) => {
          </SearchWrapper>
 
          <MovieWrapper>
-            {isLoaded ?
-               newMovies.map(m => <MovieCard
-                  key={m.id}
-                  title={m.title}
-                  overview={m.overview}
-                  poster_path={m.poster_path}
-                  release_date={m.release_date}
-                  vote_average={m.vote_average}
-                  genre_ids={m.genre_ids}
-                  adult={m.adult}
-               />)
-               : null}
+            {
+               isLoaded ?
+                  props.movies.map(m => <MovieCard
+                     key={m.id}
+                     title={m.title}
+                     overview={m.overview}
+                     poster_path={m.poster_path}
+                     release_date={m.release_date}
+                     vote_average={m.vote_average}
+                     genre_ids={m.genre_ids}
+                     adult={m.adult}
+                  />)
+                  : null
+            }
          </MovieWrapper>
 
-         {isLoaded ? < Pagination name={props.moviesName} /> : null}
+         {
+            isLoaded ?
+               pages.map(p => <span style={{ padding: 20 }} onClick={() => onChangePage(p)}>{p}</span>)
+               : null
+         }
 
       </>
    )

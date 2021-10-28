@@ -1,19 +1,25 @@
 let initialState = {
-   currentPage: 1
+   currentPage: 1,
+   movies: []
 }
 
 const paginationReducer = (state = initialState, action) => {
 
-   if (action.type === 'GET_TOTAL_PAGES') {
-      state.totalPages = action.totalPages;
+   switch (action.type) {
+      case 'GET_CURRENT_PAGE':
+         return {
+            ...state,
+            currentPage: action.currentPage
+         }
 
-      let newState = { ...state };
-      newState.totalPages = state.totalPages;
+      case 'ADD_MOVIES':
+         return { ...state, movies: action.movies }
 
-      return newState;
+      default:
+         return state;
    }
 
-   // else if (action.type === 'GET_CURRENT_PAGE') {
+   // if (action.type === 'GET_CURRENT_PAGE') {
    //    state.currentPage = action.currentPage;
 
    //    let newState = { ...state };
@@ -22,13 +28,22 @@ const paginationReducer = (state = initialState, action) => {
    //    return newState;
    // }
 
+   // else if (action.type === 'ADD_MOVIES') {
+   //    state.movies = action.movies;
 
-   return state;
+   //    let newState = { ...state };
+   //    newState.movies = action.movies;
+
+   //    return newState;
+   // }
 
 
 }
 
 
 export const getNewPageAC = (currentPage) => ({ type: 'GET_CURRENT_PAGE', currentPage });
+export const addMoviesAC = (movies) => ({ type: 'ADD_MOVIES', movies });
+export const getTotalPagesAC = (totalPages) => ({ type: 'GET_TOTAL_PAGES', totalPages });
+export const getNewMovieAC = (moviesName) => ({ type: 'GET_NEW_MOVIETITLE', moviesName });
 
 export default paginationReducer;
