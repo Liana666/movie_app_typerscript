@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { getMovies } from "../../../api/api";
+import { connect } from "react-redux";
+import addGenreAC from "../../../redux/reducers/mainReducer";
 
 import Filter from "./Filter";
 
-const FilterContainer = () => {
-
-    return (
-        <>
-            <Filter />
-
-        </>
-    )
+const mapStatetoProps = (state) => {
+    return { genre: state.MainPage.genre }
 }
 
+const mapDispatchtoProps = (dispatch) => {
+    return {
+        addGenre: (genre) => {
+            dispatch(addGenreAC(genre));
+        }
+
+    }
+}
+
+
+const FilterContainer = connect(mapStatetoProps, mapDispatchtoProps)(Filter);
 
 export default FilterContainer;

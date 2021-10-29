@@ -46,7 +46,7 @@ const Search = (props) => {
          .then(response => {
             let data = response.data.results;
             props.addMovies(data);
-            setisLoaded(true);
+
          });
       window.scrollTo(0, 0);
    }
@@ -86,7 +86,10 @@ const Search = (props) => {
 
          {
             isLoaded ?
-               pages.map(p => <span style={{ padding: 20 }} onClick={() => onChangePage(p)}>{p}</span>)
+               <Pagination>
+                  {pages.map(p => <div className={search.page} onClick={() => onChangePage(p)}><span className={p === props.currentPage ? search.currentpage : null}>{p}</span></div>)}
+               </Pagination>
+
                : null
          }
 
@@ -114,6 +117,11 @@ const SearchWrapper = styled.div`
    border-radius: 63px;
 
    overflow: hidden;
+`
+
+const Pagination = styled.div`
+   display: flex;
+   justify-content: flex-end;
 `
 
 export default Search;

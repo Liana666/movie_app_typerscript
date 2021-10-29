@@ -17,12 +17,12 @@ const MovieCard = (props) => {
     let mapGenres = new Map();
 
     useEffect(() => {
-        getGenres('list?')
+        getGenres()
             .then(response => {
                 setGenres(response.data.genres);
             });
     })
-
+    
     genres.map(g => {
         mapGenres.set(g.id, g.name);
     })
@@ -78,7 +78,7 @@ const MovieCard = (props) => {
 const Card = styled.div`
     position: relative;
     padding: 25px;
-    margin: 10px;
+
     margin-bottom: 20px;
 
     width: 45%;

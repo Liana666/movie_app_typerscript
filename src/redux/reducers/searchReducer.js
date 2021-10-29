@@ -28,28 +28,6 @@ const searchReducer = (state = initialState, action) => {
          return state;
    }
 
-
-   // if (action.type === 'GET_NEW_MOVIETITLE') {
-   //    state.moviesName = action.moviesName;
-
-   //    let newState = { ...state };
-   //    newState.moviesName = state.moviesName;
-
-   //    return newState;
-   // }
-
-   // else if (action.type === 'GET_TOTAL_PAGES') {
-   //    state.totalPages = action.totalPages;
-
-   //    let newState = { ...state };
-   //    newState.totalPages = state.totalPages;
-
-   //    return newState;
-   // }
-
-
-   // return state;
-
 }
 
 export const getNewPageAC = (currentPage) => ({ type: 'GET_CURRENT_PAGE', currentPage });
