@@ -1,12 +1,12 @@
 import React from "react";
 import FilterContainer from "../Main/Filter/FilterContainer";
-import MoviesContainer from "./Movies/MoviesContainer";
+import PopularContainer from "../Main/Popular/PopularContainer.jsx";
 
 const Main = () => {
     return (
         <div>
             <FilterContainer />
-            <MoviesContainer />
+            <PopularContainer />
         </div>
     )
 }

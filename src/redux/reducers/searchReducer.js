@@ -1,3 +1,4 @@
+import { searchMovies } from "../../api/api";
 
 let initialState = {
    moviesName: '',
@@ -35,5 +36,24 @@ export const addMoviesAC = (movies) => ({ type: 'ADD_MOVIES', movies });
 export const getTotalPagesAC = (totalPages) => ({ type: 'GET_TOTAL_PAGES', totalPages });
 export const getNewMovieAC = (moviesName) => ({ type: 'GET_NEW_MOVIETITLE', moviesName });
 
+export const searchMoviesThunk = (moviesName, currentPage) => async dispatch => {
+   searchMovies(moviesName, currentPage)
+      .then(response => {
+         let data = response.data.results;
+         let totalPages = response.data.total_pages;
+         dispatch(getTotalPagesAC(totalPages));
+         dispatch(addMoviesAC(data));
+      });
+}
+
+export const changePageThunk = (moviesName, currentPage) => async dispatch => {
+   dispatch(getNewPageAC(currentPage));
+   searchMovies(moviesName, currentPage)
+      .then(response => {
+         let data = response.data.results;
+         dispatch(addMoviesAC(data));
+
+      });
+}
 
 export default searchReducer;

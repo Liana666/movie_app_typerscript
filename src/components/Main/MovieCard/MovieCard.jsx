@@ -4,26 +4,20 @@ import { useEffect, useState } from "react";
 import fire from "../../../img/fire-abs.png";
 import favorites from "../../../img/favorites.png";
 
-import PieChard from "../PieChard";
-import { getGenres } from "../../../api/api";
+import PieChard from "./PieChard";
+
 
 import card from "./MovieCard.module.css";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 const MovieCard = (props) => {
 
     const imgSrc = 'https://image.tmdb.org/t/p/original/';
-    const [genres, setGenres] = useState([]);
     let mapGenres = new Map();
 
-    useEffect(() => {
-        getGenres()
-            .then(response => {
-                setGenres(response.data.genres);
-            });
-    })
-    
-    genres.map(g => {
+
+    props.genres.map(g => {
         mapGenres.set(g.id, g.name);
     })
 
@@ -56,7 +50,7 @@ const MovieCard = (props) => {
                         </div>
                     </div>
                     <Chard>
-                        <PieChard />
+                        <PieChard vote={props.vote_average} />
                         <span className={card.chard}>{props.vote_average}</span>
                     </Chard>
 
@@ -66,8 +60,10 @@ const MovieCard = (props) => {
                 <div className={card.text}>
                     {props.overview.slice(0, 145) + '...'}
                 </div>
+                <NavLink to="/singlemovie">
+                    <Btn_movie>Подробнее о фильме</Btn_movie>
+                </NavLink>
 
-                <Btn_movie>Подробнее о фильме</Btn_movie>
 
             </Card_info>
         </Card >
@@ -79,7 +75,7 @@ const Card = styled.div`
     position: relative;
     padding: 25px;
 
-    margin-bottom: 20px;
+    margin: 10px;
 
     width: 45%;
 

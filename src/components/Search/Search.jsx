@@ -10,8 +10,7 @@ import firesingle from "../../img/fire-search.png";
 import styled from "styled-components";
 import search from "./Search.module.css";
 
-import MovieCard from "../Main/MovieCard/MovieCard";
-import { searchMovies } from "../../api/api";
+import MovieCardContainer from "../Main/MovieCard/MovieCardContainer";
 
 const Search = (props) => {
    let newsPostElement = React.createRef();
@@ -30,24 +29,12 @@ const Search = (props) => {
    }
 
    let addNewMovies = () => {
-      searchMovies(props.moviesName, props.currentPage)
-         .then(response => {
-            let data = response.data.results;
-            let totalPages = response.data.total_pages;
-            props.setToTalPages(totalPages);
-            props.addMovies(data);
-            setisLoaded(true);
-         });
+      props.addMovie(props.moviesName, props.currentPage);
+      setisLoaded(true);
    }
 
    const onChangePage = (currentPage) => {
-      props.setCurrentPage(currentPage);
-      searchMovies(props.moviesName, currentPage)
-         .then(response => {
-            let data = response.data.results;
-            props.addMovies(data);
-
-         });
+      props.getNeewMoviesPage(props.moviesName, currentPage);
       window.scrollTo(0, 0);
    }
 
@@ -70,7 +57,7 @@ const Search = (props) => {
          <MovieWrapper>
             {
                isLoaded ?
-                  props.movies.map(m => <MovieCard
+                  props.movies.map(m => <MovieCardContainer
                      key={m.id}
                      title={m.title}
                      overview={m.overview}
@@ -89,7 +76,6 @@ const Search = (props) => {
                <Pagination>
                   {pages.map(p => <div className={search.page} onClick={() => onChangePage(p)}><span className={p === props.currentPage ? search.currentpage : null}>{p}</span></div>)}
                </Pagination>
-
                : null
          }
 

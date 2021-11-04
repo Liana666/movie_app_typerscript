@@ -3,15 +3,19 @@ import { PieChart, Pie, Sector, Cell } from "recharts";
 
 import styled from "styled-components";
 
-const data = [
-    { name: "Group A", value: 22 },
-    { name: "Group B", value: 78 },
-];
 
 
-const COLORS = ["#1E273A", '#00000038'];
+const PieChard = (props) => {
 
-const PieChard = () => {
+    // const unvote = 10 - props.vote;
+
+    const data = [
+        { name: "Group A", value: 10 - props.vote },
+        { name: "Group B", value: props.vote },
+    ];
+
+
+    const COLORS = ["#1E273A", '#00000038'];
     return (
         <PieChart width={95} height={95} >
             <Pie
