@@ -17,8 +17,6 @@ const MovieCardContainer = (props) => {
             });
     }, [setGenres]);
 
-    console.log(props)
-
     return (
         <>
             <MovieCard

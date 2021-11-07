@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { addGenreAC, addPopularAC, getMoviesThunk, changePageThunk } from "../../../redux/reducers/mainReducer";
+import { addGenreAC, addPopularAC, getMoviesThunk, changePageThunk, addYearAC } from "../../../redux/reducers/mainReducer";
 import { getGenres } from "../../../api/api";
 
 import Filter from "./Filter";
@@ -18,28 +18,22 @@ const FilterContainer = (props) => {
             });
     }, [setGenres]);
 
-    let optionSelected = '';
-
-    const changeOption = (e) => {
-        optionSelected = e.target.value;
-        props.addMovies(props.currentPage, optionSelected);
-    }
-
-
 
     return (
         <>
             <Filter
                 isLoaded={props.isLoaded}
-                optionSelected={optionSelected}
                 getNeewMoviesPage={props.getNeewMoviesPage}
                 totalPages={props.totalPages}
                 currentPage={props.currentPage}
-                changeOption={changeOption}
                 movies={props.movies}
                 addMovies={props.addMovies}
                 addPopular={props.addPopular}
                 genres={genres}
+                genre={props.genre}
+                addGenre={props.addGenre}
+                years={props.years}
+                addYear={props.addYear}
             />
 
         </>
@@ -52,11 +46,12 @@ const mapStatetoProps = (state) => {
         genre: state.MainPage.genre,
         movies: state.MainPage.movies,
         totalPages: state.MainPage.totalPages,
-        currentPage: state.MainPage.currentPage
+        currentPage: state.MainPage.currentPage,
+        years: state.MainPage.years
     }
 }
 
 
 export default connect(mapStatetoProps,
-    { addGenre: addGenreAC, addMovies: getMoviesThunk, addPopular: addPopularAC, getNeewMoviesPage: changePageThunk })
+    { addGenre: addGenreAC, addYear: addYearAC, addMovies: getMoviesThunk, addPopular: addPopularAC, getNeewMoviesPage: changePageThunk })
     (FilterContainer);

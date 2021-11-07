@@ -23,25 +23,43 @@ const Filter = (props) => {
         pages.push(i);
     }
 
+    const changeOption = (e) => {
+        let optionGenres = e.target.value;
+        props.addGenre(optionGenres);
+        props.addMovies(props.currentPage, optionGenres);
+    }
+
+    const changeYear = (e) => {
+        let optionYears = e.target.value;
+        props.addYear(optionYears);
+
+        if (props.genre === 0) {
+            props.addMovies(props.currentPage, '', optionYears);
+        }
+        else {
+            props.addMovies(props.currentPage, props.genre, optionYears);
+        }
+    }
+
     const onChangePage = (currentPage) => {
-        props.getNeewMoviesPage(currentPage, props.optionSelected);
+        props.getNeewMoviesPage(currentPage, props.genre, props.years);
         window.scrollTo(0, 0);
+        debugger
     }
 
 
     return (
         <>
             <FilterWrapper>
-                <select onChange={props.changeOption} style={{ marginLeft: 0 }} className={filter.select} name="genres" id="">
+                <select onChange={changeOption} style={{ marginLeft: 0 }} className={filter.select} name="genres" id="">
                     <option className={filter.option}>Все</option>
                     {props.genres.map(g => <option value={g.id}>{g.name}</option>
                     )}
                 </select>
-                <select className={filter.select} name="genres" id="">
-                    <option value="year">2020г.</option>
-                </select>
-                <select className={filter.select} name="genres" id="">
-                    <option value="year">Япония</option>
+                <select onChange={changeYear} className={filter.select} name="years" id="">
+                    <option className={filter.option}>Годы</option>
+                    <option value={props.years}>{props.years}</option>
+
                 </select>
             </FilterWrapper>
 

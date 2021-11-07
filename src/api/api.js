@@ -13,8 +13,8 @@ export const getMovies = () => {
     return axios.get(baseUrl + key + lang + region);
 };
 
-export const filterGenresMovies = (page, genre) => {
-    return axios.get(filterUrl + key + `&page=${page}&with_genres=${genre}` + lang + region);
+export const filterGenresMovies = (page, genre, year) => {
+    return axios.get(filterUrl + key + `&page=${page}&with_genres=${genre}&year=${year}` + lang + region);
 };
 
 
