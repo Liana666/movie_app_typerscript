@@ -52,11 +52,13 @@
 }
 
 .genre_title {
+    margin-bottom: 10px;
     margin-right: 10px;
 }
 
 .genre {
     margin-bottom: 10px;
+    margin-right: 6px;
     padding: 2px 10px;
 
     font-family: 'Nunito';

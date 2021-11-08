@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import header from "./Header.module.css";
 
-import SearchContainer from "../Search/SearchContainer";
+import SearchContainer from "../Main/Search/SearchContainer";
 
 const Header = (props) => {
 
@@ -25,8 +25,8 @@ const Header = (props) => {
                 <div className={header.link_wrapper}>
                     <NavLink to="/">Фильмы</NavLink>
                     <NavLink className={header.link} to="/profile">Избранное</NavLink>
-                    <NavLink className={header.link} to="/search">Поиск</NavLink>
-
+                    {/* <NavLink className={header.link} to="/search">Поиск</NavLink> */}
+                    <SearchContainer />
                 </div>
             </HeaderWrapper >
 

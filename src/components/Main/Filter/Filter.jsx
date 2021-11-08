@@ -27,11 +27,13 @@ const Filter = (props) => {
         let optionGenres = e.target.value;
         props.addGenre(optionGenres);
         props.addMovies(props.currentPage, optionGenres);
+        // props.searchMovie('');
     }
 
     const changeYear = (e) => {
         let optionYears = e.target.value;
         props.addYear(optionYears);
+        // props.searchMovie('');
 
         if (props.genre === 0) {
             props.addMovies(props.currentPage, '', optionYears);
@@ -42,11 +44,16 @@ const Filter = (props) => {
     }
 
     const onChangePage = (currentPage) => {
-        props.getNeewMoviesPage(currentPage, props.genre, props.years);
-        window.scrollTo(0, 0);
+        if (props.moviesName == '') {
+            props.getNeewMoviesPage(currentPage, props.genre, props.year);
+        }
+        else {
+            props.getNewSearchMovies(props.moviesName, currentPage);
+        }
         debugger
-    }
 
+        window.scrollTo(0, 0);
+    }
 
     return (
         <>
@@ -58,7 +65,8 @@ const Filter = (props) => {
                 </select>
                 <select onChange={changeYear} className={filter.select} name="years" id="">
                     <option className={filter.option}>Годы</option>
-                    <option value={props.years}>{props.years}</option>
+                    {props.years.map(y => <option value={y}>{y}</option>
+                    )}
 
                 </select>
             </FilterWrapper>
