@@ -7,7 +7,9 @@ import { withRouter } from "react-router";
 
 const MovieCardContainer = (props) => {
     const [genres, setGenres] = useState([]);
+    const imgSrc = 'https://image.tmdb.org/t/p/original/';
 
+    console.log(props)
 
     useEffect(() => {
         getGenres()
@@ -27,7 +29,8 @@ const MovieCardContainer = (props) => {
                 vote_average={props.vote_average}
                 genre_ids={props.genre_ids}
                 adult={props.adult}
-                genres={genres} />
+                genres={genres}
+                backdrop_path={props.backdrop_path} />
         </>
     )
 }
@@ -60,4 +63,5 @@ const MovieCardContainer = (props) => {
 // // }
 
 
-export default withRouter(MovieCardContainer);
+
+export default MovieCardContainer;

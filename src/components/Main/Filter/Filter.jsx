@@ -27,13 +27,14 @@ const Filter = (props) => {
         let optionGenres = e.target.value;
         props.addGenre(optionGenres);
         props.addMovies(props.currentPage, optionGenres);
-        // props.searchMovie('');
+        props.searchMovie('');
+
     }
 
     const changeYear = (e) => {
         let optionYears = e.target.value;
         props.addYear(optionYears);
-        // props.searchMovie('');
+        props.searchMovie('');
 
         if (props.genre === 0) {
             props.addMovies(props.currentPage, '', optionYears);
@@ -44,14 +45,12 @@ const Filter = (props) => {
     }
 
     const onChangePage = (currentPage) => {
-        if (props.moviesName == '') {
+        if (props.moviesName === '') {
             props.getNeewMoviesPage(currentPage, props.genre, props.year);
         }
         else {
             props.getNewSearchMovies(props.moviesName, currentPage);
         }
-        debugger
-
         window.scrollTo(0, 0);
     }
 
@@ -82,6 +81,8 @@ const Filter = (props) => {
                     vote_average={m.vote_average}
                     genre_ids={m.genre_ids}
                     adult={m.adult}
+                    backdrop_path={m.backdrop_path}
+                    video={m.video}
                 />)}
             </MoviesCard>
 

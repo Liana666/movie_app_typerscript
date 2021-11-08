@@ -2,12 +2,11 @@ body {
   margin: 0 auto;
   padding: 0;
 
-  max-width: 1400px;
-
   background-color: #212C42;
   color: #fff;
   font-family: 'Furore';
 }
+
 
 a {
   color: #fff;

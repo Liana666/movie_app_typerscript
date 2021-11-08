@@ -9,7 +9,7 @@ import PieChard from "./PieChard";
 
 import card from "./MovieCard.module.css";
 import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const MovieCard = (props) => {
 
@@ -60,9 +60,16 @@ const MovieCard = (props) => {
                 <div className={card.text}>
                     {props.overview.slice(0, 145) + '...'}
                 </div>
-                <NavLink to="/singlemovie">
+
+
+                <Link to={{
+                    pathname: '/singlemovie',
+                    state: { title: props.title, back: props.backdrop_path }
+                }}>
                     <Btn_movie>Подробнее о фильме</Btn_movie>
-                </NavLink>
+                </Link>
+
+
 
 
             </Card_info>

@@ -1,12 +1,18 @@
 import React from "react";
 
+import SingleMovie from "./SingleMovie";
+
 const SingleMovieContainer = (props) => {
 
 
     return (
-        <div>
-            {props.match.params.movieid}
-        </div>
+        <>
+            <SingleMovie
+                title={props.location.state.title}
+                back={props.location.state.back}
+            />
+
+        </>
     )
 }
 

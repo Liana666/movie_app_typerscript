@@ -15,7 +15,7 @@ function App() {
         <Route exact path='/' component={Main}></Route>
         <Route path="/profile" component={Profile}></Route>
         <Route path="/search" component={SearchContainer}></Route>
-        <Route path="/singlemovie/:movieid" component={SingleMovieContainer}></Route>
+        <Route path="/singlemovie" component={SingleMovieContainer}></Route>
       </Switch>
     </div>
   );

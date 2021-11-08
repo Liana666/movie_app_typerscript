@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { addGenreAC, addPopularAC, getMoviesThunk, changePageThunk, addYearAC, searchMoviesThunk } from "../../../redux/reducers/mainReducer";
+import { addGenreAC, addPopularAC, getMoviesThunk, getNewMovieAC, changePageThunk, addYearAC, searchMoviesThunk } from "../../../redux/reducers/mainReducer";
 import { getGenres } from "../../../api/api";
 
 import Filter from "./Filter";
@@ -37,6 +37,7 @@ const FilterContainer = (props) => {
                 year={props.year}
                 moviesName={props.moviesName}
                 getNewSearchMovies={props.getNewSearchMovies}
+                searchMovie={props.searchMovie}
             />
 
         </>
@@ -51,10 +52,11 @@ const mapStatetoProps = (state) => {
         movies: state.MainPage.movies,
         totalPages: state.MainPage.totalPages,
         currentPage: state.MainPage.currentPage,
-        years: state.MainPage.years
+        years: state.MainPage.years,
+        year: state.MainPage.year
     }
 }
 
 export default connect(mapStatetoProps,
-    { addGenre: addGenreAC, addYear: addYearAC, addMovies: getMoviesThunk, addPopular: addPopularAC, getNeewMoviesPage: changePageThunk, getNewSearchMovies: searchMoviesThunk })
+    { addGenre: addGenreAC, searchMovie: getNewMovieAC, addYear: addYearAC, addMovies: getMoviesThunk, addPopular: addPopularAC, getNeewMoviesPage: changePageThunk, getNewSearchMovies: searchMoviesThunk })
     (FilterContainer);

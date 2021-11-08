@@ -1,3 +1,8 @@
+header {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
 .logo {
     display: flex;
     align-items: center;
