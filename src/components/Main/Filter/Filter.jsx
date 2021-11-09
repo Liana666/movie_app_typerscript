@@ -83,6 +83,7 @@ const Filter = (props) => {
                     adult={m.adult}
                     backdrop_path={m.backdrop_path}
                     video={m.video}
+                    id={m.id}
                 />)}
             </MoviesCard>
 

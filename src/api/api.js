@@ -18,14 +18,14 @@ export const filterGenresMovies = (page, genre, year) => {
 };
 
 
-// export const filterGenresMovies = (page, genre) => {
-//     return axios.get(filterUrl + key + `&sort_by=release_date.desc$page=${page}&with_genres=${genre}` + lang + region);
-// }
-
 export const getGenres = () => {
     return axios.get(genreUrl + key + lang + region);
 };
 
 export const searchMovies = (parametr, page) => {
     return axios.get(`https://api.themoviedb.org/3/search/movie?page=${page}&query=${parametr}&api_key=d495d35d47c329b48d81d83ed0f10265&language=ru-RU&region=RU`);
+};
+
+export const getCast = (movie_id) => {
+    return axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/credits?` + key + lang + region);
 };

@@ -11,7 +11,7 @@ const composedEnhancer = composeWithDevTools(applyMiddleware(ThunkMiddleware));
 let reducers = combineReducers({
    HeaderPage: headerReducer,
    SearchPage: searchReducer,
-   MainPage: mainReducer
+   MainPage: mainReducer,
    // ProfilePage: profileReducer
 })
 

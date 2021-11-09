@@ -70,7 +70,9 @@ const MovieCard = (props) => {
                         title: props.title,
                         back: props.backdrop_path,
                         poster: props.poster_path,
-                        vote_average: props.vote_average
+                        vote_average: props.vote_average,
+                        overview: props.overview,
+                        id: props.id
                     }
                 }}>
                     <Btn_movie>Подробнее о фильме</Btn_movie>

@@ -29,6 +29,7 @@ const MovieCardContainer = (props) => {
                 vote_average={props.vote_average}
                 genre_ids={props.genre_ids}
                 adult={props.adult}
+                id={props.id}
                 genres={genres}
                 backdrop_path={props.backdrop_path} />
         </>
