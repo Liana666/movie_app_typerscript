@@ -16,6 +16,7 @@ const MovieCard = (props) => {
     const imgSrc = 'https://image.tmdb.org/t/p/original/';
     let mapGenres = new Map();
 
+    console.log(props.vote_average)
 
     props.genres.map(g => {
         mapGenres.set(g.id, g.name);
@@ -64,7 +65,13 @@ const MovieCard = (props) => {
 
                 <Link to={{
                     pathname: '/singlemovie',
-                    state: { title: props.title, back: props.backdrop_path }
+                    state:
+                    {
+                        title: props.title,
+                        back: props.backdrop_path,
+                        poster: props.poster_path,
+                        vote_average: props.vote_average
+                    }
                 }}>
                     <Btn_movie>Подробнее о фильме</Btn_movie>
                 </Link>

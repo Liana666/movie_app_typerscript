@@ -3,7 +3,7 @@ import * as axios from "axios";
 
 import { createRef, useState } from "react";
 
-import loop from "../../../img/lupa.png";
+import loop from "../../../img/lupa2.png";
 // import popcorn from "../../../img/popcorn.png";
 import firesingle from "../../../img/fire-search.png";
 

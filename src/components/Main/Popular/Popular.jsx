@@ -9,7 +9,7 @@ const Popular = (props) => {
     return (
         <>
             {
-                props.popular !== undefined ?
+                props.popular !== undefined && props.genre === 0 && props.year === 0 && props.moviesName === '' ?
                     <MoviesCard>
                         {props.popular.map(m => <MovieCardContainer
                             key={m.id}

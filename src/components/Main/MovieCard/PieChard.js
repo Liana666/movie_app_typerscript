@@ -17,7 +17,7 @@ const PieChard = (props) => {
 
     const COLORS = ["#1E273A", '#00000038'];
     return (
-        <PieChart width={95} height={95} >
+        <PieChart width={100} height={100} >
             <Pie
                 data={data}
                 innerRadius={23}

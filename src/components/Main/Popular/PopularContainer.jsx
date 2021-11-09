@@ -4,7 +4,7 @@ import { getPopularThunk } from "../../../redux/reducers/mainReducer";
 
 import Popular from "./Popular";
 
-const PopularContainer = (props) => {
+const PopularContainer = React.memo(function PopularContainer(props) {
 
     useEffect(() => {
         props.addPopular();
@@ -12,14 +12,22 @@ const PopularContainer = (props) => {
 
     return (
         <>
-            <Popular popular={props.popular} />
+            <Popular
+                popular={props.popular}
+                genre={props.genre}
+                year={props.year}
+                moviesName={props.moviesName}
+            />
         </>
     )
-}
+})
 
 const mapStatetoProps = (state) => {
     return {
-        popular: state.MainPage.popular
+        popular: state.MainPage.popular,
+        genre: state.MainPage.genre,
+        year: state.MainPage.year,
+        moviesName: state.MainPage.moviesName
     }
 }
 

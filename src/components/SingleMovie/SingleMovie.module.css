@@ -1,6 +1,146 @@
 
+
 .background {
     position: absolute;
+    z-index: 0;
     width: 100%;
-    top: -15%;
+    top: -10px;
+}
+
+.background_color {
+    width: 100%;
+    height: 100%;
+    background: #212c42d1;
+    /* background: linear-gradient(90deg, #212C42 6.25%, rgba(32, 42, 62, 0.9) 41.15%, rgba(30, 39, 58, 0.78) 71.88%, rgba(30, 40, 59, 0.72) 100%); */
+    position: absolute;
+    z-index: 1;
+}
+
+.container {
+    padding: 50px 0;
+    margin: 0 auto;
+
+    position: relative;
+
+    max-width: 1400px;
+    display: flex;
+
+    z-index: 1;
+}
+
+.poster_wrapper {
+    width: 30%;
+}
+
+.info_wrapper {
+    margin-left: 40px;
+    width: 60%;
+}
+
+.poster {
+    width: 100%;
+    border-radius: 41px;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+}
+
+.title {
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+.subtitle {
+    display: flex;
+    padding: 0;
+    margin: 6px 0;
+}
+
+.date {
+    margin-right: 27px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px; 
+}
+
+.subtitle li {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.favorit {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(33, 44, 66, 0.68);
+}
+
+.favorit_vote {
+    display: flex;
+    align-items: center;
+}
+
+.chart_wrapper {
+    position: relative;
+}
+
+.chard {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 18px;
+    transform: translate(-50%, -50%);
+}
+
+.chart_title {
+    width: 100px;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+}
+
+.video_wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.video_wrapper:hover {
+    cursor: pointer;
+}
+
+.viedeo_container {
+    background: url("../../img/b.png") no-repeat;
+    width: 143px;
+    height: 47px;
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 21px;
+
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+
+    color: #FFF7F7;
+}
+
+.arrow {
+    margin-right: 6px;
 }
