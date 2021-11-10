@@ -9,8 +9,6 @@ const MovieCardContainer = (props) => {
     const [genres, setGenres] = useState([]);
     const imgSrc = 'https://image.tmdb.org/t/p/original/';
 
-    console.log(props)
-
     useEffect(() => {
         getGenres()
             .then(response => {

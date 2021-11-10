@@ -52,3 +52,38 @@ a {
   font-weight: 800;
   src: local('Nunito'), url("./fonts/Nunito-ExtraBold.woff") format('woff');
 }
+
+/********************************scroll**************************************/
+
+/*Убрать полосу прокрутки у элемента*/
+.element::-webkit-scrollbar {
+  width: 0;
+}
+
+/*Убрать полосу прокрутки для всей страницы*/
+::-webkit-scrollbar {
+  width: 0;
+}
+
+#element {
+  overflow-y: scroll;
+  background-color: transparent;
+  width: 100vw;
+  height: 100vh;
+}
+
+
+#element::-webkit-scrollbar {
+  width: 10px;
+}
+
+#element::-webkit-scrollbar-track {
+  -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+  background-color: #2a313e;
+  border-radius: 10px;
+}
+
+#element::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(180deg, #32A8D0, #B476C9);
+}

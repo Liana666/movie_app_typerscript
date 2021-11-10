@@ -29,8 +29,9 @@ const SingleMovie = (props) => {
                             {props.title}
                         </div>
                         <ul className={single.subtitle}>
-                            <span className={single.date}>2020г.</span>
-                            <li>История, драма</li>
+                            <span className={single.date}>{props.release_date}</span>
+                            {/* {props.single_genres.map(g => <li>{g}</li>)} */}
+                            {/* <li>История, драма</li> */}
                         </ul>
 
 
@@ -65,6 +66,34 @@ const SingleMovie = (props) => {
                             </div>
                         </div>
 
+                        <CrewWrapper>
+                            <div>
+                                <div className={single.producer}>
+                                    {props.crew.map(crew => crew.job === "Producer" ? <div>{crew.name}</div> : null)}
+                                </div>
+                                <div className={single.crew_job}>
+                                    Продюсер
+                                </div>
+                            </div>
+                            <div>
+                                <div className={single.producer}>
+                                    {props.crew.map(crew => crew.job === "Director" ? <div>{crew.name}</div> : null)}
+                                </div>
+                                <div className={single.crew_job}>
+                                    Режиссер
+                                </div>
+                            </div>
+                            <div>
+                                <div className={single.producer}>
+                                    {props.crew.map(crew => crew.job === "Editor" ? <div>{crew.name}</div> : null)}
+                                </div>
+                                <div className={single.crew_job}>
+                                    Автор
+                                </div>
+                            </div>
+                        </CrewWrapper>
+
+
                     </div>
 
                 </div>
@@ -72,13 +101,13 @@ const SingleMovie = (props) => {
 
             <CastWrapper>
                 <div className={single.actors_title}>Актерский состав</div>
-                <Cast>
+                <div className={single.cast_wrapper}>
                     {props.actors.map(actors => <ActorsCard
                         name={actors.name}
                         profile_path={actors.profile_path}
                         character={actors.character}
                     />)}
-                </Cast>
+                </div>
             </CastWrapper>
 
 
@@ -111,11 +140,17 @@ const CastWrapper = styled.div`
     margin: 50px auto;
 `
 
-const Cast = styled.div`
+const CrewWrapper = styled.div`
     display: flex;
-    overflow-x: scroll;
-    overflow-y: auto;
-
+    align-items: center;
+    justify-content: space-between;
 `
+
+// const Cast = styled.div`
+//     display: flex;
+//     overflow-x: scroll;
+//     overflow-y: auto;
+
+// `
 
 export default SingleMovie;

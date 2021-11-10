@@ -10,7 +10,7 @@
 .background_color {
     width: 100%;
     height: 100%;
-    background: #212c42d1;
+    background: #212c42e8;
     /* background: linear-gradient(90deg, #212C42 6.25%, rgba(32, 42, 62, 0.9) 41.15%, rgba(30, 39, 58, 0.78) 71.88%, rgba(30, 40, 59, 0.72) 100%); */
     position: absolute;
     z-index: 1;
@@ -156,7 +156,7 @@
 }
 
 .description_title {
-    margin: 15px 0 20px 0;
+    margin: 15px 0;
     font-style: normal;
     font-weight: normal;
     font-size: 22px;
@@ -167,6 +167,8 @@
 
 
 .description {
+    margin-bottom: 40px;
+
     font-family: 'Nunito';
     font-style: normal;
     font-weight: normal;
@@ -176,6 +178,27 @@
     color: #FFF7F7;
 }
 
+.producer {
+    margin-bottom: 5px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 27px;
+
+    color: #FFF2F2;
+}
+
+.crew_job {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: #FFF7F7;
+}
+
+
 .actors_title {
     margin-bottom: 40px;
     font-size: 20px;
@@ -183,3 +206,40 @@
 
     color: #FFF7F7;
 }
+
+.cast_wrapper {
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+
+.cast_wrapper::-webkit-scrollbar {
+    width: 10px;
+}
+
+.cast_wrapper::-webkit-scrollbar-track {
+    /* -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset; */
+    background-color: #212c42;
+    border-radius: 10px;
+}
+
+.cast_wrapper::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: linear-gradient(90deg, #32A8D0, #B476C9);
+    width: 100px;
+}
+
+/* .cast_wrapper:after {
+    content: '';
+    width: 60px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-image: linear-gradient(to right, rgba(255,255,255,0) 0%, #212c42  100%);
+    will-change: opacity;
+} */
