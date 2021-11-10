@@ -10,9 +10,8 @@ import arrow from "../../img/arrow.png";
 import ActorsCard from "./ActorsCard/ActorsCard";
 
 const SingleMovie = (props) => {
-
     const imgSrc = 'https://image.tmdb.org/t/p/original/';
-
+    const videoUrl = 'https://www.youtube.com/watch?v=';
 
     return (
         <>
@@ -30,9 +29,14 @@ const SingleMovie = (props) => {
                         </div>
                         <ul className={single.subtitle}>
                             <span className={single.date}>{props.release_date}</span>
-                            {/* {props.single_genres.map(g => <li>{g}</li>)} */}
+                            <span className={single.marker}>·</span>
+                            {props.single_genres.map(g => <span className={single.date}>{g}</span>)}
                             {/* <li>История, драма</li> */}
                         </ul>
+
+                        {/* <div>
+                            {props.key.map(k => <a href={videoUrl + k.key}>трейлер</a>)}
+                        </div> */}
 
 
                         <Info>

@@ -29,7 +29,9 @@ const MovieCardContainer = (props) => {
                 adult={props.adult}
                 id={props.id}
                 genres={genres}
-                backdrop_path={props.backdrop_path} />
+                backdrop_path={props.backdrop_path}
+                video={props.video}
+            />
         </>
     )
 }

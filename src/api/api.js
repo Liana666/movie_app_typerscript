@@ -29,3 +29,7 @@ export const searchMovies = (parametr, page) => {
 export const getCast = (movie_id) => {
     return axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/credits?` + key + lang + region);
 };
+
+export const getVideo = (movie_id) => {
+    return axios.get(`https://api.themoviedb.org/3/movie/${movie_id}/videos?` + key);
+}

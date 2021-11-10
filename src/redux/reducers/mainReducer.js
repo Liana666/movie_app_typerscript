@@ -1,6 +1,7 @@
 import { getMovies } from "../../api/api";
 import { filterGenresMovies } from "../../api/api";
 import { searchMovies } from "../../api/api";
+import { getVideo } from "../../api/api";
 
 let initialState = {
    moviesName: '',
@@ -10,7 +11,8 @@ let initialState = {
    totalPages: 1,
    currentPage: 1,
    years: [2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2002, 2001, 2000],
-   year: 0
+   year: 0,
+   key: []
 }
 
 const mainReducer = (state = initialState, action) => {
@@ -43,6 +45,9 @@ const mainReducer = (state = initialState, action) => {
       case 'GET_NEW_MOVIETITLE':
          return { ...state, moviesName: action.moviesName }
 
+      case 'GET_VIDEO':
+         return { ...state, key: action.key }
+
       default:
          return state;
    }
@@ -56,6 +61,7 @@ export const addPopularAC = (popular) => ({ type: 'ADD_POPULAR', popular });
 export const getNewPageAC = (currentPage) => ({ type: 'GET_CURRENT_PAGE', currentPage });
 export const getTotalPagesAC = (totalPages) => ({ type: 'GET_TOTAL_PAGES', totalPages });
 export const getNewMovieAC = (moviesName) => ({ type: 'GET_NEW_MOVIETITLE', moviesName });
+export const getVideoAC = (key) => ({ type: 'GET_VIDEO', key });
 
 export const getMoviesThunk = (currentPage, genre, year) => async dispatch => {
    dispatch(addPopularAC([]))
@@ -93,6 +99,13 @@ export const searchMoviesThunk = (moviesName, currentPage) => async dispatch => 
          let totalPages = response.data.total_pages;
          dispatch(getTotalPagesAC(totalPages));
          dispatch(addMoviesAC(data));
+      });
+}
+
+export const getVideoThunk = (movie_id) => async dispatch => {
+   getVideo(movie_id)
+      .then(response => {
+         dispatch(getVideoAC(response.data.results));
       });
 }
 
