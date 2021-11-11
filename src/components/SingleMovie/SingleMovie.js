@@ -70,30 +70,42 @@ const SingleMovie = (props) => {
                         </div>
 
                         <CrewWrapper>
-                            <div>
-                                <div className={single.producer}>
-                                    {props.crew.map(crew => crew.job === "Producer" ? <div key={crew.id}>{crew.name}</div> : null)}
+
+                            {props.crew.map(crew => crew.job === "Producer" ?
+                                <div className={single.crew_cart}>
+                                    <div className={single.producer}>
+                                        <div key={crew.id}>{crew.name}</div>
+                                    </div>
+                                    <div className={single.crew_job}>
+                                        Продюсер
+                                    </div>
                                 </div>
-                                <div className={single.crew_job}>
-                                    Продюсер
+                                : null)}
+
+
+                            {props.crew.map(crew => crew.job === "Director" ?
+                                <div className={single.crew_cart}>
+                                    <div className={single.producer}>
+                                        <div key={crew.id}>{crew.name}</div>
+                                    </div>
+                                    <div className={single.crew_job}>
+                                        Режиссер
+                                    </div>
                                 </div>
-                            </div>
-                            <div>
-                                <div className={single.producer}>
-                                    {props.crew.map(crew => crew.job === "Director" ? <div key={crew.id}>{crew.name}</div> : null)}
+                                : null)}
+
+
+                            {props.crew.map(crew => crew.job === "Editor" ?
+                                <div className={single.crew_cart}>
+                                    <div className={single.producer}>
+                                        <div key={crew.id}>{crew.name}</div>
+                                    </div>
+                                    <div className={single.crew_job}>
+                                        Автор
+                                    </div>
                                 </div>
-                                <div className={single.crew_job}>
-                                    Режиссер
-                                </div>
-                            </div>
-                            <div>
-                                <div className={single.producer}>
-                                    {props.crew.map(crew => crew.job === "Editor" ? <div key={crew.id}>{crew.name}</div> : null)}
-                                </div>
-                                <div className={single.crew_job}>
-                                    Автор
-                                </div>
-                            </div>
+                                : null)}
+
                         </CrewWrapper>
 
 
@@ -146,8 +158,9 @@ const CastWrapper = styled.div`
 
 const CrewWrapper = styled.div`
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
+
 `
 
 // const Cast = styled.div`

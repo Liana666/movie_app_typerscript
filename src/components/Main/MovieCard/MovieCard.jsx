@@ -39,7 +39,7 @@ const MovieCard = (props) => {
 
             <Card_img src={fire} />
             <Card_age>
-                {props.adult === 'true' ? '18+' : null}
+                {props.adult === "true" ? <span>18+</span> : null}
             </Card_age>
 
             <div>

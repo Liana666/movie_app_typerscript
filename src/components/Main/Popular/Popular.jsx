@@ -20,6 +20,7 @@ const Popular = (props) => {
                             genre_ids={m.genre_ids}
                             adult={m.adult}
                             backdrop_path={m.backdrop_path}
+                            id={m.id}
                         />)}
                     </MoviesCard>
                     : null

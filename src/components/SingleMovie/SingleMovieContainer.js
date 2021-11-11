@@ -2,16 +2,13 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
 import { getCast, getVideo } from "../../api/api";
-import { getVideoThunk } from "../../redux/reducers/mainReducer";
+import { addActorsWithCrewThunk } from "../../redux/reducers/singleReducer";
 
 import SingleMovie from "./SingleMovie";
 
 const SingleMovieContainer = React.memo(function SingleMovieContainer(props) {
 
-    const [actors, setActors] = useState([]);
-    const [crew, setCrew] = useState([]);
     let key_video = [];
-    // const [isLoaded, setIsLoaded] = useState(false);
     const [key, setKey] = useState([]);
 
     useEffect(() => {
@@ -25,13 +22,8 @@ const SingleMovieContainer = React.memo(function SingleMovieContainer(props) {
         key.map(key => key_video.push(key.key))
     }
 
-
     useEffect(() => {
-        getCast(props.location.state.id)
-            .then(response => {
-                setActors(response.data.cast);
-                setCrew(response.data.crew);
-            });
+        props.addCrewAndActors(props.location.state.id);
     }, []);
 
 
@@ -45,9 +37,8 @@ const SingleMovieContainer = React.memo(function SingleMovieContainer(props) {
                 poster={props.location.state.poster}
                 overview={props.location.state.overview}
                 actors={props.actors}
+                crew={props.crew}
                 addCasts={props.addCasts}
-                actors={actors}
-                crew={crew}
                 single_genres={props.location.state.single_genres}
                 key_video={key_video}
             />
@@ -55,22 +46,12 @@ const SingleMovieContainer = React.memo(function SingleMovieContainer(props) {
     )
 })
 
-// const mapStatetoProps = (state) => {
-//     return {
-//         crew: state.SinglePage.crew,
-//         actors: state.SinglePage.actors
-//     }
-// }
-
-// const mapStatetoProps = (state) => {
-//     return {
-//         key: state.MainPage.key
-//     }
-// }
-
-// export default connect(mapStatetoProps,
-//     { getVideo: getVideoThunk })
-//     (SingleMovieContainer);
+const mapStatetoProps = (state) => {
+    return {
+        crew: state.SinglePage.crew,
+        actors: state.SinglePage.actors
+    }
+}
 
 
-export default SingleMovieContainer;
+export default connect(mapStatetoProps, { addCrewAndActors: addActorsWithCrewThunk })(SingleMovieContainer);
