@@ -11,8 +11,7 @@ let initialState = {
    totalPages: 1,
    currentPage: 1,
    years: [2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2002, 2001, 2000],
-   year: 0,
-   key: []
+   year: 0
 }
 
 const mainReducer = (state = initialState, action) => {
@@ -44,9 +43,6 @@ const mainReducer = (state = initialState, action) => {
 
       case 'GET_NEW_MOVIETITLE':
          return { ...state, moviesName: action.moviesName }
-
-      case 'GET_VIDEO':
-         return { ...state, key: action.key }
 
       default:
          return state;
@@ -102,12 +98,12 @@ export const searchMoviesThunk = (moviesName, currentPage) => async dispatch => 
       });
 }
 
-export const getVideoThunk = (movie_id) => async dispatch => {
-   getVideo(movie_id)
-      .then(response => {
-         dispatch(getVideoAC(response.data.results));
-      });
-}
+// export const getVideoThunk = (movie_id) => async dispatch => {
+//    getVideo(movie_id)
+//       .then(response => {
+//          dispatch(getVideoAC(response.data.results));
+//       });
+// }
 
 
 export default mainReducer;

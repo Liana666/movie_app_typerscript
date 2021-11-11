@@ -10,12 +10,20 @@ const SingleMovieContainer = React.memo(function SingleMovieContainer(props) {
 
     const [actors, setActors] = useState([]);
     const [crew, setCrew] = useState([]);
+    let key_video = [];
     // const [isLoaded, setIsLoaded] = useState(false);
-    // const [key, setKey] = useState([]);
+    const [key, setKey] = useState([]);
 
     useEffect(() => {
-        props.getVideo(props.location.state.id);
-    }, []);
+        getVideo(props.location.state.id)
+            .then(response => {
+                setKey(response.data.results);
+            });
+    }, [setKey]);
+
+    if (key.length > 0) {
+        key.map(key => key_video.push(key.key))
+    }
 
 
     useEffect(() => {
@@ -26,7 +34,7 @@ const SingleMovieContainer = React.memo(function SingleMovieContainer(props) {
             });
     }, []);
 
-    console.log(props.key)
+
     return (
         <>
             <SingleMovie
@@ -41,11 +49,8 @@ const SingleMovieContainer = React.memo(function SingleMovieContainer(props) {
                 actors={actors}
                 crew={crew}
                 single_genres={props.location.state.single_genres}
-                video={props.location.state.video}
-                key={props.key}
+                key_video={key_video}
             />
-
-
         </>
     )
 })
@@ -57,16 +62,15 @@ const SingleMovieContainer = React.memo(function SingleMovieContainer(props) {
 //     }
 // }
 
-const mapStatetoProps = (state) => {
-    return {
-        key: state.MainPage.key
-    }
-    debugger
-}
+// const mapStatetoProps = (state) => {
+//     return {
+//         key: state.MainPage.key
+//     }
+// }
 
-export default connect(mapStatetoProps,
-    { getVideo: getVideoThunk })
-    (SingleMovieContainer);
+// export default connect(mapStatetoProps,
+//     { getVideo: getVideoThunk })
+//     (SingleMovieContainer);
 
 
-// export default connect(mapStatetoProps, { addCasts: getCastThunk })(SingleMovieContainer);
+export default SingleMovieContainer;

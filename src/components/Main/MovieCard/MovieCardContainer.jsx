@@ -30,7 +30,6 @@ const MovieCardContainer = (props) => {
                 id={props.id}
                 genres={genres}
                 backdrop_path={props.backdrop_path}
-                video={props.video}
             />
         </>
     )

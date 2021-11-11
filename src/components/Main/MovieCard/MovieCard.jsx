@@ -52,8 +52,7 @@ const MovieCard = (props) => {
                     <div>
                         <div>Дата: <span className={card.date}>{props.release_date}</span></div>
                         <div className={card.genre_wrapper}><span className={card.genre_title}>Жанры:</span>
-                            {mapGenres.size !== 0 ? props.genre_ids.map(g => mapGenres.has(g) ? <span key={g.id} className={card.genre}>{mapGenres.get(g)}</span>
-                                : null)
+                            {single_genres.length !== 0 ? single_genres.map(g => <span key={g.id} className={card.genre}>{g}</span>)
                                 : null}
                         </div>
                     </div>
@@ -82,7 +81,6 @@ const MovieCard = (props) => {
                         id: props.id,
                         release_date: props.release_date,
                         single_genres: single_genres,
-                        video: props.video
                     }
                 }}>
                     <Btn_movie>Подробнее о фильме</Btn_movie>

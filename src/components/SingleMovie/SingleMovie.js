@@ -12,6 +12,8 @@ import ActorsCard from "./ActorsCard/ActorsCard";
 const SingleMovie = (props) => {
     const imgSrc = 'https://image.tmdb.org/t/p/original/';
     const videoUrl = 'https://www.youtube.com/watch?v=';
+    const video = props.key_video.slice(0, 1);
+    console.log(video)
 
     return (
         <>
@@ -30,21 +32,18 @@ const SingleMovie = (props) => {
                         <ul className={single.subtitle}>
                             <span className={single.date}>{props.release_date}</span>
                             <span className={single.marker}>·</span>
-                            {props.single_genres.map(g => <span className={single.date}>{g}</span>)}
-                            {/* <li>История, драма</li> */}
+                            {props.single_genres.map(g => <span key={g.id} className={single.date}>{g}</span>)}
                         </ul>
-
-                        {/* <div>
-                            {props.key.map(k => <a href={videoUrl + k.key}>трейлер</a>)}
-                        </div> */}
 
 
                         <Info>
                             <div className={single.video_wrapper}>
-                                <div className={single.viedeo_container}>
-                                    <img className={single.arrow} src={arrow} />
-                                    Трейлер
-                                </div>
+                                {video.map(k => <a href={videoUrl + k}>
+                                    <div className={single.viedeo_container}>
+                                        <img className={single.arrow} src={arrow} />
+                                        Трейлер
+                                    </div>
+                                </a>)}
                                 <div className={single.favorit}>
                                     <img src={favorit} />
 
@@ -73,7 +72,7 @@ const SingleMovie = (props) => {
                         <CrewWrapper>
                             <div>
                                 <div className={single.producer}>
-                                    {props.crew.map(crew => crew.job === "Producer" ? <div>{crew.name}</div> : null)}
+                                    {props.crew.map(crew => crew.job === "Producer" ? <div key={crew.id}>{crew.name}</div> : null)}
                                 </div>
                                 <div className={single.crew_job}>
                                     Продюсер
@@ -81,7 +80,7 @@ const SingleMovie = (props) => {
                             </div>
                             <div>
                                 <div className={single.producer}>
-                                    {props.crew.map(crew => crew.job === "Director" ? <div>{crew.name}</div> : null)}
+                                    {props.crew.map(crew => crew.job === "Director" ? <div key={crew.id}>{crew.name}</div> : null)}
                                 </div>
                                 <div className={single.crew_job}>
                                     Режиссер
@@ -89,7 +88,7 @@ const SingleMovie = (props) => {
                             </div>
                             <div>
                                 <div className={single.producer}>
-                                    {props.crew.map(crew => crew.job === "Editor" ? <div>{crew.name}</div> : null)}
+                                    {props.crew.map(crew => crew.job === "Editor" ? <div key={crew.id}>{crew.name}</div> : null)}
                                 </div>
                                 <div className={single.crew_job}>
                                     Автор
@@ -107,6 +106,7 @@ const SingleMovie = (props) => {
                 <div className={single.actors_title}>Актерский состав</div>
                 <div className={single.cast_wrapper}>
                     {props.actors.map(actors => <ActorsCard
+                        key={actors.id}
                         name={actors.name}
                         profile_path={actors.profile_path}
                         character={actors.character}

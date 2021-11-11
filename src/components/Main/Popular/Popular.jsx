@@ -5,7 +5,6 @@ import MovieCardContainer from "../MovieCard/MovieCardContainer";
 
 const Popular = (props) => {
 
-
     return (
         <>
             {
@@ -20,6 +19,7 @@ const Popular = (props) => {
                             vote_average={m.vote_average}
                             genre_ids={m.genre_ids}
                             adult={m.adult}
+                            backdrop_path={m.backdrop_path}
                         />)}
                     </MoviesCard>
                     : null
