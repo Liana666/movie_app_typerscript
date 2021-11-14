@@ -1,0 +1,19 @@
+.wrapper {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    padding: 17px 30px;
+    background: rgba(30, 39, 58, 60%);
+    border-radius: 20px;
+    text-align: center;
+
+    transition: 0.5s ease 0s;
+}
+
+.btn:hover {
+   cursor: pointer;
+   background: rgba(30, 39, 58, 100%);
+}

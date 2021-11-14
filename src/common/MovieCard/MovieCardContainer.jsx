@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import MovieCard from "../MovieCard/MovieCard";
 
-import { getGenres } from "../../../api/api";
-import { withRouter } from "react-router";
+import { getGenres } from "../../api/api";
 
 
 const MovieCardContainer = (props) => {
     const [genres, setGenres] = useState([]);
-    const imgSrc = 'https://image.tmdb.org/t/p/original/';
 
     useEffect(() => {
         getGenres()
@@ -34,34 +32,6 @@ const MovieCardContainer = (props) => {
         </>
     )
 }
-
-
-// const mapStatetoProps = (state) => {
-//     return {
-//         genres: state.MainPage.genres,
-//     }
-// }
-
-// // const mapDispatchtoProps = (dispatch) => {
-// //     return {
-// //         addGenre: (genre) => {
-// //             dispatch(addGenreAC(genre));
-// //         },
-
-
-// //         addMovies: (movies) => {
-// //             dispatch(addMoviesAC(movies));
-// //         },
-
-// //         addPopular: (popular) => {
-// //             dispatch(addPopularAC(popular));
-// //         },
-
-// //         getGenres: getGenresThunk
-
-// //     }
-// // }
-
 
 
 export default MovieCardContainer;

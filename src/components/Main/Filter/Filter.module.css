@@ -63,6 +63,10 @@
     cursor: pointer;
 }
 
+.page span:hover {
+    cursor: pointer;
+}
+
 .page span {
     color: rgba(255, 255, 255, 0.336);
 }

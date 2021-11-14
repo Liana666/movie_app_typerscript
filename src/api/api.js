@@ -9,12 +9,16 @@ const region = '&region=RU';
 
 
 
-export const getMovies = () => {
-    return axios.get(baseUrl + key + lang + region);
+export const getMovies = (page) => {
+    return axios.get(baseUrl + key + `&page=${page}` + lang + region);
 };
 
 export const filterGenresMovies = (page, genre, year) => {
     return axios.get(filterUrl + key + `&page=${page}&with_genres=${genre}&year=${year}` + lang + region);
+};
+
+export const filterYearsMovies = (page, year) => {
+    return axios.get(filterUrl + key + `&page=${page}&year=${year}` + lang + region);
 };
 
 

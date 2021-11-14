@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import styled from "styled-components";
 import single from "./SingleMovie.module.css";
 
-import PieChard from "../Main/MovieCard/PieChard";
+import PieChard from "../../common/MovieCard/PieChard";
 
 import favorit from "../../img/fav.png";
 import arrow from "../../img/arrow.png";

@@ -1,14 +1,20 @@
 import React from "react";
 
+import popular from "./Popular.module.css";
+
 import styled from "styled-components";
-import MovieCardContainer from "../MovieCard/MovieCardContainer";
+import MovieCardContainer from "../../../common/MovieCard/MovieCardContainer";
 
 const Popular = (props) => {
+
+    const changePage = () => {
+        props.changePage(props.currentPagePopular + 1);
+    }
 
     return (
         <>
             {
-                props.popular !== undefined && props.genre === 0 && props.year === 0 && props.moviesName === '' ?
+                props.genre === 0 && props.year === 0 && props.moviesName === '' ?
                     <MoviesCard>
                         {props.popular.map(m => <MovieCardContainer
                             key={m.id}
@@ -22,9 +28,18 @@ const Popular = (props) => {
                             backdrop_path={m.backdrop_path}
                             id={m.id}
                         />)}
+                        {props.currentPagePopular < props.totalPages ?
+                            <div className={popular.wrapper}>
+                                <div className={popular.btn} onClick={changePage}>Загрузить еще</div>
+                            </div>
+
+                            : null
+                        }
                     </MoviesCard>
                     : null
             }
+
+
         </>
     )
 }

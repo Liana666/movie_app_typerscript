@@ -36,25 +36,6 @@ const mapStatetoProps = (state) => {
 
 }
 
-// const mapDispatchtoProps = (dispatch) => {
-//    return {
-//       setCurrentPage: (currentPage) => {
-//          dispatch(getNewPageAC(currentPage));
-//       },
-
-//       addMovies: (movies) => {
-//          dispatch(addMoviesAC(movies));
-//       },
-
-
-//       searchMovie: (moviesName) => {
-//          dispatch(getNewMovieAC(moviesName));
-
-//       },
-
-//    }
-// }
-
 
 export default connect(mapStatetoProps,
    { setCurrentPage: getNewPageAC, searchMovie: getNewMovieAC, addMovie: searchMoviesThunk, getNeewMoviesPage: changePageThunk })

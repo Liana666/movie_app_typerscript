@@ -1,8 +1,7 @@
 import React from "react";
-import { useEffect, useState } from "react";
 
-import fire from "../../../img/fire-abs.png";
-import favorites from "../../../img/favorites.png";
+import fire from "../../img/fire-abs.png";
+import favorites from "../../img/favorites.png";
 
 import PieChard from "./PieChard";
 
