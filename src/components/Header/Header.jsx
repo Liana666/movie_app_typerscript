@@ -1,6 +1,4 @@
 import React from "react";
-import * as axios from "axios";
-import { createRef, useState } from 'react';
 
 import logo from "../../img/logo.png";
 
@@ -25,10 +23,9 @@ const Header = (props) => {
                 <div className={header.link_wrapper}>
                     <NavLink to="/">Фильмы</NavLink>
                     <NavLink className={header.link} to="/profile">Избранное</NavLink>
-                    {/* <NavLink className={header.link} to="/search">Поиск</NavLink> */}
                     <SearchContainer />
                 </div>
-            </HeaderWrapper >
+            </HeaderWrapper>
 
         </>
     )
