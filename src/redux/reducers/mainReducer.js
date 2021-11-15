@@ -77,6 +77,23 @@ export const getTotalPagesAC = (totalPages) => ({ type: 'GET_TOTAL_PAGES', total
 export const getNewMovieAC = (moviesName) => ({ type: 'GET_NEW_MOVIETITLE', moviesName });
 export const getVideoAC = (key) => ({ type: 'GET_VIDEO', key });
 
+/*get state element*/
+
+export const changeGenreThunk = (page, genre) => (dispatch) => {
+   dispatch(addGenreAC(genre));
+   dispatch(getMoviesThunk(page, genre));
+   dispatch(getNewMovieAC(''));
+}
+
+export const changeYearThunk = (page, genre, year) => (dispatch) => {
+   dispatch(addYearAC(year));
+   dispatch(getMoviesThunk(page, genre, year));
+   dispatch(getNewMovieAC(''));
+}
+
+
+/* get Movies*/
+
 export const getMoviesThunk = (currentPage, genre, year) => async dispatch => {
    dispatch(addPopularAC([]))
 
@@ -113,6 +130,8 @@ export const getPopularThunk = () => async dispatch => {
 
 };
 
+/* Pagination*/
+
 export const changePageThunk = (moviesName, currentPage, genre, year) => async dispatch => {
    dispatch(getNewPageAC(currentPage));
 
@@ -140,9 +159,18 @@ export const changePageThunk = (moviesName, currentPage, genre, year) => async d
             });
       }
    }
-
-
 };
+
+export const changePagePopularThunk = (page) => async dispatch => {
+   dispatch(getNewPopularPageAC(page));
+
+   getMovies(page)
+      .then(response => {
+         dispatch(addNewPopularAC(response.data.results));
+      });
+}
+
+/*Search*/
 
 export const searchMoviesThunk = (moviesName, currentPage) => async dispatch => {
    dispatch(getNewPageAC(currentPage));
@@ -155,14 +183,7 @@ export const searchMoviesThunk = (moviesName, currentPage) => async dispatch => 
       });
 };
 
-export const changePagePopularThunk = (page) => async dispatch => {
-   dispatch(getNewPopularPageAC(page));
 
-   getMovies(page)
-      .then(response => {
-         dispatch(addNewPopularAC(response.data.results));
-      });
-}
 
 
 export default mainReducer;

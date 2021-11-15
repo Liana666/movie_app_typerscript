@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { addGenreAC, addPopularAC, getMoviesThunk, getNewMovieAC, changePageThunk, addYearAC, searchMoviesThunk } from "../../../redux/reducers/mainReducer";
+import { changeGenreThunk, changeYearThunk } from "../../../redux/reducers/mainReducer";
 import { getGenres } from "../../../api/api";
 
 import Filter from "./Filter";
@@ -22,22 +22,15 @@ const FilterContainer = (props) => {
     return (
         <>
             <Filter
-                isLoaded={props.isLoaded}
-                getNeewMoviesPage={props.getNeewMoviesPage}
-                totalPages={props.totalPages}
-                currentPage={props.currentPage}
-                movies={props.movies}
-                addMovies={props.addMovies}
-                addPopular={props.addPopular}
                 genres={genres}
                 genre={props.genre}
-                addGenre={props.addGenre}
                 years={props.years}
-                addYear={props.addYear}
                 year={props.year}
-                moviesName={props.moviesName}
-                getNewSearchMovies={props.getNewSearchMovies}
-                searchMovie={props.searchMovie}
+                movies={props.movies}
+                currentPage={props.currentPage}
+                totalPages={props.totalPages}
+                changeGenre={props.changeGenre}
+                changeYear={props.changeYear}
             />
 
         </>
@@ -47,7 +40,6 @@ const FilterContainer = (props) => {
 
 const mapStatetoProps = (state) => {
     return {
-        moviesName: state.MainPage.moviesName,
         genre: state.MainPage.genre,
         movies: state.MainPage.movies,
         totalPages: state.MainPage.totalPages,
@@ -58,5 +50,5 @@ const mapStatetoProps = (state) => {
 }
 
 export default connect(mapStatetoProps,
-    { addGenre: addGenreAC, searchMovie: getNewMovieAC, addYear: addYearAC, addMovies: getMoviesThunk, addPopular: addPopularAC, getNeewMoviesPage: changePageThunk, getNewSearchMovies: searchMoviesThunk })
+    { changeYear: changeYearThunk, changeGenre: changeGenreThunk })
     (FilterContainer);

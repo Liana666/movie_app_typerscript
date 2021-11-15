@@ -10,30 +10,29 @@ import PagintationContainer from "../../../common/Pagination/PagintationContaine
 const Filter = (props) => {
 
 
-    const changeOption = (e) => {
+    const changeGenreOption = (e) => {
         let optionGenres = e.target.value;
-        props.addGenre(optionGenres);
-        props.addMovies(props.currentPage, optionGenres);
-        props.searchMovie('');
+        props.changeGenre(props.currentPage, optionGenres)
 
     }
 
-    const changeYear = (e) => {
+    const changeYearOption = (e) => {
         let optionYears = e.target.value;
-        props.addYear(optionYears);
-        props.searchMovie('');
-        props.addMovies(props.currentPage, props.genre, optionYears);
+        props.changeYear(props.currentPage, props.genre, optionYears);
+        // props.addYear(optionYears);
+        // props.searchMovie('');
+        // props.addMovies(props.currentPage, props.genre, optionYears);
     }
 
     return (
         <>
             <FilterWrapper>
-                <select value={props.genre} onChange={changeOption} style={{ marginLeft: 0 }} className={filter.select} name="genres" id="">
+                <select value={props.genre} onChange={changeGenreOption} style={{ marginLeft: 0 }} className={filter.select} name="genres" id="">
                     <option className={filter.option}>Все</option>
                     {props.genres.map(g => <option value={g.id}>{g.name}</option>
                     )}
                 </select>
-                <select value={props.year} onChange={changeYear} className={filter.select} name="years" id="">
+                <select value={props.year} onChange={changeYearOption} className={filter.select} name="years" id="">
                     <option className={filter.option}>Годы</option>
                     {props.years.map(y => <option value={y}>{y}</option>
                     )}
