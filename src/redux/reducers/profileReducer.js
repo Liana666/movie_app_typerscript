@@ -1,3 +1,8 @@
+let initialState = {
+    movies: [],
+
+}
+
 const profileReducer = () => {
 
 }

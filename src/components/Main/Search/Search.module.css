@@ -62,6 +62,10 @@
    cursor: pointer;
 }
 
+.input:hover {
+   cursor: pointer;
+}
+
 .input:active,
 .input:focus-visible {
    outline: none;

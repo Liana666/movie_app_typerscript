@@ -82,7 +82,7 @@ const MovieCard = (props) => {
                         single_genres: single_genres,
                     }
                 }}>
-                    <Btn_movie>Подробнее о фильме</Btn_movie>
+                    <div className={card.btn}>Подробнее о фильме</div>
                 </Link>
 
 
@@ -142,23 +142,6 @@ const Info_movie = styled.div`
 
     font-size: 14px;
     line-height: 170%;
-`
-
-const Btn_movie = styled.div`
-    width: 150px;
-
-    padding: 15px 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background: #1E273A;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 7px;
-
-    font-size: 11px;
-
-    color: #FFF7F7;
 `
 
 const Chard = styled.div`
