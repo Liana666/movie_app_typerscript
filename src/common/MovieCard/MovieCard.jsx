@@ -43,22 +43,22 @@ const MovieCard = (props) => {
         }
     })
 
-    const addFavorite = () => {
-        props.addFavorite(imgSrc);
+    const addFavorite = (e) => {
+        console.log(e.currentTarget)
+        props.addFavorite(imgSrc, props.title);
     }
-
 
     return (
         <Card>
             <div onClick={addFavorite} className={card.favorites}>
                 <img src={favorites} />
-                <span>+</span>
+                {props.titleMovies.map(titleMovies => titleMovies === props.title ? <span>-</span> : <span>+</span>)}
             </div>
 
 
             <Card_img src={fire} />
             <Card_age>
-                {props.adult === "true" ? <span>18+</span> : null}
+                {props.adult ? <span>18+</span> : null}
             </Card_age>
 
             <div>

@@ -5,6 +5,7 @@ import filter from "./Filter.module.css";
 
 import MovieCard from "../../../common/MovieCard/MovieCardContainer";
 import PagintationContainer from "../../../common/Pagination/PagintationContainer";
+import MovieCardContainer from "../../../common/MovieCard/MovieCardContainer";
 
 
 const Filter = (props) => {
@@ -42,7 +43,7 @@ const Filter = (props) => {
 
 
             <MoviesCard>
-                {props.movies.map(m => <MovieCard
+                {props.movies.map(m => <MovieCardContainer
                     key={m.id}
                     title={m.title}
                     overview={m.overview}
