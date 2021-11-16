@@ -3,7 +3,7 @@ import React from "react";
 import popular from "./Popular.module.css";
 
 import styled from "styled-components";
-import MovieCardContainer from "../../../common/MovieCard/MovieCardContainer";
+import MovieCard from "../../../common/MovieCard/MovieCardContainer";
 
 const Popular = (props) => {
 
@@ -16,7 +16,7 @@ const Popular = (props) => {
             {
                 props.genre === 0 && props.year === 0 && props.moviesName === '' ?
                     <MoviesCard>
-                        {props.popular.map(m => <MovieCardContainer
+                        {props.popular.map(m => <MovieCard
                             key={m.id}
                             title={m.title}
                             overview={m.overview}

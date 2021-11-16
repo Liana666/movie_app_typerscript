@@ -1,23 +1,39 @@
 import React from "react";
+import { useState, useEffect } from "react";
 
 import fire from "../../img/fire-abs.png";
 import favorites from "../../img/favorites.png";
 
 import PieChard from "./PieChard";
 
-
 import card from "./MovieCard.module.css";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+import { getGenres } from "../../api/api";
+
 const MovieCard = (props) => {
 
-    const imgSrc = 'https://image.tmdb.org/t/p/original/';
+    const [genres, setGenres] = useState([]);
+
+    useEffect(() => {
+        getGenres()
+            .then(response => {
+                let genres = response.data.genres;
+                setGenres(genres);
+            });
+    }, [setGenres]);
+
+
+
+    const imgSrc = 'https://image.tmdb.org/t/p/original/' + props.poster_path;
     let mapGenres = new Map();
 
     let single_genres = [];
 
-    props.genres.map(g => {
+
+
+    genres.map(g => {
         mapGenres.set(g.id, g.name);
     })
 
@@ -27,10 +43,14 @@ const MovieCard = (props) => {
         }
     })
 
+    const addFavorite = () => {
+        props.addFavorite(imgSrc);
+    }
+
 
     return (
         <Card>
-            <div className={card.favorites}>
+            <div onClick={addFavorite} className={card.favorites}>
                 <img src={favorites} />
                 <span>+</span>
             </div>
@@ -42,7 +62,7 @@ const MovieCard = (props) => {
             </Card_age>
 
             <div>
-                <img src={imgSrc + props.poster_path} className={card.movie_img} alt="" />
+                <img src={imgSrc} className={card.movie_img} alt="" />
             </div>
             <Card_info>
                 <div className={card.title}>{props.title}</div>

@@ -11,8 +11,8 @@ const composedEnhancer = composeWithDevTools(applyMiddleware(ThunkMiddleware));
 let reducers = combineReducers({
    HeaderPage: headerReducer,
    MainPage: mainReducer,
-   SinglePage: singleReducer
-   // ProfilePage: profileReducer
+   SinglePage: singleReducer,
+   ProfilePage: profileReducer
 })
 
 let store = createStore(reducers, composedEnhancer);

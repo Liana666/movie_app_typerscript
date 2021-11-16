@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import filter from "./Filter.module.css";
 
-import MovieCardContainer from "../../../common/MovieCard/MovieCardContainer";
+import MovieCard from "../../../common/MovieCard/MovieCardContainer";
 import PagintationContainer from "../../../common/Pagination/PagintationContainer";
 
 
@@ -42,7 +42,7 @@ const Filter = (props) => {
 
 
             <MoviesCard>
-                {props.movies.map(m => <MovieCardContainer
+                {props.movies.map(m => <MovieCard
                     key={m.id}
                     title={m.title}
                     overview={m.overview}

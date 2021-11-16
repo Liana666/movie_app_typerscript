@@ -3,14 +3,12 @@
     padding: 10px;
 
     width: 154px;
-       
     color: rgba(255, 255, 255, 0.87);
 
     border: none;
     border-radius: 10px;
     background: #212C42;
-    box-shadow:  5px 5px 6px #1e283d,
-             -5px -5px 6px #243047;
+    box-shadow:  5px 5px 6px #1e283d, -5px -5px 6px #243047;
 
     font-family: 'Furore';
     font-weight: 400;
@@ -26,8 +24,7 @@
     border: none;
     border-radius: 10px;
     background: #212C42;
-    box-shadow: inset 5px 5px 6px #1e283d,
-            inset -5px -5px 6px #243047;
+    box-shadow: inset 5px 5px 6px #1e283d, inset -5px -5px 6px #243047;
 
     transition: 0.5s ease 0s;        
 }
