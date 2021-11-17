@@ -1,22 +1,23 @@
 import React from "react";
 
-import styled from "styled-components";
 import profile from "./Profile.module.css";
 
 import Sidebar from "./Sidebar/Sidebar";
 import Movies from "./Movies/Movies";
+import MoviesContainer from "./Movies/MoviesContainer";
+import SidebarContainer from "./Sidebar/SidebarContainer";
 
 const Profile = () => {
     return (
-        <div className={profile.container}>
-            <Sidebar />
-            <Movies />
+        <div className={profile.wrapper}>
+            <div className={profile.container}>
+                <SidebarContainer />
+                <MoviesContainer />
+            </div>
         </div>
+
     )
 }
 
-const ProfileWrapper = styled.div`
-    display: flex;
-`
 
 export default Profile;

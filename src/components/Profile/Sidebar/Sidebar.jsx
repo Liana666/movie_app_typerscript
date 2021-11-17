@@ -1,25 +1,27 @@
 import React from "react";
 
-const Sidebar = () => {
+import sidebar from "./Sidebar.module.css";
+
+const Sidebar = (props) => {
    return (
-      <div>
-         <div>
+      <div className={sidebar.wrapper}>
+         <div className={sidebar.item}>
             все фильмы
-            <span>2</span>
+            <span>{props.favoriteMovies.length}</span>
          </div>
-         <div>
+         <div className={sidebar.item}>
             хочу посмотреть
             <span>2</span>
          </div>
-         <div>
+         <div className={sidebar.item}>
             посмотренно
             <span>2</span>
          </div>
-         <div>
+         <div className={sidebar.item}>
             ждет оценки
             <span>2</span>
          </div>
-         <div>
+         <div className={sidebar.item}>
             с оценкой
             <span>2</span>
          </div>

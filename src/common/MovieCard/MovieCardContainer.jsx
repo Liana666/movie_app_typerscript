@@ -37,8 +37,6 @@ const MovieCardContainer = (props) => {
         <>
             <MovieCard
                 addFavorite={props.addFavorite}
-                favoriteMovies={props.favoriteMovies}
-                isClickFavoriteIcon={props.isClickFavoriteIcon}
                 title={props.title}
                 overview={props.overview}
                 poster_path={props.poster_path}
@@ -50,6 +48,7 @@ const MovieCardContainer = (props) => {
                 titleMovies={props.titleMovies}
                 single_genres={single_genres}
                 id={props.id}
+                favoriteId={props.favoriteId}
             />
         </>
 
@@ -58,7 +57,8 @@ const MovieCardContainer = (props) => {
 
 const mapStatetoProps = (state) => {
     return {
-        favoriteMovies: state.ProfilePage.favoriteMovies
+        favoriteMovies: state.ProfilePage.favoriteMovies,
+        favoriteId: state.ProfilePage.favoriteId
     }
 }
 

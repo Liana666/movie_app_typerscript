@@ -4,6 +4,7 @@ import { useState } from "react";
 import fire from "../../img/fire-abs.png";
 import favorites from "../../img/favorites.png";
 import check from "../../img/check.png";
+import plus from "../../img/plus.png";
 
 import PieChard from "./PieChard";
 
@@ -20,7 +21,7 @@ const MovieCard = (props) => {
 
     const addFavorite = (e) => {
         console.log(e.currentTarget)
-        props.addFavorite(imgSrc, check);
+        props.addFavorite(imgSrc, props.id);
     }
 
     return (
@@ -28,7 +29,8 @@ const MovieCard = (props) => {
             <div onClick={addFavorite} className={card.favorites}>
                 <img className={card.favorite_item} src={favorites} />
                 {/* {checkIcon.map(icon => icon === props.id ? <img className={card.favorite} src={check} /> : <span>+</span>)} */}
-                <img className={card.favorite} src={props.favoriteMovies.icon} />
+                { }
+                <img className={card.favorite} src={props.favoriteId === props.id ? check : plus} />
             </div>
 
 

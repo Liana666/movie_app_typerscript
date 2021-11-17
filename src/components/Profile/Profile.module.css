@@ -1,9 +1,14 @@
 .wrapper {
-   max-width: 1400px;
-   margin: 0 auto;
-   padding: 30px 0;
+   height: 100%;
+ background: url("../../img/profile.png") no-repeat;
+ background-size: cover;
+ background-position: bottom;
+   
 }
 
 .container {
    display: flex;
+    max-width: 1400px;
+   margin: 0 auto;
+   padding: 30px 0;
 }

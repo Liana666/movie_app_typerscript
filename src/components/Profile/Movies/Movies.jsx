@@ -1,9 +1,16 @@
 import React from "react";
 
-const Movies = () => {
+import movies from "./Movies.module.css";
+
+const Movies = (props) => {
+
+
    return (
       <div>
-         Movies
+         {props.favoriteMovies.length > 0 ?
+            props.favoriteMovies.map(movie => <img className={movies.img} src={movie} />)
+            : <span>Вы еще не добавили в избранное</span>
+         }
       </div>
    )
 }

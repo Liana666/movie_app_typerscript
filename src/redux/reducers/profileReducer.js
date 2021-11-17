@@ -1,10 +1,8 @@
 import plus from "../../img/plus.png";
 
 let initialState = {
-    favoriteMovies: {
-        img: [],
-        icon: plus
-    }
+    favoriteMovies: [],
+    favoriteId: []
 
 }
 
@@ -15,9 +13,14 @@ const profileReducer = (state = initialState, action) => {
         case "ADD_FAVORITE_MOVIES": {
             return {
                 ...state,
-                favoriteMovies: {
-                    img: [...state.favoriteMovies.img, action.img]
-                }
+                favoriteMovies: [...state.favoriteMovies, action.favoriteMovies]
+            }
+        }
+
+        case "ADD_FAVORITE_ID": {
+            return {
+                ...state,
+                favoriteId: [...state.favoriteId, action.favoriteId]
             }
         }
 
@@ -35,12 +38,14 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addFavoriteMoviesAC = (img) => ({ type: "ADD_FAVORITE_MOVIES", img });
+export const addFavoriteMoviesAC = (favoriteMovies) => ({ type: "ADD_FAVORITE_MOVIES", favoriteMovies });
+export const addFavoriteIdAC = (favoriteId) => ({ type: "ADD_FAVORITE_ID", favoriteId });
 export const addFavoriteIconsAC = (icon) => ({ type: "ADD_FAVORITE_ICONS", icon });
 
-export const addFavoriteMoviesThunk = (img, icon) => (dispatch) => {
-    dispatch(addFavoriteMoviesAC(img));
-    dispatch(addFavoriteIconsAC(icon));
+export const addFavoriteMoviesThunk = (favoriteMovies, favoriteId) => (dispatch) => {
+    dispatch(addFavoriteMoviesAC(favoriteMovies));
+    dispatch(addFavoriteIdAC(favoriteId));
+    // dispatch(addFavoriteIconsAC(icon));
 };
 
 
