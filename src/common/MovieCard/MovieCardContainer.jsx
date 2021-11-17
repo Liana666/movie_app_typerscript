@@ -9,6 +9,30 @@ import { addFavoriteMoviesThunk } from "../../redux/reducers/profileReducer";
 
 const MovieCardContainer = (props) => {
 
+    const [genres, setGenres] = useState([]);
+    let mapGenres = new Map();
+    let single_genres = [];
+
+    useEffect(() => {
+        getGenres()
+            .then(response => {
+                let genres = response.data.genres;
+                setGenres(genres);
+            });
+    }, [setGenres]);
+
+    genres.map(g => {
+        mapGenres.set(g.id, g.name);
+    })
+
+    props.genre_ids.map(g => {
+        if (mapGenres.has(g)) {
+            single_genres.push(mapGenres.get(g));
+        }
+    })
+
+    console.log(props.favoriteMovies)
+
     return (
         <>
             <MovieCard
@@ -24,6 +48,8 @@ const MovieCardContainer = (props) => {
                 adult={props.adult}
                 backdrop_path={props.backdrop_path}
                 titleMovies={props.titleMovies}
+                single_genres={single_genres}
+                id={props.id}
             />
         </>
 
@@ -32,19 +58,9 @@ const MovieCardContainer = (props) => {
 
 const mapStatetoProps = (state) => {
     return {
-        favoriteMovies: state.ProfilePage.favoriteMovies,
-        isClickFavoriteIcon: state.ProfilePage.isClickFavoriteIcon,
-        titleMovies: state.ProfilePage.titleMovies
+        favoriteMovies: state.ProfilePage.favoriteMovies
     }
 }
-
-// let mapDispatcToProps = (dispatch) => {
-//     return {
-//         addFavorite: (favorite) => {
-//             dispatch(addFavoriteMoviesAC(favorite))
-//         }
-//     }
-// }
 
 
 export default connect(mapStatetoProps, { addFavorite: addFavoriteMoviesThunk })(MovieCardContainer)

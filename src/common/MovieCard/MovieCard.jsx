@@ -1,8 +1,9 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import fire from "../../img/fire-abs.png";
 import favorites from "../../img/favorites.png";
+import check from "../../img/check.png";
 
 import PieChard from "./PieChard";
 
@@ -10,49 +11,24 @@ import card from "./MovieCard.module.css";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import { getGenres } from "../../api/api";
 
 const MovieCard = (props) => {
 
-    const [genres, setGenres] = useState([]);
-
-    useEffect(() => {
-        getGenres()
-            .then(response => {
-                let genres = response.data.genres;
-                setGenres(genres);
-            });
-    }, [setGenres]);
-
-
-
+    // const [favoriteIcon, setIcon] = useState(false);
+    // const [checkIcon, setcheckIcon] = useState([]);
     const imgSrc = 'https://image.tmdb.org/t/p/original/' + props.poster_path;
-    let mapGenres = new Map();
-
-    let single_genres = [];
-
-
-
-    genres.map(g => {
-        mapGenres.set(g.id, g.name);
-    })
-
-    props.genre_ids.map(g => {
-        if (mapGenres.has(g)) {
-            single_genres.push(mapGenres.get(g));
-        }
-    })
 
     const addFavorite = (e) => {
         console.log(e.currentTarget)
-        props.addFavorite(imgSrc, props.title);
+        props.addFavorite(imgSrc, check);
     }
 
     return (
         <Card>
             <div onClick={addFavorite} className={card.favorites}>
-                <img src={favorites} />
-                {props.titleMovies.map(titleMovies => titleMovies === props.title ? <span>-</span> : <span>+</span>)}
+                <img className={card.favorite_item} src={favorites} />
+                {/* {checkIcon.map(icon => icon === props.id ? <img className={card.favorite} src={check} /> : <span>+</span>)} */}
+                <img className={card.favorite} src={props.favoriteMovies.icon} />
             </div>
 
 
@@ -71,7 +47,7 @@ const MovieCard = (props) => {
                     <div>
                         <div>Дата: <span className={card.date}>{props.release_date}</span></div>
                         <div className={card.genre_wrapper}><span className={card.genre_title}>Жанры:</span>
-                            {single_genres.length !== 0 ? single_genres.map(g => <span key={g.id} className={card.genre}>{g}</span>)
+                            {props.single_genres.length !== 0 ? props.single_genres.map(g => <span key={g.id} className={card.genre}>{g}</span>)
                                 : null}
                         </div>
                     </div>
@@ -99,7 +75,7 @@ const MovieCard = (props) => {
                         overview: props.overview,
                         id: props.id,
                         release_date: props.release_date,
-                        single_genres: single_genres,
+                        single_genres: props.single_genres,
                     }
                 }}>
                     <div className={card.btn}>Подробнее о фильме</div>

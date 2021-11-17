@@ -1,7 +1,10 @@
+import plus from "../../img/plus.png";
+
 let initialState = {
-    favoriteMovies: [],
-    titleMovies: [],
-    isClickFavoriteIcon: false
+    favoriteMovies: {
+        img: [],
+        icon: plus
+    }
 
 }
 
@@ -10,15 +13,21 @@ const profileReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case "ADD_FAVORITE_MOVIES": {
-            return { ...state, favoriteMovies: [...state.favoriteMovies, action.favoriteMovies] }
+            return {
+                ...state,
+                favoriteMovies: {
+                    img: [...state.favoriteMovies.img, action.img]
+                }
+            }
         }
 
-        case "ADD_TITLE": {
-            return { ...state, titleMovies: [...state.titleMovies, ...action.titleMovies] }
-        }
-
-        case "CHANGE_FAVORITE_ICON": {
-            return { ...state, isClickFavoriteIcon: action.isClickFavoriteIcon }
+        case "ADD_FAVORITE_ICONS": {
+            return {
+                ...state,
+                favoriteMovies: {
+                    icon: action.icon
+                }
+            }
         }
 
         default:
@@ -26,14 +35,12 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const addFavoriteMoviesAC = (favoriteMovies) => ({ type: "ADD_FAVORITE_MOVIES", favoriteMovies });
-export const addTitleAC = (titleMovies) => ({ type: "ADD_TITLE", titleMovies });
-export const changeFavoriteIconAC = (isClickFavoriteIcon) => ({ type: "CHANGE_FAVORITE_ICON", isClickFavoriteIcon });
+export const addFavoriteMoviesAC = (img) => ({ type: "ADD_FAVORITE_MOVIES", img });
+export const addFavoriteIconsAC = (icon) => ({ type: "ADD_FAVORITE_ICONS", icon });
 
-export const addFavoriteMoviesThunk = (path, title) => (dispatch) => {
-    dispatch(addFavoriteMoviesAC(path));
-    dispatch(addTitleAC(title));
-    // dispatch(changeFavoriteIconAC(icon));
+export const addFavoriteMoviesThunk = (img, icon) => (dispatch) => {
+    dispatch(addFavoriteMoviesAC(img));
+    dispatch(addFavoriteIconsAC(icon));
 };
 
 
