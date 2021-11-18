@@ -7,6 +7,7 @@ import { getGenres } from "../../api/api";
 
 import { addFavoriteMoviesThunk } from "../../redux/reducers/profileReducer";
 
+
 const MovieCardContainer = (props) => {
 
     const [genres, setGenres] = useState([]);

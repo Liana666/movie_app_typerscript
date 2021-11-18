@@ -16,17 +16,8 @@ import { Link } from "react-router-dom";
 const MovieCard = (props) => {
 
     const imgSrc = 'https://image.tmdb.org/t/p/original/' + props.poster_path;
-    const favoriteIconMovies = new Set();
 
-    // if (props.favoriteId.length > 0) {
-
-    //     favoriteIconMovies = [...new Set([...props.id, ...props.favoriteId])];
-
-    // }
-
-
-
-    console.log(props.id)
+    console.log(props.favoriteId)
 
 
     const addFavorite = (e) => {
