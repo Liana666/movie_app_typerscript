@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 
 import fire from "../../img/fire-abs.png";
@@ -15,12 +15,21 @@ import { Link } from "react-router-dom";
 
 const MovieCard = (props) => {
 
-    // const [favoriteIcon, setIcon] = useState(false);
-    // const [checkIcon, setcheckIcon] = useState([]);
     const imgSrc = 'https://image.tmdb.org/t/p/original/' + props.poster_path;
+    const favoriteIconMovies = new Set();
+
+    // if (props.favoriteId.length > 0) {
+
+    //     favoriteIconMovies = [...new Set([...props.id, ...props.favoriteId])];
+
+    // }
+
+
+
+    console.log(props.id)
+
 
     const addFavorite = (e) => {
-        console.log(e.currentTarget)
         props.addFavorite(imgSrc, props.id);
     }
 
@@ -28,9 +37,10 @@ const MovieCard = (props) => {
         <Card>
             <div onClick={addFavorite} className={card.favorites}>
                 <img className={card.favorite_item} src={favorites} />
-                {/* {checkIcon.map(icon => icon === props.id ? <img className={card.favorite} src={check} /> : <span>+</span>)} */}
-                { }
-                <img className={card.favorite} src={props.favoriteId === props.id ? check : plus} />
+                {props.favoriteId.includes(props.id) ?
+                    <img className={card.favorite} src={check} />
+                    : <img className={card.favorite} src={plus} />
+                }
             </div>
 
 
@@ -38,13 +48,11 @@ const MovieCard = (props) => {
             <Card_age>
                 {props.adult ? <span>18+</span> : null}
             </Card_age>
-
             <div>
                 <img src={imgSrc} className={card.movie_img} alt="" />
             </div>
             <Card_info>
                 <div className={card.title}>{props.title}</div>
-
                 <Info_movie>
                     <div>
                         <div>Дата: <span className={card.date}>{props.release_date}</span></div>
@@ -57,8 +65,6 @@ const MovieCard = (props) => {
                         <PieChard vote={props.vote_average} />
                         <span className={card.chard}>{props.vote_average}</span>
                     </Chard>
-
-
                 </Info_movie>
 
                 <div className={card.text}>

@@ -31,7 +31,6 @@ const MovieCardContainer = (props) => {
         }
     })
 
-    console.log(props.favoriteMovies)
 
     return (
         <>
