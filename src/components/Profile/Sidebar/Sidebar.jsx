@@ -10,16 +10,12 @@ const Sidebar = (props) => {
             <span>{props.favoriteMovies.length}</span>
          </div>
          <div className={sidebar.item}>
-            хочу посмотреть
-            <span>2</span>
-         </div>
-         <div className={sidebar.item}>
             посмотренно
-            <span>2</span>
+            <span>{props.viewed.length}</span>
          </div>
          <div className={sidebar.item}>
             ждет оценки
-            <span>2</span>
+            <span>{props.viewed.length}</span>
          </div>
          <div className={sidebar.item}>
             с оценкой

@@ -17,8 +17,6 @@ const MovieCard = (props) => {
 
     const imgSrc = 'https://image.tmdb.org/t/p/original/' + props.poster_path;
 
-    console.log(props.favoriteId)
-
 
     const addFavorite = (e) => {
         props.addFavorite(imgSrc, props.id);

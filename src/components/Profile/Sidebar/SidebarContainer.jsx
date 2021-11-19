@@ -4,6 +4,7 @@ import Sidebar from "./Sidebar";
 
 let mapStateToProps = (state) => {
     return {
+        viewed: state.ProfilePage.viewed,
         favoriteMovies: state.ProfilePage.favoriteMovies
     }
 }

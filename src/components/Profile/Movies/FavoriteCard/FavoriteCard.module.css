@@ -66,12 +66,12 @@
 .box2:hover .star_icon {
     right: 19px;
     fill: #fff;
-    fill-opacity: 1;
     stroke-opacity: 1;
 }
 
 .eye_icon {
     position: absolute;
+    opacity: 0.75;
     bottom: 30%;
     right: 12px;
     transition: 0.5s ease 0s;
@@ -79,7 +79,23 @@
 
 .star_icon {
     position: absolute;
+    opacity: 0.75;
     bottom: 24%;
     right: 12px;
     transition: 0.5s ease 0s;
+}
+
+
+.box:hover .eye_icon,
+.box2:hover .star_icon {
+    opacity: 1;
+}
+
+.vote_wrapper {
+    background: #444;
+    padding: 10px;
+    position: absolute;
+    display: flex;
+    bottom: 28%;
+    right: 69px;
 }

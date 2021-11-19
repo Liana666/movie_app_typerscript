@@ -2,25 +2,41 @@ import React from "react";
 import favoriteCard from "./FavoriteCard.module.css";
 
 import cross from "../../../../img/cross2.png";
+import eyeActive from "../../../../img/eyeactive.png";
+import eye from "../../../../img/eye.png";
+import star from "../../../../img/Star.png";
+import starActive from "../../../../img/Star2.png";
+import starVote from "../../../../img/Star3.png";
 
 const FavoriteCard = (props) => {
+
+    const addViewed = () => {
+        props.addViewed(props.movie)
+    }
+
+    const changeVote = (vote) => {
+        props.addRated(props.movie, vote)
+    }
+
+
     return (
         <div className={favoriteCard.item}>
             <img className={favoriteCard.img} src={props.movie} />
 
             <img className={favoriteCard.cross} src={cross} alt="" />
 
-            <div className={favoriteCard.box}>
-                <svg className={favoriteCard.eye_icon} width="35" height="25" viewBox="0 0 28 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0.892818 8.51816C3.12576 11.3 8.2692 16 13.9564 16C19.6816 16 24.8558 11.237 27.0644 8.46268C27.2754 8.19766 27.2513 7.82219 27.018 7.57667C24.1715 4.58214 19.5742 -0.00165422 13.9564 4.47856e-07C9.10162 0.00143298 5.00901 3.82517 2.14979 6.49655C1.7353 6.88381 1.34673 7.24685 0.985518 7.57052C0.711149 7.81638 0.662206 8.23086 0.892818 8.51816ZM13.9575 14.2202C17.6751 14.2202 20.6889 11.4344 20.6889 7.99796C20.6889 4.56152 17.6751 1.77574 13.9575 1.77574C10.2398 1.77574 7.22605 4.56152 7.22605 7.99796C7.22605 11.4344 10.2398 14.2202 13.9575 14.2202Z" fill="white" fill-opacity="0.57" />
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M19.4505 8.42561C18.9609 8.7192 18.3947 8.88684 17.7915 8.88684C15.9327 8.88684 14.4258 7.29497 14.4258 5.33129C14.4258 4.68872 14.5871 4.08596 14.8694 3.56577C14.7231 3.55455 14.5751 3.54883 14.4255 3.54883C11.6373 3.54883 9.37695 5.53867 9.37695 7.99327C9.37695 10.4479 11.6373 12.4377 14.4255 12.4377C17.0481 12.4377 19.2036 10.6773 19.4505 8.42561Z" fill="white" fill-opacity="0.57" />
-                </svg>
+            <div onClick={addViewed} className={favoriteCard.box}>
+                {props.viewed.includes(props.movie) ?
+                    <img className={favoriteCard.eye_icon} src={eyeActive} />
+                    : <img className={favoriteCard.eye_icon} src={eye} />
+                }
             </div>
 
             <div className={favoriteCard.box2}>
-                <svg className={favoriteCard.star_icon} width="31" height="29" viewBox="0 0 31 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M14.1223 1.19911C14.6429 -0.00983377 16.3571 -0.00983147 16.8777 1.19911L19.8794 8.16937C20.0965 8.67363 20.5718 9.01896 21.1185 9.06967L28.6752 9.77053C29.9859 9.89209 30.5156 11.5223 29.5267 12.391L23.8251 17.3998C23.4127 17.7621 23.2311 18.3209 23.3518 18.8565L25.0204 26.2599C25.3098 27.544 23.9231 28.5515 22.7913 27.8794L16.2658 24.0047C15.7938 23.7244 15.2062 23.7244 14.7342 24.0047L8.20872 27.8794C7.07692 28.5515 5.69018 27.544 5.97958 26.2599L7.64817 18.8565C7.76888 18.3209 7.58733 17.7621 7.17485 17.3998L1.47332 12.391C0.484427 11.5223 1.01412 9.89209 2.32478 9.77053L9.88146 9.06967C10.4282 9.01896 10.9035 8.67363 11.1206 8.16937L14.1223 1.19911Z" fill="#F2F2F2" fill-opacity="0.57" />
-                </svg>
+                <img className={favoriteCard.star_icon} src={star} />
+                <div className={favoriteCard.vote_wrapper}>
+                    {props.vote.map(vote => <img onClick={() => changeVote(vote)} src={starVote} key={vote} />)}
+                </div>
             </div>
 
         </div>
