@@ -8,10 +8,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatcToProps = (dispatch) => {
-
-}
-
-const MoviesContainer = connect(mapStateToProps, mapDispatcToProps)(Movies);
+const MoviesContainer = connect(mapStateToProps)(Movies);
 
 export default MoviesContainer;

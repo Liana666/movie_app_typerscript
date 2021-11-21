@@ -1,15 +1,11 @@
-import plus from "../../img/plus.png";
 
 let initialState = {
     vote: [1, 2, 3, 4, 5],
     favoriteMovies: [],
     favoriteId: [],
     viewed: [],
-    rated: {
-        img: [],
-        vote: 0
-    }
-
+    rated: [],
+    // assessed: [],
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -40,17 +36,21 @@ const profileReducer = (state = initialState, action) => {
         case "ADD_RATED": {
             return {
                 ...state,
-                rated: {
-                    img: [...state.img, action.img],
-                    vote: action.vote
-                }
+                rated: [...state.rated, action.rated]
             }
         }
 
-        // case "CHANGE_RATE": {
+        case "ADD_ASSESSED": {
+            return {
+                ...state,
+                assessed: [...state.assessed, action.assessed]
+            }
+        }
+
+        // case "ADD_CURRENT_VOTE": {
         //     return {
         //         ...state,
-        //         favoriteMovies: action.currentRate
+        //         currentVote: action.currentVote
         //     }
         // }
 
@@ -62,8 +62,9 @@ const profileReducer = (state = initialState, action) => {
 export const addFavoriteMoviesAC = (favoriteMovies) => ({ type: "ADD_FAVORITE_MOVIES", favoriteMovies });
 export const addFavoriteIdAC = (favoriteId) => ({ type: "ADD_FAVORITE_ID", favoriteId });
 export const addViewedAC = (viewed) => ({ type: "ADD_VIEWED", viewed });
-export const addRatedAC = (img, vote) => ({ type: "ADD_RATED", img, vote });
-// export const changeRatedAC = (currentRate) => ({ type: "CHANGE_RATE", currentRate });
+export const addRatedAC = (rated) => ({ type: "ADD_RATED", rated });
+// export const addAssessedAC = (assessed) => ({ type: "ADD_ASSESSED", assessed });
+// export const addCurrentVoteAC = (currentVote) => ({ type: "ADD_CURRENT_VOTE", currentVote });
 
 export const addFavoriteMoviesThunk = (favoriteMovies, favoriteId) => (dispatch) => {
     dispatch(addFavoriteMoviesAC(favoriteMovies));
@@ -74,14 +75,11 @@ export const addViewedThunk = (viewed) => (dispatch) => {
     dispatch(addViewedAC(viewed));
 };
 
-export const addRatedThunk = (img, vote) => (dispatch) => {
-    dispatch(addViewedAC(img, vote));
+export const addRatedThunk = (rated) => (dispatch) => {
+    dispatch(addRatedAC(rated));
+    // dispatch(addAssessedAC(assessed));
+    // dispatch(addCurrentVoteAC(currentVote));
 };
-
-// export const changeRatedThunk = (currentRate) => (dispatch) => {
-//     dispatch(changeRatedAC(currentRate));
-// };
-
 
 
 export default profileReducer;

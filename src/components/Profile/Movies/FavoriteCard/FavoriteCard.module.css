@@ -5,6 +5,7 @@
     width: 31.5%;
     border: none;
     border-radius: 30px;
+    overflow: hidden;
 }
 
 .img {
@@ -16,11 +17,14 @@
 }
 
 .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     background: #1E273A;
     width: 60px;
     height: 60px;
-    bottom: 30%;
+    bottom: 32%;
     right: 0;
     z-index: 2;
     border-radius: 10px 0 0 10px;
@@ -30,6 +34,8 @@
 
 .box2 {
     position: absolute;
+    display: flex;
+    align-items: center;
     background: #1E273A;
     width: 60px;
     height: 60px;
@@ -38,7 +44,7 @@
     z-index: 2;
     border-radius: 10px 0 0 10px;
     box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-    transition: 0.5s ease 0s;
+    transition: 1s ease;
 }
 
 .cross {
@@ -56,38 +62,63 @@
     width: 30px;
 }
 
-.box:hover,
-.box2:hover {
+.box:hover{
     cursor: pointer;
     width: 70px;
 }
 
-.box:hover .eye_icon,
-.box2:hover .star_icon {
+
+.box2:hover  {
+    padding-left: 10px;
+    width: 230px;
+    cursor: pointer;
+}
+
+.box:hover .eye_icon {
     right: 19px;
+    /* fill: #fff; */
+    stroke-opacity: 1;
+}
+
+.box2:hover .star_icon {
+    padding: 5px;;
     fill: #fff;
     stroke-opacity: 1;
 }
 
 .eye_icon {
-    position: absolute;
-    opacity: 0.75;
-    bottom: 30%;
-    right: 12px;
+    opacity: 0.65;
     transition: 0.5s ease 0s;
 }
 
 .star_icon {
-    position: absolute;
-    opacity: 0.75;
-    bottom: 24%;
-    right: 12px;
+    padding: 13px;
+    opacity: 0.65;
     transition: 0.5s ease 0s;
 }
 
+.star_vote {
+    display: none;
+    font-size: 13px;
+}
 
-.box:hover .eye_icon,
-.box2:hover .star_icon {
+.star_icon:hover {
+    opacity: 1;
+}
+
+.vote {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.vote:hover .star_vote{
+    display: block;
+}
+
+
+
+.box:hover .eye_icon {
     opacity: 1;
 }
 

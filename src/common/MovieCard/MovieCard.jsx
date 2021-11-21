@@ -22,6 +22,7 @@ const MovieCard = (props) => {
         props.addFavorite(imgSrc, props.id);
     }
 
+
     return (
         <Card>
             <div onClick={addFavorite} className={card.favorites}>

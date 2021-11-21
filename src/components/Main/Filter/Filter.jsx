@@ -3,7 +3,6 @@ import React from "react";
 import styled from "styled-components";
 import filter from "./Filter.module.css";
 
-import MovieCard from "../../../common/MovieCard/MovieCardContainer";
 import PagintationContainer from "../../../common/Pagination/PagintationContainer";
 import MovieCardContainer from "../../../common/MovieCard/MovieCardContainer";
 
@@ -20,9 +19,6 @@ const Filter = (props) => {
     const changeYearOption = (e) => {
         let optionYears = e.target.value;
         props.changeYear(props.currentPage, props.genre, optionYears);
-        // props.addYear(optionYears);
-        // props.searchMovie('');
-        // props.addMovies(props.currentPage, props.genre, optionYears);
     }
 
     return (
@@ -30,12 +26,12 @@ const Filter = (props) => {
             <FilterWrapper>
                 <select value={props.genre} onChange={changeGenreOption} style={{ marginLeft: 0 }} className={filter.select} name="genres" id="">
                     <option className={filter.option}>Все</option>
-                    {props.genres.map(g => <option value={g.id}>{g.name}</option>
+                    {props.genres.map(g => <option ley={g.id} value={g.id}>{g.name}</option>
                     )}
                 </select>
                 <select value={props.year} onChange={changeYearOption} className={filter.select} name="years" id="">
                     <option className={filter.option}>Годы</option>
-                    {props.years.map(y => <option value={y}>{y}</option>
+                    {props.years.map(y => <option key={y.id} value={y}>{y}</option>
                     )}
 
                 </select>
