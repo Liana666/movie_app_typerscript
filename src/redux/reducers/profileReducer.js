@@ -5,7 +5,7 @@ let initialState = {
     favoriteId: [],
     viewed: [],
     rated: [],
-    // assessed: [],
+    currentClass: 'box2',
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -47,12 +47,19 @@ const profileReducer = (state = initialState, action) => {
             }
         }
 
-        // case "ADD_CURRENT_VOTE": {
-        //     return {
-        //         ...state,
-        //         currentVote: action.currentVote
-        //     }
-        // }
+        case "ADD_CLASS_ACTIVE": {
+            return {
+                ...state,
+                currentClass: action.currentClass
+            }
+        }
+
+        case "SET_IS_TRUE": {
+            return {
+                ...state,
+                isTrue: action.isTrue
+            }
+        }
 
         default:
             return state;
@@ -63,8 +70,7 @@ export const addFavoriteMoviesAC = (favoriteMovies) => ({ type: "ADD_FAVORITE_MO
 export const addFavoriteIdAC = (favoriteId) => ({ type: "ADD_FAVORITE_ID", favoriteId });
 export const addViewedAC = (viewed) => ({ type: "ADD_VIEWED", viewed });
 export const addRatedAC = (rated) => ({ type: "ADD_RATED", rated });
-// export const addAssessedAC = (assessed) => ({ type: "ADD_ASSESSED", assessed });
-// export const addCurrentVoteAC = (currentVote) => ({ type: "ADD_CURRENT_VOTE", currentVote });
+export const addClassAC = (currentClass) => ({ type: "ADD_CLASS_ACTIVE", currentClass });
 
 export const addFavoriteMoviesThunk = (favoriteMovies, favoriteId) => (dispatch) => {
     dispatch(addFavoriteMoviesAC(favoriteMovies));
@@ -77,9 +83,12 @@ export const addViewedThunk = (viewed) => (dispatch) => {
 
 export const addRatedThunk = (rated) => (dispatch) => {
     dispatch(addRatedAC(rated));
-    // dispatch(addAssessedAC(assessed));
-    // dispatch(addCurrentVoteAC(currentVote));
 };
+
+export const addClassThunk = (currentClass) => (dispatch) => {
+    dispatch(addClassAC(currentClass));
+};
+
 
 
 export default profileReducer;

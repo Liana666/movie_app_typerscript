@@ -3,7 +3,7 @@ import FavoriteCard from "./FavoriteCard";
 
 import { VoteAddSelector, IngAddSelector } from "../../../../redux/selectors/selectors";
 
-import { addViewedThunk, addRatedThunk } from "../../../../redux/reducers/profileReducer";
+import { addViewedThunk, addRatedThunk, addClassThunk } from "../../../../redux/reducers/profileReducer";
 
 const FavoriteCardContainer = (props) => {
 
@@ -16,6 +16,8 @@ const FavoriteCardContainer = (props) => {
       rated={props.rated}
       assessed={props.assessed}
       currentVote={props.currentVote}
+      addClass={props.addClass}
+      currentClass={props.currentClass}
    />
 }
 
@@ -25,7 +27,8 @@ const mapStatetoProps = (state) => {
       vote: state.ProfilePage.vote,
       viewed: state.ProfilePage.viewed,
       rated: state.ProfilePage.rated,
-      assessed: IngAddSelector(state)
+      assessed: IngAddSelector(state),
+      currentClass: state.ProfilePage.currentClass,
    }
 }
-export default connect(mapStatetoProps, { addViewed: addViewedThunk, addRated: addRatedThunk })(FavoriteCardContainer);
+export default connect(mapStatetoProps, { addViewed: addViewedThunk, addRated: addRatedThunk, addClass: addClassThunk })(FavoriteCardContainer);

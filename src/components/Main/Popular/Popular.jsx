@@ -52,4 +52,5 @@ const MoviesCard = styled.div`
     flex-wrap: wrap;
 `
 
+
 export default Popular;

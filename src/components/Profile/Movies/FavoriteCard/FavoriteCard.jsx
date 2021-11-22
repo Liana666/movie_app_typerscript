@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import favoriteCard from "./FavoriteCard.module.css";
 
 import cross from "../../../../img/cross2.png";
@@ -9,6 +9,10 @@ import starActive from "../../../../img/Star 4.png";
 // import starVote from "../../../../img/Star4.png";
 
 const FavoriteCard = (props) => {
+    const [currentClass, setClass] = useState('box2');
+    // const [isTrue, setTrue] = useState(false);
+    const [currentVote, setVote] = useState(false);
+
 
     const moviesVoteandPath = {
         img: '',
@@ -19,13 +23,30 @@ const FavoriteCard = (props) => {
         props.addViewed(props.movie);
     }
 
+    const changeClass = () => {
+        setClass('box2_active');
+        props.setIsTrue(true);
+    }
+
+
     const changeVote = (vote) => {
         moviesVoteandPath.img = props.movie;
         moviesVoteandPath.vote = vote;
         props.addRated(moviesVoteandPath);
+        setClass('box2');
+        setVote(vote);
     }
 
-    console.log(props.currentVote)
+    const changeVoteActive = (vote) => {
+        moviesVoteandPath.img = props.movie;
+        moviesVoteandPath.vote = vote;
+        props.addRated(moviesVoteandPath);
+        setClass('box2');
+        setVote(vote);
+        props.setIsTrue(false);
+    }
+
+    console.log(props.isTrue)
 
 
     return (
@@ -41,41 +62,24 @@ const FavoriteCard = (props) => {
                 }
             </div>
 
-            <div className={favoriteCard.box2}>
-                {/* {props.vote.map(vote => {
-                    <div className={favoriteCard.vote}>
+            <div className={currentClass}>
 
-                        {props.rated.length > 0 ?
+                {props.isTrue ?
 
-                            props.currentVote.map(current => {
-
-                                props.assessed.includes(props.movie) && current >= vote ?
-                                    <img className={favoriteCard.star_icon} onClick={() => changeVote(vote)} src={starActive} />
-                                    : <img className={favoriteCard.star_icon} onClick={() => changeVote(vote)} src={star} />
-
-                            })
-
+                    props.vote.map(vote =>
+                        props.rated.length > 0 ?
+                            props.rated.map(rate => rate.img === props.movie && rate.vote >= vote ?
+                                <img className={favoriteCard.star_icon} onClick={() => changeVote(vote)} src={starActive} />
+                                : <img className={favoriteCard.star_icon} onClick={() => changeVoteActive(vote)} src={star} />
+                            )
                             : <img className={favoriteCard.star_icon} onClick={() => changeVote(vote)} src={star} />
-                        }
-                        <span className={favoriteCard.star_vote}>{vote}/5</span>
-                    </div>
-                })
-                } */}
+                    )
 
-                {props.vote.map(vote => <div className={favoriteCard.vote}>
-                    {props.rated.length > 0 ?
+                    : <img className={favoriteCard.star_icon} onClick={changeClass} src={star} />
+                }
 
-                        props.assessed.includes(props.movie) ?
-                            <img className={favoriteCard.star_icon} onClick={() => changeVote(vote)} src={starActive} />
-                            : <img className={favoriteCard.star_icon} onClick={() => changeVote(vote)} src={star} />
-                        : <img className={favoriteCard.star_icon} onClick={() => changeVote(vote)} src={star} />
-                    }
-                    <span className={favoriteCard.star_vote}>{vote}/5</span>
-                </div>
-                )}
 
             </div>
-
 
         </div>
     )

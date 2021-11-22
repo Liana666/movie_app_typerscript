@@ -68,7 +68,7 @@
 }
 
 
-.box2:hover  {
+.box2_active  {
     padding-left: 10px;
     width: 230px;
     cursor: pointer;
