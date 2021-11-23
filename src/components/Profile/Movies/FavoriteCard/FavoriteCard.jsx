@@ -42,16 +42,16 @@ const FavoriteCard = (props) => {
                     props.assessed.includes(props.movie) && currentVote >= vote ?
                         <div className={favoriteCard.vote_wrapper}>
                             <img className={favoriteCard.star_icon} src={starActive} onClick={() => changeVote(vote)} />
-                            <span className={favoriteCard.star_vote}>{vote}/10</span>
+                            <span className={favoriteCard.star_vote}>{vote}/5</span>
                         </div>
                         : <div className={favoriteCard.vote_wrapper}>
                             <img className={favoriteCard.star_icon} src={star} onClick={() => changeVote(vote)} />
-                            <span className={favoriteCard.star_vote}>{vote}/10</span>
+                            <span className={favoriteCard.star_vote}>{vote}/5</span>
                         </div>
 
                     : <div className={favoriteCard.vote_wrapper}>
                         <img className={favoriteCard.star_icon} src={star} onClick={() => changeVote(vote)} />
-                        <span className={favoriteCard.star_vote}>{vote}/10</span>
+                        <span className={favoriteCard.star_vote}>{vote}/5</span>
                     </div>
                 )}
 

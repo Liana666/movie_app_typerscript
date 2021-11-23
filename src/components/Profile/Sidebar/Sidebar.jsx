@@ -19,7 +19,7 @@ const Sidebar = (props) => {
          </div>
          <div className={sidebar.item}>
             с оценкой
-            <span>2</span>
+            <span>{props.assessed.length}</span>
          </div>
       </div>
 
