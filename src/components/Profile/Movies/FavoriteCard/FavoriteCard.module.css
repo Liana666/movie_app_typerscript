@@ -44,8 +44,9 @@
     z-index: 2;
     border-radius: 10px 0 0 10px;
     box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
-    transition: 1s ease;
+    transition: 0.7s ease;
 }
+
 
 .cross {
     position: absolute;
@@ -68,23 +69,12 @@
 }
 
 
-.box2_active  {
-    padding-left: 10px;
-    width: 230px;
+.box2:hover   {
+    padding-left: 4px;
+    width: 295px;
     cursor: pointer;
 }
 
-.box:hover .eye_icon {
-    right: 19px;
-    /* fill: #fff; */
-    stroke-opacity: 1;
-}
-
-.box2:hover .star_icon {
-    padding: 5px;;
-    fill: #fff;
-    stroke-opacity: 1;
-}
 
 .eye_icon {
     opacity: 0.65;
@@ -95,25 +85,28 @@
     padding: 13px;
     opacity: 0.65;
     transition: 0.5s ease 0s;
+    padding-top: 29px;
 }
 
 .star_vote {
-    display: none;
+    opacity: 0;
     font-size: 13px;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
 }
 
 .star_icon:hover {
     opacity: 1;
 }
 
-.vote {
+.vote_wrapper {
     display: flex;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
 }
 
-.vote:hover .star_vote{
-    display: block;
+.vote_wrapper:hover .star_vote{
+    opacity: 1;
 }
 
 
@@ -122,11 +115,15 @@
     opacity: 1;
 }
 
-.vote_wrapper {
-    background: #444;
-    padding: 10px;
+.active_change_icon {
+    opacity: 1;
     position: absolute;
-    display: flex;
-    bottom: 28%;
-    right: 69px;
+    z-index: 2;
+    margin-left: 13px;
+    transition: 1s ease 0s;
 }
+
+.box2:hover .active_change_icon {
+    opacity: 0;
+}
+

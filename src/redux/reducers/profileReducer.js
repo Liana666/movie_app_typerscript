@@ -6,6 +6,7 @@ let initialState = {
     viewed: [],
     rated: [],
     currentClass: 'box2',
+    isTrue: false
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -71,6 +72,7 @@ export const addFavoriteIdAC = (favoriteId) => ({ type: "ADD_FAVORITE_ID", favor
 export const addViewedAC = (viewed) => ({ type: "ADD_VIEWED", viewed });
 export const addRatedAC = (rated) => ({ type: "ADD_RATED", rated });
 export const addClassAC = (currentClass) => ({ type: "ADD_CLASS_ACTIVE", currentClass });
+export const setIsTrueAC = (isTrue) => ({ type: "SET_IS_TRUE", isTrue });
 
 export const addFavoriteMoviesThunk = (favoriteMovies, favoriteId) => (dispatch) => {
     dispatch(addFavoriteMoviesAC(favoriteMovies));
@@ -88,6 +90,10 @@ export const addRatedThunk = (rated) => (dispatch) => {
 export const addClassThunk = (currentClass) => (dispatch) => {
     dispatch(addClassAC(currentClass));
 };
+
+export const setIsTrueThunk = (isTrue) => (dispatch) => {
+    dispatch(setIsTrueAC(isTrue));
+}
 
 
 

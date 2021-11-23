@@ -1,58 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import favoriteCard from "./FavoriteCard.module.css";
 
 import cross from "../../../../img/cross2.png";
 import eyeActive from "../../../../img/eyeactive.png";
 import eye from "../../../../img/eye.png";
 import star from "../../../../img/Star.png";
+import starGr from "../../../../img/Star2.png";
 import starActive from "../../../../img/Star 4.png";
-// import starVote from "../../../../img/Star4.png";
 
 const FavoriteCard = (props) => {
-    const [currentClass, setClass] = useState('box2');
-    // const [isTrue, setTrue] = useState(false);
     const [currentVote, setVote] = useState(false);
-
 
     const moviesVoteandPath = {
         img: '',
         vote: ''
     };
 
-    const addViewed = () => {
-        props.addViewed(props.movie);
-    }
-
-    const changeClass = () => {
-        setClass('box2_active');
-        props.setIsTrue(true);
-    }
-
+    const addViewed = () => { props.addViewed(props.movie) }
 
     const changeVote = (vote) => {
         moviesVoteandPath.img = props.movie;
         moviesVoteandPath.vote = vote;
         props.addRated(moviesVoteandPath);
-        setClass('box2');
         setVote(vote);
     }
-
-    const changeVoteActive = (vote) => {
-        moviesVoteandPath.img = props.movie;
-        moviesVoteandPath.vote = vote;
-        props.addRated(moviesVoteandPath);
-        setClass('box2');
-        setVote(vote);
-        props.setIsTrue(false);
-    }
-
-    console.log(props.isTrue)
-
 
     return (
         <div className={favoriteCard.item}>
             <img className={favoriteCard.img} src={props.movie} />
-
             <img className={favoriteCard.cross} src={cross} alt="" />
 
             <div onClick={addViewed} className={favoriteCard.box}>
@@ -62,24 +37,30 @@ const FavoriteCard = (props) => {
                 }
             </div>
 
-            <div className={currentClass}>
+            <div className={favoriteCard.box2}>
+                {props.vote.map(vote => props.rated.length > 0 ?
+                    props.assessed.includes(props.movie) && currentVote >= vote ?
+                        <div className={favoriteCard.vote_wrapper}>
+                            <img className={favoriteCard.star_icon} src={starActive} onClick={() => changeVote(vote)} />
+                            <span className={favoriteCard.star_vote}>{vote}/10</span>
+                        </div>
+                        : <div className={favoriteCard.vote_wrapper}>
+                            <img className={favoriteCard.star_icon} src={star} onClick={() => changeVote(vote)} />
+                            <span className={favoriteCard.star_vote}>{vote}/10</span>
+                        </div>
 
-                {props.isTrue ?
+                    : <div className={favoriteCard.vote_wrapper}>
+                        <img className={favoriteCard.star_icon} src={star} onClick={() => changeVote(vote)} />
+                        <span className={favoriteCard.star_vote}>{vote}/10</span>
+                    </div>
+                )}
 
-                    props.vote.map(vote =>
-                        props.rated.length > 0 ?
-                            props.rated.map(rate => rate.img === props.movie && rate.vote >= vote ?
-                                <img className={favoriteCard.star_icon} onClick={() => changeVote(vote)} src={starActive} />
-                                : <img className={favoriteCard.star_icon} onClick={() => changeVoteActive(vote)} src={star} />
-                            )
-                            : <img className={favoriteCard.star_icon} onClick={() => changeVote(vote)} src={star} />
-                    )
-
-                    : <img className={favoriteCard.star_icon} onClick={changeClass} src={star} />
+                {props.assessed.includes(props.movie) ?
+                    <img src={starGr} className={favoriteCard.active_change_icon} />
+                    : null
                 }
-
-
             </div>
+
 
         </div>
     )
