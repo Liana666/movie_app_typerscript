@@ -12,7 +12,6 @@ const Pagination = (props) => {
     return (
         <div className={paginator.wrapper}>
             <div className={paginator.btn} onClick={onChangePage}>Загрузить еще</div>
-            {/*{pages.map(p => <div className={filter.page} onClick={() => onChangePage(p)}><span className={p === props.currentPage ? filter.currentpage : null}>{p}</span></div>)}*/}
         </div>
     )
 }

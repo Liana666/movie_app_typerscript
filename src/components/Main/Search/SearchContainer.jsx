@@ -8,7 +8,6 @@ import { getNewMovieAC, searchMoviesThunk } from "../../../redux/reducers/mainRe
 
 const SearchContainer = (props) => {
 
-
    return (
       <>
          <Search
@@ -20,7 +19,6 @@ const SearchContainer = (props) => {
          />
       </>
    )
-
 }
 
 
@@ -30,7 +28,6 @@ const mapStatetoProps = (state) => {
       movies: state.MainPage.movies,
       moviesName: state.MainPage.moviesName
    }
-
 }
 
 

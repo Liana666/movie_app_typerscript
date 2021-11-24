@@ -1,12 +1,11 @@
 import { connect } from "react-redux";
 import FavoriteCard from "./FavoriteCard";
 
-import { VoteAddSelector, IngAddSelector } from "../../../../redux/selectors/selectors";
+import { IngAddSelector } from "../../../../redux/selectors/selectors";
 
 import { addViewedThunk, addRatedThunk } from "../../../../redux/reducers/profileReducer";
 
 const FavoriteCardContainer = (props) => {
-
    return <FavoriteCard
       viewed={props.viewed}
       addViewed={props.addViewed}
@@ -27,4 +26,6 @@ const mapStatetoProps = (state) => {
       assessed: IngAddSelector(state),
    }
 }
-export default connect(mapStatetoProps, { addViewed: addViewedThunk, addRated: addRatedThunk })(FavoriteCardContainer);
+export default connect(mapStatetoProps,
+   { addViewed: addViewedThunk, addRated: addRatedThunk })
+   (FavoriteCardContainer);

@@ -9,11 +9,9 @@ import header from "./Header.module.css";
 
 import SearchContainer from "../Main/Search/SearchContainer";
 
-const Header = (props) => {
-
+const Header = () => {
     return (
         <>
-
             <HeaderWrapper>
                 <div className={header.logo}>
                     <img src={logo} alt={logo.toString()} />
@@ -26,7 +24,6 @@ const Header = (props) => {
                     <SearchContainer />
                 </div>
             </HeaderWrapper>
-
         </>
     )
 }
@@ -40,6 +37,4 @@ const HeaderWrapper = styled.header`
     align-items: center;
 
 `
-
-
 export default Header;

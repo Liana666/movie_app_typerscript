@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+
 import { getPopularThunk, changePagePopularThunk } from "../../../redux/reducers/mainReducer";
 
 import Popular from "./Popular";
@@ -36,6 +37,6 @@ const mapStatetoProps = (state) => {
     }
 }
 
-
-
-export default connect(mapStatetoProps, { addPopular: getPopularThunk, changePage: changePagePopularThunk })(PopularContainer);
+export default connect(mapStatetoProps,
+    { addPopular: getPopularThunk, changePage: changePagePopularThunk })
+    (PopularContainer);

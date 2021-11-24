@@ -92,3 +92,108 @@ a {
   border-radius: 10px;
   background: linear-gradient(180deg, #32A8D0, #B476C9);
 }
+
+/***************************grid*********************************/
+.container_grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  grid-gap: 10px;
+}
+
+.path_wrapper {
+  margin-right: 20px;
+  position: relative;
+  grid-area: path; 
+}
+
+.card_info_top {
+  grid-area: title; 
+}
+
+.card_info_bottom {
+  grid-area: info; 
+}
+
+.grid_item {
+  position: relative;
+  padding: 25px;
+  margin: 10px;
+
+  display: grid;
+  grid-template-areas: 
+    "path title"
+    "path info";
+
+  background: #1E273A;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 43px;
+
+  overflow: hidden;
+}
+
+
+@media (max-width: 1140px) {
+  .grid_item {
+    grid-template-areas: 
+      "path title"
+      "info info"; 
+    }
+
+    .path_wrapper {
+      margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 991px) {
+  .container_grid {
+    grid-template-columns: repeat(1,1fr);
+  }
+
+  .grid_item {
+    grid-template-areas: 
+      "path title"
+      "path info"; 
+    }
+
+    .path_wrapper {
+      margin-bottom: 0px;
+    }
+}
+
+@media (max-width: 553px) {
+  .grid_item {
+    grid-template-areas: 
+      "path title"
+      "info info"; 
+     
+    grid-template-columns: 1fr 1.5fr; 
+    }
+    
+    .path_wrapper {
+      margin-bottom: 20px;
+    }
+}
+
+
+@media (max-width: 486px) {
+  .grid_item {
+    grid-template-areas: 
+      "path path"
+      "title title"
+      "info info"; 
+     
+    grid-template-columns: 1fr; 
+    }
+    
+    .path_wrapper {
+      margin-right: 0;
+      margin-bottom: 20px;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .path_wrapper img{
+      width: 85%;
+    }
+}

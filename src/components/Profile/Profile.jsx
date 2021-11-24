@@ -3,8 +3,6 @@ import React from "react";
 import profile from "./Profile.module.css";
 import back from "../../img/profile.png";
 
-import Sidebar from "./Sidebar/Sidebar";
-import Movies from "./Movies/Movies";
 import MoviesContainer from "./Movies/MoviesContainer";
 import SidebarContainer from "./Sidebar/SidebarContainer";
 

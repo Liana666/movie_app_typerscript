@@ -9,11 +9,9 @@ import MovieCardContainer from "../../../common/MovieCard/MovieCardContainer";
 
 const Filter = (props) => {
 
-
     const changeGenreOption = (e) => {
         let optionGenres = e.target.value;
         props.changeGenre(props.currentPage, optionGenres)
-
     }
 
     const changeYearOption = (e) => {
@@ -33,32 +31,32 @@ const Filter = (props) => {
                     <option className={filter.option}>Годы</option>
                     {props.years.map(y => <option key={y.id} value={y}>{y}</option>
                     )}
-
                 </select>
             </FilterWrapper>
 
+            <div className="container_grid">
+                <MoviesCard>
+                    {props.movies.map(m => <MovieCardContainer
+                        key={m.id}
+                        title={m.title}
+                        overview={m.overview}
+                        poster_path={m.poster_path}
+                        release_date={m.release_date}
+                        vote_average={m.vote_average}
+                        genre_ids={m.genre_ids}
+                        adult={m.adult}
+                        backdrop_path={m.backdrop_path}
+                        video={m.video}
+                        id={m.id}
+                    />)}
+                </MoviesCard>
+            </div>
 
-            <MoviesCard>
-                {props.movies.map(m => <MovieCardContainer
-                    key={m.id}
-                    title={m.title}
-                    overview={m.overview}
-                    poster_path={m.poster_path}
-                    release_date={m.release_date}
-                    vote_average={m.vote_average}
-                    genre_ids={m.genre_ids}
-                    adult={m.adult}
-                    backdrop_path={m.backdrop_path}
-                    video={m.video}
-                    id={m.id}
-                />)}
-            </MoviesCard>
 
             {props.movies.length > 0 && props.currentPage < props.totalPages ?
                 <PagintationContainer />
                 : null
             }
-
         </>
     )
 }

@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
 
 import fire from "../../img/fire-abs.png";
 import favorites from "../../img/favorites.png";
@@ -10,13 +10,11 @@ import PieChard from "./PieChard";
 
 import card from "./MovieCard.module.css";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 
 const MovieCard = (props) => {
 
     const imgSrc = 'https://image.tmdb.org/t/p/original/' + props.poster_path;
-
 
     const addFavorite = (e) => {
         props.addFavorite(imgSrc, props.id);
@@ -24,7 +22,7 @@ const MovieCard = (props) => {
 
 
     return (
-        <Card>
+        <div className="grid_item">
             <div onClick={addFavorite} className={card.favorites}>
                 <img className={card.favorite_item} src={favorites} />
                 {props.favoriteId.includes(props.id) ?
@@ -38,10 +36,18 @@ const MovieCard = (props) => {
             <Card_age>
                 {props.adult ? <span>18+</span> : null}
             </Card_age>
-            <div>
+            <div className="path_wrapper">
+                {props.rated.map(rate => rate.img === imgSrc ?
+                    <div className={card.over}>
+                        <span className={card.over_vote}>{rate.vote}/5</span>
+                    </div>
+                    : null
+                )}
+
                 <img src={imgSrc} className={card.movie_img} alt="" />
             </div>
-            <Card_info>
+
+            <div className="card_info_top">
                 <div className={card.title}>{props.title}</div>
                 <Info_movie>
                     <div>
@@ -56,7 +62,9 @@ const MovieCard = (props) => {
                         <span className={card.chard}>{props.vote_average}</span>
                     </Chard>
                 </Info_movie>
+            </div>
 
+            <div className="card_info_bottom">
                 <div className={card.text}>
                     {props.overview.slice(0, 145) + '...'}
                 </div>
@@ -78,32 +86,12 @@ const MovieCard = (props) => {
                 }}>
                     <div className={card.btn}>Подробнее о фильме</div>
                 </Link>
+            </div>
 
 
-
-
-            </Card_info>
-        </Card >
+        </div >
     )
 }
-
-
-const Card = styled.div`
-    position: relative;
-    padding: 25px;
-
-    margin: 10px;
-
-    width: 45%;
-
-    display: flex;
-
-    background: #1E273A;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 43px;
-
-    overflow: hidden;
-`
 
 const Card_img = styled.img`
     position: absolute;
@@ -136,6 +124,10 @@ const Info_movie = styled.div`
 
     font-size: 14px;
     line-height: 170%;
+
+    @media(max-width: 500px) {
+        flex-wrap: wrap;
+    }
 `
 
 const Chard = styled.div`

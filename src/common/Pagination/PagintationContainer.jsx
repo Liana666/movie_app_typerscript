@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { changePageThunk, searchMoviesThunk } from "../../redux/reducers/mainReducer";
+import { changePageThunk } from "../../redux/reducers/mainReducer";
 
 import Pagination from "./Pagination";
 

@@ -49,6 +49,7 @@ const MovieCardContainer = (props) => {
                 single_genres={single_genres}
                 id={props.id}
                 favoriteId={props.favoriteId}
+                rated={props.rated}
             />
         </>
 
@@ -58,10 +59,13 @@ const MovieCardContainer = (props) => {
 const mapStatetoProps = (state) => {
     return {
         favoriteMovies: state.ProfilePage.favoriteMovies,
-        favoriteId: state.ProfilePage.favoriteId
+        favoriteId: state.ProfilePage.favoriteId,
+        rated: state.ProfilePage.rated
     }
 }
 
 
-export default connect(mapStatetoProps, { addFavorite: addFavoriteMoviesThunk })(MovieCardContainer)
+export default connect(mapStatetoProps,
+    { addFavorite: addFavoriteMoviesThunk })
+    (MovieCardContainer)
 

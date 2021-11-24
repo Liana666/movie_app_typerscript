@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Route, Switch } from "react-router";
 
 import movies from "./Movies.module.css";
+
 import FavoriteCardContainer from "./FavoriteCard/FavoriteCardContainer";
-import { Route, Switch } from "react-router";
 
 const Movies = (props) => {
    const [viewedMovies, setViewedMovies] = useState([]);
@@ -21,7 +22,6 @@ const Movies = (props) => {
          setAssessedMovies(assessedMovies);
       }
    }, [props.assessed]);
-
 
 
    return (

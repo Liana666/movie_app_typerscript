@@ -1,9 +1,8 @@
 import React from "react";
 
 import popular from "./Popular.module.css";
-
 import styled from "styled-components";
-import MovieCard from "../../../common/MovieCard/MovieCardContainer";
+
 import MovieCardContainer from "../../../common/MovieCard/MovieCardContainer";
 
 const Popular = (props) => {
@@ -16,7 +15,7 @@ const Popular = (props) => {
         <>
             {
                 props.genre === 0 && props.year === 0 && props.moviesName === '' ?
-                    <MoviesCard>
+                    <div className="container_grid">
                         {props.popular.map(m => <MovieCardContainer
                             key={m.id}
                             title={m.title}
@@ -36,21 +35,11 @@ const Popular = (props) => {
 
                             : null
                         }
-                    </MoviesCard>
+                    </div>
                     : null
             }
-
-
         </>
     )
 }
-
-const MoviesCard = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content:spaxce-between;
-    flex-wrap: wrap;
-`
-
 
 export default Popular;

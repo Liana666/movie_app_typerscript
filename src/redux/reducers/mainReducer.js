@@ -2,7 +2,6 @@ import { getMovies } from "../../api/api";
 import { filterGenresMovies } from "../../api/api";
 import { filterYearsMovies } from "../../api/api";
 import { searchMovies } from "../../api/api";
-import { getVideo } from "../../api/api";
 
 let initialState = {
    moviesName: '',

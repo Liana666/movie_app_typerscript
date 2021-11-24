@@ -69,15 +69,18 @@ export const addFavoriteIdAC = (favoriteId) => ({ type: "ADD_FAVORITE_ID", favor
 export const addViewedAC = (viewed) => ({ type: "ADD_VIEWED", viewed });
 export const addRatedAC = (rated) => ({ type: "ADD_RATED", rated });
 
+/*Add favorite movies */
 export const addFavoriteMoviesThunk = (favoriteMovies, favoriteId) => (dispatch) => {
     dispatch(addFavoriteMoviesAC(favoriteMovies));
     dispatch(addFavoriteIdAC(favoriteId));
 };
 
+/*Add viewed movies */
 export const addViewedThunk = (viewed) => (dispatch) => {
     dispatch(addViewedAC(viewed));
 };
 
+/*Add rated movies */
 export const addRatedThunk = (rated) => (dispatch) => {
     dispatch(addRatedAC(rated));
 };

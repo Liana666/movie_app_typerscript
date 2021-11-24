@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
-import { getCast, getVideo } from "../../api/api";
+import { getVideo } from "../../api/api";
 import { addActorsWithCrewThunk } from "../../redux/reducers/singleReducer";
 
 import SingleMovie from "./SingleMovie";

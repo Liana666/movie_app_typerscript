@@ -1,15 +1,19 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { getNewPageAC } from "../../../redux/reducers/mainReducer";
 
 import loop from "../../../img/lupa2.png";
+
 import search from "./Search.module.css";
 
 
 const Search = (props) => {
+   const dispatch = useDispatch();
 
    let searchMovie = (e) => {
+      dispatch(getNewPageAC(1));
       let newMovieRequest = e.target.value;
       props.searchMovie(newMovieRequest);
-
    }
 
    let addNewMovies = () => {

@@ -13,22 +13,12 @@ const headerReducer = (state = initialState, action) => {
             moviesName: action.newMovieReques
          }
 
-      // case 'ADD_NEW_MOVIETITLE':
-      //    return {
-      //       ...state,
-      //       newMovies: action.newMovies
-      //    }
-
-
       default:
          return state;
    }
 }
 
-
-
 export const getNewMovieAC = (newMovieRequest) => ({ type: 'GET_NEW_MOVIETITLE', newMovieRequest });
-// export const addNewMovieAC = (newMovies) => ({ type: 'ADD_NEW_MOVIETITLE', newMovies });
 
 
 export default headerReducer;

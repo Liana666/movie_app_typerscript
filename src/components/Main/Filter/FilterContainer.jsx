@@ -8,8 +8,6 @@ import Filter from "./Filter";
 const FilterContainer = (props) => {
     const [genres, setGenres] = useState([]);
 
-
-
     useEffect(() => {
         getGenres()
             .then(response => {
@@ -32,7 +30,6 @@ const FilterContainer = (props) => {
                 changeGenre={props.changeGenre}
                 changeYear={props.changeYear}
             />
-
         </>
     )
 }

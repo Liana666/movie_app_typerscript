@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+
 import favoriteCard from "./FavoriteCard.module.css";
 
 import { removeFavoriteMoviesAC } from "../../../../redux/reducers/profileReducer";
@@ -68,8 +69,6 @@ const FavoriteCard = (props) => {
                     : null
                 }
             </div>
-
-
         </div>
     )
 }

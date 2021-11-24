@@ -13,7 +13,6 @@ const SingleMovie = (props) => {
     const imgSrc = 'https://image.tmdb.org/t/p/original/';
     const videoUrl = 'https://www.youtube.com/watch?v=';
     const video = props.key_video.slice(0, 1);
-    console.log(video)
 
     return (
         <>
