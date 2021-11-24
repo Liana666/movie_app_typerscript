@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import favoriteCard from "./FavoriteCard.module.css";
+
+import { removeFavoriteMoviesAC } from "../../../../redux/reducers/profileReducer";
 
 import cross from "../../../../img/cross2.png";
 import eyeActive from "../../../../img/eyeactive.png";
@@ -10,11 +13,16 @@ import starActive from "../../../../img/Star 4.png";
 
 const FavoriteCard = (props) => {
     const [currentVote, setVote] = useState(false);
+    const dispatch = useDispatch();
 
     const moviesVoteandPath = {
         img: '',
         vote: ''
     };
+
+    const removeMovie = (e) => {
+        dispatch(removeFavoriteMoviesAC(props.movie));
+    }
 
     const addViewed = () => { props.addViewed(props.movie) }
 
@@ -28,7 +36,7 @@ const FavoriteCard = (props) => {
     return (
         <div className={favoriteCard.item}>
             <img className={favoriteCard.img} src={props.movie} />
-            <img className={favoriteCard.cross} src={cross} alt="" />
+            <img onClick={removeMovie} className={favoriteCard.cross} src={cross} alt="" />
 
             <div onClick={addViewed} className={favoriteCard.box}>
                 {props.viewed.includes(props.movie) ?

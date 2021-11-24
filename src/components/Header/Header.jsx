@@ -22,7 +22,7 @@ const Header = (props) => {
 
                 <div className={header.link_wrapper}>
                     <NavLink to="/">Фильмы</NavLink>
-                    <NavLink className={header.link} to="/profile">Избранное</NavLink>
+                    <NavLink className={header.link} to="/profile/all-movies">Избранное</NavLink>
                     <SearchContainer />
                 </div>
             </HeaderWrapper>
