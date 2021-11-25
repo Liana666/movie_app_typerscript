@@ -2,3 +2,25 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 10px;
+}
+
+@media(max-width: 991px) {
+    .wrapper {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        grid-gap: 10px;
+    }
+}
+
+@media(max-width: 486px) {
+    .wrapper {
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        grid-gap: 10px;
+    }
+}

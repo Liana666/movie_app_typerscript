@@ -6,6 +6,7 @@ header {
 .logo {
     display: flex;
     align-items: center;
+    font-size: 20px;
 }
 
 .logo_title {
@@ -17,7 +18,7 @@ header {
     display: flex;
     align-items: center;
 
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .link {

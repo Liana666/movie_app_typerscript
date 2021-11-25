@@ -3,14 +3,7 @@
     position: absolute;
     top: 0;
     right: 50px;
-}
-
-@media(max-width: 500px) {
-    .favorites {
-        position: absolute;
-        top: 0;
-        right: 28px;
-    }
+    z-index: 3;
 }
 
 .favorites:hover {
@@ -124,6 +117,8 @@
 }
 
 .text {
+    display: block;
+
     font-family: 'Nunito';
     font-style: normal;
     font-weight: normal;
@@ -155,17 +150,46 @@
 
 .btn:hover {
     cursor: pointer;
- }
- 
- .btn:active,
- .btn:focus-visible {
+}
+
+.btn:active,
+.btn:focus-visible {
     outline: none;
     border: none;
     border-radius: 10px;
     background: #1E273A;
     box-shadow: inset 5px 5px 6px #1c2538,
     inset -5px -5px 6px #1f2b3f;
- 
     transition: 0.5s ease 0s;        
- }
- 
+}
+
+@media (max-width: 486px) {
+    .text {
+        display: none;
+    }
+    .genre {
+        padding: 0;
+        background: none;
+    }
+    .btn {
+        padding: 0;
+        background: none;
+        box-shadow: none;
+        justify-content: flex-start;
+    }
+    .favorites {
+        right: 35px;
+    }
+    .favorite_item {
+        width: 30px;
+    }
+    .genre_title {
+        margin-bottom: 0;
+    }
+    .genre {
+        margin-bottom: 0;
+    }
+    
+}
+
+

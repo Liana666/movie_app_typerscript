@@ -15,3 +15,14 @@
     box-shadow: 5px 5px 6px #1e283d, -5px -5px 6px #243047;
     border-radius: 30px;
 }
+
+@media(max-width: 991px) {
+    .wrapper {
+    display: flex;
+    overflow-x: scroll;
+    }
+
+    .wrapper a {
+        margin-right: 10px;
+    }
+ }

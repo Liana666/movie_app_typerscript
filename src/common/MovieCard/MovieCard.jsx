@@ -56,6 +56,7 @@ const MovieCard = (props) => {
                             {props.single_genres.length !== 0 ? props.single_genres.map(g => <span key={g.id} className={card.genre}>{g}</span>)
                                 : null}
                         </div>
+                        <div className="vote_mob">Рейтинг: <span className={card.date}>{props.vote_average}</span></div>
                     </div>
                     <Chard>
                         <PieChard vote={props.vote_average} />
@@ -132,6 +133,12 @@ const Info_movie = styled.div`
 
 const Chard = styled.div`
     position: relative;
+    display: block;
+
+
+    @media (max-width: 486px) {
+        display: none;
+    }
 `
 
 

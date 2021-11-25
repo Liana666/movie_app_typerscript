@@ -62,7 +62,7 @@ const Filter = (props) => {
 }
 
 const FilterWrapper = styled.div`
-    margin: 7px 0 30px 0;
+    margin: 7px 15px 30px 15px;
     display: flex;
     align-items: center;
 `

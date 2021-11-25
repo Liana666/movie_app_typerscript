@@ -22,6 +22,12 @@ a {
   stroke: #636ea1;
 }
 
+p {
+  font-family: 'Nunito';
+  font-size: 18px;
+  line-height: 24px;
+}
+
 
 @font-face {
   font-family: 'Furore';
@@ -95,6 +101,7 @@ a {
 
 /***************************grid*********************************/
 .container_grid {
+  padding: 0 5px;
   display: grid;
   grid-template-columns: repeat(2,1fr);
   grid-gap: 10px;
@@ -131,6 +138,10 @@ a {
   overflow: hidden;
 }
 
+.vote_mob {
+  display: none;
+}
+
 
 @media (max-width: 1140px) {
   .grid_item {
@@ -147,6 +158,11 @@ a {
 @media (max-width: 991px) {
   .container_grid {
     grid-template-columns: repeat(1,1fr);
+  }
+
+  p {
+    font-size: 13px;
+    line-height: 19px;
   }
 
   .grid_item {
@@ -177,23 +193,37 @@ a {
 
 @media (max-width: 486px) {
   .grid_item {
+    padding: 0;
     grid-template-areas: 
       "path path"
       "title title"
       "info info"; 
-     
     grid-template-columns: 1fr; 
     }
     
     .path_wrapper {
       margin-right: 0;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       display: flex;
       justify-content: center;
       width: 100%;
     }
 
     .path_wrapper img{
-      width: 85%;
+      width: 100%;
+    }
+
+    .card_info_top {
+      padding: 0 20px;
+      padding-bottom: 10px;
+    }
+    
+    .card_info_bottom {
+      padding: 0 20px;
+      padding-bottom: 25px; 
+    }
+
+    .vote_mob {
+      display: block;
     }
 }
