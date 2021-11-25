@@ -21,6 +21,79 @@ header {
     font-size: 14px;
 }
 
+.mob_header {
+    display: none;
+}
+
 .link {
     margin: 0 20px;
+}
+
+@media (max-width: 686px) { 
+    .logo {
+        font-size: 14px;
+    }
+
+    .link_wrapper {
+        font-size: 12px;
+    }
+
+    .link {
+        margin: 0;
+        margin-left: 10px;
+    }
+
+    .link_wrapper {
+        display: none;
+    }
+    
+    .mob_header {
+        display: block;
+    }
+
+    .link_wrapper2_active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 0;
+        top: 0;
+        background: #1e273a;
+        z-index: 4;
+        height: 100vh;
+        width: 50%;
+        padding: 20px;
+        bottom: 0;
+    }
+
+    .link_wrapper2 {
+        display: flex;
+        flex-direction: column;
+        right: 100%;
+        top: 0;
+        background: #1e273a;
+        z-index: 4;
+        height: 100vh;
+        width: 50%;
+        padding: 20px;
+        bottom: 0;
+    }
+
+
+    .burger {
+        display: flex;
+        position: absolute;
+        top: 50%;
+        right: 3%;
+        transform: translate(-50%, -20%);
+    }
+
+    .burger div {
+        margin-left: 5px;
+        width: 6px;
+        height: 6px;
+        background: #fff;
+        border-radius: 50%;
+        z-index: 2;
+    }
+
 }
