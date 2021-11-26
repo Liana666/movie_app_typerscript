@@ -23,19 +23,36 @@
     position: relative;
 
     max-width: 1400px;
-    display: flex;
 
     z-index: 1;
 }
-
-.poster_wrapper {
-    width: 30%;
-}
-
 .info_wrapper {
     margin-left: 40px;
-    width: 60%;
 }
+
+.poster_wrapper {
+    grid-area: poster;
+}
+
+.info_top {
+    grid-area: top;
+}
+
+.info_bottom {
+    grid-area: bottom;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-rows: 1;
+    grid-gap: 10px;
+    grid-template-areas: 
+    "poster info"
+    "poster bottom";
+}
+
+
 
 .poster {
     width: 100%;

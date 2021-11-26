@@ -19,6 +19,10 @@ const Header = () => {
         setIsTrue(true);
     }
 
+    const changeMenuIconFalse = () => {
+        setIsTrue(false);
+    }
+
     return (
         <>
             <HeaderWrapper>
@@ -36,24 +40,24 @@ const Header = () => {
                 </div>
 
 
-                <div className={header.mob_header}>
-                    <div className={header.burger} onclick={changeMenuIcon}>
-                        {isTrue ? <img className={header.burger_active} src={eye} />
-                            : <>
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </>
-                        }
-                    </div>
-                    <div className={isTrue ? header.link_wrapper2_active : header.link_wrapper2}>
-                        <NavLink to="/movie">Фильмы</NavLink>
-                        <NavLink className={header.link} to="/profile/all-movies">Избранное</NavLink>
-                        <div>
-                            {location.pathname === "/movie" ? <SearchContainer /> : null}
-                        </div>
-
-                    </div>
+                <div className={header.mob_header} >
+                    {isTrue ?
+                        <>
+                            <img className={header.icon_active} onClick={changeMenuIconFalse} src={eye} />
+                            <div className={header.back_active}>
+                                <div className={header.menu}>
+                                    <NavLink className={header.menu_link} to="/movie">Фильмы</NavLink>
+                                    <NavLink className={header.menu_link} to="/profile/all-movies">Избранное</NavLink>
+                                    {location.pathname === "/movie" ? <div className={header.search_wrapper}><SearchContainer /></div> : null}
+                                </div>
+                            </div>
+                        </>
+                        :
+                        <>
+                            <div className={header.icon} onClick={changeMenuIcon}>Menu</div>
+                            <div className={header.back}></div>
+                        </>
+                    }
                 </div>
             </HeaderWrapper>
         </>

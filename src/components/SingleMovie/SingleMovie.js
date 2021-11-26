@@ -20,96 +20,99 @@ const SingleMovie = (props) => {
                 <div className={single.background_color}></div>
                 <img className={single.background} src={imgSrc + props.back} />
                 <div className={single.container}>
-                    <div className={single.poster_wrapper}>
-                        <img className={single.poster} src={imgSrc + props.poster} />
-                    </div>
-
-                    <div className={single.info_wrapper}>
-                        <div className={single.title}>
-                            {props.title}
-                        </div>
-                        <ul className={single.subtitle}>
-                            <span className={single.date}>{props.release_date}</span>
-                            <span className={single.marker}>·</span>
-                            {props.single_genres.map(g => <span key={g.id} className={single.date}>{g}</span>)}
-                        </ul>
-
-
-                        <Info>
-                            <div className={single.video_wrapper}>
-                                {video.map(k => <a href={videoUrl + k}>
-                                    <div className={single.viedeo_container}>
-                                        <img className={single.arrow} src={arrow} />
-                                        Трейлер
-                                    </div>
-                                </a>)}
-                                <div className={single.favorit}>
-                                    <img src={favorit} />
-
-                                </div>
-                                <span className={single.favorit_title}>Добавить в избранное</span>
-                            </div>
-
-                            <div className={single.favorit_vote}>
-                                <Chard>
-                                    <PieChard className={single.chart_wrapper} vote={props.vote_average} />
-                                    <span className={single.chard}>{props.vote_average}</span>
-                                </Chard>
-                                <span className={single.chart_title}>Пользовательский рейтинг</span>
-                            </div>
-                        </Info>
-
-                        <div>
-                            <div className={single.description_title}>
-                                Обзор
-                            </div>
-                            <div className={single.description}>
-                                {props.overview}
-                            </div>
+                    <div className={single.wrapper}>
+                        <div className={single.poster_wrapper}>
+                            <img className={single.poster} src={imgSrc + props.poster} />
                         </div>
 
-                        <CrewWrapper>
 
-                            {props.crew.map(crew => crew.job === "Producer" ?
-                                <div className={single.crew_cart}>
-                                    <div className={single.producer}>
-                                        <div key={crew.id}>{crew.name}</div>
+                        <div className={single.info_top}>
+                            <div className={single.title}>
+                                {props.title}
+                            </div>
+                            <ul className={single.subtitle}>
+                                <span className={single.date}>{props.release_date}</span>
+                                <span className={single.marker}>·</span>
+                                {props.single_genres.map(g => <span key={g.id} className={single.date}>{g}</span>)}
+                            </ul>
+
+
+                            <Info>
+                                <div className={single.video_wrapper}>
+                                    {video.map(k => <a href={videoUrl + k}>
+                                        <div className={single.viedeo_container}>
+                                            <img className={single.arrow} src={arrow} />
+                                            Трейлер
+                                        </div>
+                                    </a>)}
+                                    <div className={single.favorit}>
+                                        <img src={favorit} />
+
                                     </div>
-                                    <div className={single.crew_job}>
-                                        Продюсер
-                                    </div>
+                                    <span className={single.favorit_title}>Добавить в избранное</span>
                                 </div>
-                                : null)}
 
-
-                            {props.crew.map(crew => crew.job === "Director" ?
-                                <div className={single.crew_cart}>
-                                    <div className={single.producer}>
-                                        <div key={crew.id}>{crew.name}</div>
-                                    </div>
-                                    <div className={single.crew_job}>
-                                        Режиссер
-                                    </div>
+                                <div className={single.favorit_vote}>
+                                    <Chard>
+                                        <PieChard className={single.chart_wrapper} vote={props.vote_average} />
+                                        <span className={single.chard}>{props.vote_average}</span>
+                                    </Chard>
+                                    <span className={single.chart_title}>Пользовательский рейтинг</span>
                                 </div>
-                                : null)}
+                            </Info>
+                        </div>
 
-
-                            {props.crew.map(crew => crew.job === "Editor" ?
-                                <div className={single.crew_cart}>
-                                    <div className={single.producer}>
-                                        <div key={crew.id}>{crew.name}</div>
-                                    </div>
-                                    <div className={single.crew_job}>
-                                        Автор
-                                    </div>
+                        <div className={single.info_bottom}>
+                            <div>
+                                <div className={single.description_title}>
+                                    Обзор
                                 </div>
-                                : null)}
+                                <div className={single.description}>
+                                    {props.overview}
+                                </div>
+                            </div>
 
-                        </CrewWrapper>
+                            <CrewWrapper>
+
+                                {props.crew.map(crew => crew.job === "Producer" ?
+                                    <div className={single.crew_cart}>
+                                        <div className={single.producer}>
+                                            <div key={crew.id}>{crew.name}</div>
+                                        </div>
+                                        <div className={single.crew_job}>
+                                            Продюсер
+                                        </div>
+                                    </div>
+                                    : null)}
 
 
+                                {props.crew.map(crew => crew.job === "Director" ?
+                                    <div className={single.crew_cart}>
+                                        <div className={single.producer}>
+                                            <div key={crew.id}>{crew.name}</div>
+                                        </div>
+                                        <div className={single.crew_job}>
+                                            Режиссер
+                                        </div>
+                                    </div>
+                                    : null)}
+
+
+                                {props.crew.map(crew => crew.job === "Editor" ?
+                                    <div className={single.crew_cart}>
+                                        <div className={single.producer}>
+                                            <div key={crew.id}>{crew.name}</div>
+                                        </div>
+                                        <div className={single.crew_job}>
+                                            Автор
+                                        </div>
+                                    </div>
+                                    : null)}
+
+                            </CrewWrapper>
+
+                        </div>
                     </div>
-
                 </div>
             </BackgroundMovie>
 

@@ -66,6 +66,7 @@ header {
     }
 
     .link_wrapper2 {
+        position: absolute;
         display: flex;
         flex-direction: column;
         right: 100%;
@@ -94,6 +95,55 @@ header {
         background: #fff;
         border-radius: 50%;
         z-index: 2;
+    }
+
+    .icon {
+        position: relative;
+        z-index: 5;
+    }
+
+    .icon_active {
+        position: relative;
+        z-index: 5;
+    }
+
+    .back_active {
+        position: absolute;
+        background: #212c42f2;
+        width: 64%;
+        height: 100vh;
+        top: 0;
+        right: 0;
+        z-index: 4;
+        transition: 1s ease 0s;
+    }
+
+    .back {
+        position: absolute;
+        background: #30324e;
+        width: 0;
+        height: 100vh;
+        top: 0;
+        right: 0;
+        z-index: 5;
+        transition: 1s ease 0s;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+        margin-top: 47px;
+        margin-left: 36px;
+        font-size: 19px;
+    }
+
+    .menu_link {
+        margin-bottom: 15px;
+    }
+
+    .search_wrapper {
+        display: flex;
+        align-items: center;
     }
 
 }
