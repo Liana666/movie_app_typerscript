@@ -1,5 +1,8 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+
+import { removeFavoriteMoviesAC, removeFavoriteIdAC } from "../../redux/reducers/profileReducer";
 
 import fire from "../../img/fire-abs.png";
 import favorites from "../../img/favorites.png";
@@ -13,6 +16,7 @@ import styled from "styled-components";
 
 
 const MovieCard = (props) => {
+    const dispatch = useDispatch();
 
     const imgSrc = 'https://image.tmdb.org/t/p/original/' + props.poster_path;
 
@@ -20,16 +24,24 @@ const MovieCard = (props) => {
         props.addFavorite(imgSrc, props.id);
     }
 
+    const removeFavorite = () => {
+        dispatch(removeFavoriteIdAC(props.id));
+        dispatch(removeFavoriteMoviesAC(imgSrc + props.poster));
+    }
 
     return (
         <div className="grid_item">
-            <div onClick={addFavorite} className={card.favorites}>
-                <img className={card.favorite_item} src={favorites} />
-                {props.favoriteId.includes(props.id) ?
+            {props.favoriteId.includes(props.id) ?
+                <div onClick={removeFavorite} className={card.favorites}>
+                    <img className={card.favorite_item} src={favorites} />
                     <img className={card.favorite} src={check} />
-                    : <img className={card.favorite} src={plus} />
-                }
-            </div>
+                </div>
+                : <div onClick={addFavorite} className={card.favorites}>
+                    <img className={card.favorite_item} src={favorites} />
+                    <img className={card.favorite} src={plus} />
+                </div>
+            }
+
 
 
             <Card_img src={fire} />

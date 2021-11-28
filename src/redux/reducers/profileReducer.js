@@ -37,6 +37,17 @@ const profileReducer = (state = initialState, action) => {
             }
         }
 
+        case "REMOVE_FAVORITE_ID": {
+            const favoriteId = state.favoriteId.filter(
+                (item) => item !== action.movieId
+            )
+
+            return {
+                ...state,
+                favoriteId: favoriteId
+            }
+        }
+
         case "ADD_VIEWED": {
             return {
                 ...state,
@@ -66,6 +77,7 @@ const profileReducer = (state = initialState, action) => {
 export const addFavoriteMoviesAC = (favoriteMovies) => ({ type: "ADD_FAVORITE_MOVIES", favoriteMovies });
 export const removeFavoriteMoviesAC = (movieImg) => ({ type: "REMOVE_FAVORITE_MOVIES", movieImg });
 export const addFavoriteIdAC = (favoriteId) => ({ type: "ADD_FAVORITE_ID", favoriteId });
+export const removeFavoriteIdAC = (movieId) => ({ type: "REMOVE_FAVORITE_ID", movieId });
 export const addViewedAC = (viewed) => ({ type: "ADD_VIEWED", viewed });
 export const addRatedAC = (rated) => ({ type: "ADD_RATED", rated });
 

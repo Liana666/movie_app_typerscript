@@ -41,6 +41,7 @@ const SingleMovieContainer = React.memo(function SingleMovieContainer(props) {
                 addCasts={props.addCasts}
                 single_genres={props.location.state.single_genres}
                 key_video={key_video}
+                id={props.location.state.id}
             />
         </>
     )
