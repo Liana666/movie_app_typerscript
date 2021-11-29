@@ -1,7 +1,16 @@
 header {
     max-width: 1400px;
     margin: 0 auto;
-  }
+}
+
+.headerWrapper {
+    position: relative;
+    padding: 15px 15px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}  
 
 .logo {
     display: flex;

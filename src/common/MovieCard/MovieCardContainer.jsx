@@ -50,6 +50,7 @@ const MovieCardContainer = (props) => {
                 id={props.id}
                 favoriteId={props.favoriteId}
                 rated={props.rated}
+                favoriteMovies={props.favoriteMovies}
             />
         </>
 

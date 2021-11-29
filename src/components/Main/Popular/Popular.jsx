@@ -1,7 +1,6 @@
 import React from "react";
 
 import popular from "./Popular.module.css";
-import styled from "styled-components";
 
 import MovieCardContainer from "../../../common/MovieCard/MovieCardContainer";
 

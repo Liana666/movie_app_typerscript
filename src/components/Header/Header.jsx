@@ -6,7 +6,6 @@ import eye from "../../img/eye.png";
 import { NavLink } from "react-router-dom";
 import { useLocation } from 'react-router-dom'
 
-import styled from "styled-components";
 import header from "./Header.module.css";
 
 import SearchContainer from "../Main/Search/SearchContainer";
@@ -25,7 +24,7 @@ const Header = () => {
 
     return (
         <>
-            <HeaderWrapper>
+            <header className={header.headerWrapper}>
                 <NavLink to="/">
                     <div className={header.logo}>
                         <img src={logo} alt={logo.toString()} />
@@ -59,19 +58,9 @@ const Header = () => {
                         </>
                     }
                 </div>
-            </HeaderWrapper>
+            </header>
         </>
     )
 }
 
-
-const HeaderWrapper = styled.header`
-    position: relative;
-    padding: 15px 15px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-`
 export default Header;

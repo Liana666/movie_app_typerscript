@@ -1,6 +1,5 @@
 import React from "react";
 
-import styled from "styled-components";
 import filter from "./Filter.module.css";
 
 import PagintationContainer from "../../../common/Pagination/PagintationContainer";
@@ -21,7 +20,7 @@ const Filter = (props) => {
 
     return (
         <>
-            <FilterWrapper>
+            <div className={filter.filterWrapper}>
                 <select value={props.genre} onChange={changeGenreOption} style={{ marginLeft: 0 }} className={filter.select} name="genres" id="">
                     <option className={filter.option}>Все</option>
                     {props.genres.map(g => <option ley={g.id} value={g.id}>{g.name}</option>
@@ -32,24 +31,24 @@ const Filter = (props) => {
                     {props.years.map(y => <option key={y.id} value={y}>{y}</option>
                     )}
                 </select>
-            </FilterWrapper>
+            </div>
 
             <div className="container_grid">
-                <MoviesCard>
-                    {props.movies.map(m => <MovieCardContainer
-                        key={m.id}
-                        title={m.title}
-                        overview={m.overview}
-                        poster_path={m.poster_path}
-                        release_date={m.release_date}
-                        vote_average={m.vote_average}
-                        genre_ids={m.genre_ids}
-                        adult={m.adult}
-                        backdrop_path={m.backdrop_path}
-                        video={m.video}
-                        id={m.id}
-                    />)}
-                </MoviesCard>
+
+                {props.movies.map(m => <MovieCardContainer
+                    key={m.id}
+                    title={m.title}
+                    overview={m.overview}
+                    poster_path={m.poster_path}
+                    release_date={m.release_date}
+                    vote_average={m.vote_average}
+                    genre_ids={m.genre_ids}
+                    adult={m.adult}
+                    backdrop_path={m.backdrop_path}
+                    video={m.video}
+                    id={m.id}
+                />)}
+
             </div>
 
 
@@ -61,17 +60,5 @@ const Filter = (props) => {
     )
 }
 
-const FilterWrapper = styled.div`
-    margin: 7px 15px 30px 15px;
-    display: flex;
-    align-items: center;
-`
-
-const MoviesCard = styled.div`
-    width: 100%;
-    display: flex;
-    justify-content:spaxce-between;
-    flex-wrap: wrap;
-`
 
 export default Filter;

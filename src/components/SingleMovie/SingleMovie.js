@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import styled from "styled-components";
 import single from "./SingleMovie.module.css";
 
 import PieChard from "../../common/MovieCard/PieChard";
@@ -82,10 +81,10 @@ const SingleMovie = (props) => {
                                 </div>
 
                                 <div className={single.favorit_vote}>
-                                    <Chard>
+                                    <div className={single.chard_container}>
                                         <PieChard className={single.chart_wrapper} vote={props.vote_average} />
                                         <span className={single.chard}>{props.vote_average}</span>
-                                    </Chard>
+                                    </div>
                                     <span className={single.chart_title}>Пользовательский рейтинг</span>
                                 </div>
                             </div>
@@ -101,7 +100,7 @@ const SingleMovie = (props) => {
                                 </div>
                             </div>
 
-                            <CrewWrapper>
+                            <div className={single.crewWrapper}>
 
                                 {props.crew.map(crew => crew.job === "Producer" ?
                                     <div className={single.crew_cart}>
@@ -138,7 +137,7 @@ const SingleMovie = (props) => {
                                     </div>
                                     : null)}
 
-                            </CrewWrapper>
+                            </div>
 
                         </div>
                     </div>
@@ -161,19 +160,5 @@ const SingleMovie = (props) => {
         </>
     )
 }
-
-
-const Chard = styled.div`
-    position: relative;
-    display: flex;
-`
-
-
-const CrewWrapper = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-
-`
 
 export default SingleMovie;
