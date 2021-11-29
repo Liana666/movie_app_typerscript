@@ -6,36 +6,36 @@ import PagintationContainer from "../../../common/Pagination/PagintationContaine
 import MovieCardContainer from "../../../common/MovieCard/MovieCardContainer";
 
 
-const Filter = (props) => {
+const Filter = ({ changeGenre, currentPage, changeYear, genre, genres, year, years, movies, totalPages }) => {
 
     const changeGenreOption = (e) => {
         let optionGenres = e.target.value;
-        props.changeGenre(props.currentPage, optionGenres)
+        changeGenre(currentPage, optionGenres)
     }
 
     const changeYearOption = (e) => {
         let optionYears = e.target.value;
-        props.changeYear(props.currentPage, props.genre, optionYears);
+        changeYear(currentPage, genre, optionYears);
     }
 
     return (
         <>
             <div className={filter.filterWrapper}>
-                <select value={props.genre} onChange={changeGenreOption} style={{ marginLeft: 0 }} className={filter.select} name="genres" id="">
+                <select value={genre} onChange={changeGenreOption} style={{ marginLeft: 0 }} className={filter.select} name="genres" id="">
                     <option className={filter.option}>Все</option>
-                    {props.genres.map(g => <option ley={g.id} value={g.id}>{g.name}</option>
+                    {genres.map(g => <option ley={g.id} value={g.id}>{g.name}</option>
                     )}
                 </select>
-                <select value={props.year} onChange={changeYearOption} className={filter.select} name="years" id="">
+                <select value={year} onChange={changeYearOption} className={filter.select} name="years" id="">
                     <option className={filter.option}>Годы</option>
-                    {props.years.map(y => <option key={y.id} value={y}>{y}</option>
+                    {years.map(y => <option key={y.id} value={y}>{y}</option>
                     )}
                 </select>
             </div>
 
             <div className="container_grid">
 
-                {props.movies.map(m => <MovieCardContainer
+                {movies.map(m => <MovieCardContainer
                     key={m.id}
                     title={m.title}
                     overview={m.overview}
@@ -52,7 +52,7 @@ const Filter = (props) => {
             </div>
 
 
-            {props.movies.length > 0 && props.currentPage < props.totalPages ?
+            {movies.length > 0 && currentPage < totalPages ?
                 <PagintationContainer />
                 : null
             }

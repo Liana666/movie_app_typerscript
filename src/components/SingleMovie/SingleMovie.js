@@ -12,21 +12,21 @@ import check from "../../img/check2.png";
 import { addFavoriteMoviesAC, addFavoriteIdAC, removeFavoriteIdAC, removeFavoriteMoviesAC } from "../../redux/reducers/profileReducer";
 import ActorsCard from "./ActorsCard/ActorsCard";
 
-const SingleMovie = (props) => {
+const SingleMovie = ({ key_video, id, poster, title, release_date, single_genres, vote_average, overview, crew, actors, back }) => {
     const imgSrc = 'https://image.tmdb.org/t/p/original/';
     const videoUrl = 'https://www.youtube.com/watch?v=';
-    const video = props.key_video.slice(0, 1);
+    const video = key_video.slice(0, 1);
     const dispatch = useDispatch();
     const favoriteId = useSelector((state) => state.ProfilePage.favoriteId);
 
     const addFavorite = () => {
-        dispatch(addFavoriteIdAC(props.id));
-        dispatch(addFavoriteMoviesAC(imgSrc + props.poster));
+        dispatch(addFavoriteIdAC(id));
+        dispatch(addFavoriteMoviesAC(imgSrc + poster));
     }
 
     const removeFavorite = () => {
-        dispatch(removeFavoriteIdAC(props.id));
-        dispatch(removeFavoriteMoviesAC(imgSrc + props.poster));
+        dispatch(removeFavoriteIdAC(id));
+        dispatch(removeFavoriteMoviesAC(imgSrc + poster));
     }
 
 
@@ -34,22 +34,22 @@ const SingleMovie = (props) => {
         <>
             <div className={single.backgroundMovie}>
                 <div className={single.background_color}></div>
-                <img className={single.background} src={imgSrc + props.back} />
+                <img className={single.background} src={imgSrc + back} />
                 <div className={single.container}>
                     <div className={single.wrapper}>
                         <div className={single.poster_wrapper}>
-                            <img className={single.poster} src={imgSrc + props.poster} />
+                            <img className={single.poster} src={imgSrc + poster} />
                         </div>
 
 
                         <div className={single.info_top}>
                             <div className={single.title}>
-                                {props.title}
+                                {title}
                             </div>
                             <ul className={single.subtitle}>
-                                <span className={single.date}>{props.release_date}</span>
+                                <span className={single.date}>{release_date}</span>
                                 <span className={single.marker}>·</span>
-                                {props.single_genres.map(g => <span key={g.id} className={single.date}>{g}</span>)}
+                                {single_genres.map(g => <span key={g.id} className={single.date}>{g}</span>)}
                             </ul>
 
 
@@ -62,7 +62,7 @@ const SingleMovie = (props) => {
                                         </div>
                                     </a>)}
 
-                                    {favoriteId.includes(props.id) ?
+                                    {favoriteId.includes(id) ?
                                         <div className={single.addfavorite}>
                                             <div onClick={removeFavorite} className={single.favorit}>
                                                 <img className={single.check} src={check} />
@@ -82,8 +82,8 @@ const SingleMovie = (props) => {
 
                                 <div className={single.favorit_vote}>
                                     <div className={single.chard_container}>
-                                        <PieChard className={single.chart_wrapper} vote={props.vote_average} />
-                                        <span className={single.chard}>{props.vote_average}</span>
+                                        <PieChard className={single.chart_wrapper} vote={vote_average} />
+                                        <span className={single.chard}>{vote_average}</span>
                                     </div>
                                     <span className={single.chart_title}>Пользовательский рейтинг</span>
                                 </div>
@@ -96,13 +96,13 @@ const SingleMovie = (props) => {
                                     Обзор
                                 </div>
                                 <div className={single.description}>
-                                    {props.overview}
+                                    {overview}
                                 </div>
                             </div>
 
                             <div className={single.crewWrapper}>
 
-                                {props.crew.map(crew => crew.job === "Producer" ?
+                                {crew.map(crew => crew.job === "Producer" ?
                                     <div className={single.crew_cart}>
                                         <div className={single.producer}>
                                             <div key={crew.id}>{crew.name}</div>
@@ -114,7 +114,7 @@ const SingleMovie = (props) => {
                                     : null)}
 
 
-                                {props.crew.map(crew => crew.job === "Director" ?
+                                {crew.map(crew => crew.job === "Director" ?
                                     <div className={single.crew_cart}>
                                         <div className={single.producer}>
                                             <div key={crew.id}>{crew.name}</div>
@@ -126,7 +126,7 @@ const SingleMovie = (props) => {
                                     : null)}
 
 
-                                {props.crew.map(crew => crew.job === "Editor" ?
+                                {crew.map(crew => crew.job === "Editor" ?
                                     <div className={single.crew_cart}>
                                         <div className={single.producer}>
                                             <div key={crew.id}>{crew.name}</div>
@@ -147,7 +147,7 @@ const SingleMovie = (props) => {
             <div className={single.cast_container}>
                 <div className={single.actors_title}>Актерский состав</div>
                 <div className={single.cast_wrapper}>
-                    {props.actors.map(actors => <ActorsCard
+                    {actors.map(actors => <ActorsCard
                         key={actors.id}
                         name={actors.name}
                         profile_path={actors.profile_path}

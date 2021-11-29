@@ -5,31 +5,31 @@ import movies from "./Movies.module.css";
 
 import FavoriteCardContainer from "./FavoriteCard/FavoriteCardContainer";
 
-const Movies = (props) => {
+const Movies = ({ viewed, favoriteMovies, assessed }) => {
    const [viewedMovies, setViewedMovies] = useState([]);
    const [assessedMovies, setAssessedMovies] = useState([]);
 
    useEffect(() => {
-      if (props.viewed.length > 0 && props.favoriteMovies.length > 0) {
-         let viewedMovies = props.viewed.filter(v => props.favoriteMovies.includes(v));
+      if (viewed.length > 0 && favoriteMovies.length > 0) {
+         let viewedMovies = viewed.filter(v => favoriteMovies.includes(v));
          setViewedMovies(viewedMovies);
       }
-   }, [props.viewed]);
+   }, [viewed]);
 
    useEffect(() => {
-      if (props.assessed.length > 0 && props.favoriteMovies.length > 0) {
-         let assessedMovies = props.assessed.filter(a => props.favoriteMovies.includes(a));
+      if (assessed.length > 0 && favoriteMovies.length > 0) {
+         let assessedMovies = assessed.filter(a => favoriteMovies.includes(a));
          setAssessedMovies(assessedMovies);
       }
-   }, [props.assessed]);
+   }, [assessed]);
 
 
    return (
       <div className={movies.wrapper}>
          <Switch>
             <Route path="/profile/all-movies">
-               {props.favoriteMovies.length > 0 ?
-                  props.favoriteMovies.map(movie =>
+               {favoriteMovies.length > 0 ?
+                  favoriteMovies.map(movie =>
                      < FavoriteCardContainer key={movie.id} movie={movie} />
                   )
                   : <span>Вы еще не добавили в избранное</span>

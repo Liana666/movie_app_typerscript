@@ -7,22 +7,22 @@ import loop from "../../../img/lupa2.png";
 import search from "./Search.module.css";
 
 
-const Search = (props) => {
+const Search = ({ searchMovie, addMovie, moviesName, currentPage }) => {
    const dispatch = useDispatch();
 
-   let searchMovie = (e) => {
+   let searchNewMovie = (e) => {
       dispatch(getNewPageAC(1));
       let newMovieRequest = e.target.value;
-      props.searchMovie(newMovieRequest);
+      searchMovie(newMovieRequest);
    }
 
    let addNewMovies = () => {
-      props.addMovie(props.moviesName, props.currentPage);
+      addMovie(moviesName, currentPage);
    }
 
    return (
       <>
-         <input onChange={searchMovie} className={search.input} value={props.moviesName} placeholder="поиск..." type="text" />
+         <input onChange={searchNewMovie} className={search.input} value={moviesName} placeholder="поиск..." type="text" />
          <img onClick={addNewMovies} className={search.loop} src={loop} alt="" />
       </>
    )

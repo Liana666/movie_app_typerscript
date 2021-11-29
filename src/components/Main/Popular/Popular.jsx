@@ -4,19 +4,19 @@ import popular from "./Popular.module.css";
 
 import MovieCardContainer from "../../../common/MovieCard/MovieCardContainer";
 
-const Popular = (props) => {
+const Popular = ({ changePage, currentPagePopular, popular, moviesName, genre, year, totalPages }) => {
 
-    const changePage = () => {
-        props.changePage(props.currentPagePopular + 1);
+    const changeCurrentPage = () => {
+        changePage(currentPagePopular + 1);
     }
 
     return (
         <>
             {
-                props.genre === 0 && props.year === 0 && props.moviesName === '' ?
+                genre === 0 && year === 0 && moviesName === '' ?
                     <>
                         <div className="container_grid">
-                            {props.popular.map(m => <MovieCardContainer
+                            {popular.map(m => <MovieCardContainer
                                 key={m.id}
                                 title={m.title}
                                 overview={m.overview}
@@ -30,9 +30,9 @@ const Popular = (props) => {
                             />)}
                         </div>
 
-                        {props.currentPagePopular < props.totalPages ?
+                        {currentPagePopular < totalPages ?
                             <div className={popular.wrapper}>
-                                <div className={popular.btn} onClick={changePage}>Загрузить еще</div>
+                                <div className={popular.btn} onClick={changeCurrentPage}>Загрузить еще</div>
                             </div>
 
                             : null
