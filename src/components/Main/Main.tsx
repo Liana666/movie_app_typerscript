@@ -1,7 +1,7 @@
 import React from "react";
 
-import FilterContainer from "../Main/Filter/FilterContainer";
-import PopularContainer from "../Main/Popular/PopularContainer.jsx";
+import FilterContainer from "./Filter/FilterContainer";
+import PopularContainer from "./Popular/PopularContainer.jsx";
 
 import styled from "styled-components";
 

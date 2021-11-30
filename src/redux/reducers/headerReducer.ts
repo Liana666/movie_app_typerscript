@@ -1,11 +1,15 @@
+type initialStateType = {
+   moviesName: string
+   newMovies: Array<string>
+}
 
-let initialState = {
+let initialState: initialStateType = {
    moviesName: 'название фильма',
    newMovies: []
 }
 
 
-const headerReducer = (state = initialState, action) => {
+const headerReducer = (state = initialState, action: any) => {
    switch (action.type) {
       case 'GET_NEW_MOVIETITLE':
          return {
@@ -18,7 +22,7 @@ const headerReducer = (state = initialState, action) => {
    }
 }
 
-export const getNewMovieAC = (newMovieRequest) => ({ type: 'GET_NEW_MOVIETITLE', newMovieRequest });
+export const getNewMovieAC = (newMovieRequest: string) => ({ type: 'GET_NEW_MOVIETITLE', newMovieRequest });
 
 
 export default headerReducer;

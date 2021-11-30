@@ -1,19 +1,32 @@
-import React from "react";
+import React, { FC } from "react";
 
 import filter from "./Filter.module.css";
 
 import PagintationContainer from "../../../common/Pagination/PagintationContainer";
 import MovieCardContainer from "../../../common/MovieCard/MovieCardContainer";
 
+import { GenreType, MovieType } from "../../../redux/reducers/mainReducer";
 
-const Filter = ({ changeGenre, currentPage, changeYear, genre, genres, year, years, movies, totalPages }) => {
+type PropsType = {
+    changeGenre: (currentPage: number, optionGenres: string) => void
+    currentPage: number
+    changeYear: (currentPage: number, genre: number, optionYears: string) => void
+    genre: number
+    genres: Array<GenreType>
+    year: number
+    years: Array<number>
+    movies: Array<MovieType>
+    totalPages: number
+}
 
-    const changeGenreOption = (e) => {
+const Filter: FC<PropsType> = ({ changeGenre, currentPage, changeYear, genre, genres, year, years, movies, totalPages }) => {
+
+    const changeGenreOption = (e: React.ChangeEvent<HTMLSelectElement>) => {
         let optionGenres = e.target.value;
         changeGenre(currentPage, optionGenres)
     }
 
-    const changeYearOption = (e) => {
+    const changeYearOption = (e: React.ChangeEvent<HTMLSelectElement>) => {
         let optionYears = e.target.value;
         changeYear(currentPage, genre, optionYears);
     }
@@ -23,12 +36,12 @@ const Filter = ({ changeGenre, currentPage, changeYear, genre, genres, year, yea
             <div className={filter.filterWrapper}>
                 <select value={genre} onChange={changeGenreOption} style={{ marginLeft: 0 }} className={filter.select} name="genres" id="">
                     <option className={filter.option}>Все</option>
-                    {genres.map(g => <option ley={g.id} value={g.id}>{g.name}</option>
+                    {genres.map(g => <option key={g.id} value={g.id}>{g.name}</option>
                     )}
                 </select>
                 <select value={year} onChange={changeYearOption} className={filter.select} name="years" id="">
                     <option className={filter.option}>Годы</option>
-                    {years.map(y => <option key={y.id} value={y}>{y}</option>
+                    {years.map(y => <option key={y} value={y}>{y}</option>
                     )}
                 </select>
             </div>

@@ -1,9 +1,41 @@
+
 import { getMovies } from "../../api/api";
 import { filterGenresMovies } from "../../api/api";
 import { filterYearsMovies } from "../../api/api";
 import { searchMovies } from "../../api/api";
 
-let initialState = {
+export type GenreType = {
+   id: number
+   name: string
+}
+
+export type MovieType = {
+   title: string
+   overview: string
+   poster_path: string
+   release_date: number
+   vote_average: number
+   genres: Array<GenreType>
+   adult: boolean
+   backdrop_path: string
+   id: number
+   video?: string
+   genre_ids?: Array<number>
+}
+
+type initialStateType = {
+   moviesName: string
+   genre: number | null
+   popular: Array<MovieType>
+   movies: Array<MovieType>
+   totalPages: number
+   currentPage: number
+   currentPagePopular: number
+   years: Array<number>
+   year?: number
+}
+
+let initialState: initialStateType = {
    moviesName: '',
    genre: 0,
    popular: [],
@@ -15,7 +47,7 @@ let initialState = {
    year: 0
 }
 
-const mainReducer = (state = initialState, action) => {
+const mainReducer = (state = initialState, action: any) => {
 
    switch (action.type) {
 
@@ -64,27 +96,27 @@ const mainReducer = (state = initialState, action) => {
 }
 
 
-export const addGenreAC = (genre) => ({ type: 'ADD_GENRE', genre });
-export const addYearAC = (year) => ({ type: 'ADD_YEAR', year });
-export const addMoviesAC = (movies) => ({ type: 'ADD_MOVIES', movies });
-export const addNewMoviesAC = (movies) => ({ type: 'ADD_NEW_MOVIES', movies });
-export const addPopularAC = (popular) => ({ type: 'ADD_POPULAR', popular });
-export const addNewPopularAC = (popular) => ({ type: 'ADD_NEW_POPULAR', popular });
-export const getNewPageAC = (currentPage) => ({ type: 'GET_CURRENT_PAGE', currentPage });
-export const getNewPopularPageAC = (currentPagePopular) => ({ type: 'GET_CURRENT_POPULAR_PAGE', currentPagePopular });
-export const getTotalPagesAC = (totalPages) => ({ type: 'GET_TOTAL_PAGES', totalPages });
-export const getNewMovieAC = (moviesName) => ({ type: 'GET_NEW_MOVIETITLE', moviesName });
-export const getVideoAC = (key) => ({ type: 'GET_VIDEO', key });
+export const addGenreAC = (genre: number | null) => ({ type: 'ADD_GENRE', genre });
+export const addYearAC = (year: number) => ({ type: 'ADD_YEAR', year });
+export const addMoviesAC = (movies: Array<MovieType>) => ({ type: 'ADD_MOVIES', movies });
+export const addNewMoviesAC = (movies: Array<MovieType>) => ({ type: 'ADD_NEW_MOVIES', movies });
+export const addPopularAC = (popular: Array<MovieType>) => ({ type: 'ADD_POPULAR', popular });
+export const addNewPopularAC = (popular: Array<MovieType>) => ({ type: 'ADD_NEW_POPULAR', popular });
+export const getNewPageAC = (currentPage: number) => ({ type: 'GET_CURRENT_PAGE', currentPage });
+export const getNewPopularPageAC = (currentPagePopular: number) => ({ type: 'GET_CURRENT_POPULAR_PAGE', currentPagePopular });
+export const getTotalPagesAC = (totalPages: number) => ({ type: 'GET_TOTAL_PAGES', totalPages });
+export const getNewMovieAC = (moviesName: string) => ({ type: 'GET_NEW_MOVIETITLE', moviesName });
+export const getVideoAC = (key: string) => ({ type: 'GET_VIDEO', key });
 
 /*get state element*/
 
-export const changeGenreThunk = (page, genre) => (dispatch) => {
+export const changeGenreThunk = (page: any, genre: number, year?: number) => (dispatch: any) => {
    dispatch(addGenreAC(genre));
-   dispatch(getMoviesThunk(page, genre));
+   dispatch(getMoviesThunk(page, genre, year));
    dispatch(getNewMovieAC(''));
 }
 
-export const changeYearThunk = (page, genre, year) => (dispatch) => {
+export const changeYearThunk = (page: number, genre: number, year: number) => (dispatch: any) => {
    dispatch(addYearAC(year));
    dispatch(getMoviesThunk(page, genre, year));
    dispatch(getNewMovieAC(''));
@@ -93,12 +125,12 @@ export const changeYearThunk = (page, genre, year) => (dispatch) => {
 
 /* get Movies*/
 
-export const getMoviesThunk = (currentPage, genre, year) => async dispatch => {
+export const getMoviesThunk = (currentPage: number, genre: number, year?: number) => async (dispatch: any) => {
    dispatch(addPopularAC([]))
 
    if (genre !== 0) {
       filterGenresMovies(currentPage, genre, year)
-         .then(response => {
+         .then((response: any) => {
             let totalPages = response.data.total_pages;
             dispatch(getTotalPagesAC(totalPages));
             let data = response.data.results;
@@ -109,7 +141,7 @@ export const getMoviesThunk = (currentPage, genre, year) => async dispatch => {
 
    else {
       filterYearsMovies(currentPage, year)
-         .then(response => {
+         .then((response: any) => {
             let totalPages = response.data.total_pages;
             dispatch(getTotalPagesAC(totalPages));
             let data = response.data.results;
@@ -119,9 +151,9 @@ export const getMoviesThunk = (currentPage, genre, year) => async dispatch => {
 
 };
 
-export const getPopularThunk = () => async dispatch => {
+export const getPopularThunk = () => async (dispatch: any) => {
    getMovies()
-      .then(response => {
+      .then((response: any) => {
          let totalPages = response.data.total_pages;
          dispatch(getTotalPagesAC(totalPages));
          dispatch(addPopularAC(response.data.results));
@@ -131,12 +163,12 @@ export const getPopularThunk = () => async dispatch => {
 
 /* Pagination*/
 
-export const changePageThunk = (moviesName, currentPage, genre, year) => async dispatch => {
+export const changePageThunk = (moviesName: string, currentPage: number, genre: number, year: number) => async (dispatch: any) => {
    dispatch(getNewPageAC(currentPage));
 
    if (moviesName !== '') {
       searchMovies(moviesName, currentPage)
-         .then(response => {
+         .then((response: any) => {
             let data = response.data.results;
             dispatch(addNewMoviesAC(data));
          });
@@ -145,14 +177,14 @@ export const changePageThunk = (moviesName, currentPage, genre, year) => async d
    else {
       if (genre !== 0) {
          filterGenresMovies(currentPage, genre, year)
-            .then(response => {
+            .then((response: any) => {
                let data = response.data.results;
                dispatch(addNewMoviesAC(data));
             });
       }
       else {
          filterYearsMovies(currentPage, year)
-            .then(response => {
+            .then((response: any) => {
                let data = response.data.results;
                dispatch(addNewMoviesAC(data));
             });
@@ -160,21 +192,21 @@ export const changePageThunk = (moviesName, currentPage, genre, year) => async d
    }
 };
 
-export const changePagePopularThunk = (page) => async dispatch => {
+export const changePagePopularThunk = (page: number) => async (dispatch: any) => {
    dispatch(getNewPopularPageAC(page));
 
    getMovies(page)
-      .then(response => {
+      .then((response: any) => {
          dispatch(addNewPopularAC(response.data.results));
       });
 }
 
 /*Search*/
 
-export const searchMoviesThunk = (moviesName, currentPage) => async dispatch => {
+export const searchMoviesThunk = (moviesName: string, currentPage: number) => async (dispatch: any) => {
    dispatch(getNewPageAC(currentPage));
    searchMovies(moviesName, currentPage)
-      .then(response => {
+      .then((response: any) => {
          let data = response.data.results;
          let totalPages = response.data.total_pages;
          dispatch(getTotalPagesAC(totalPages));

@@ -7,10 +7,6 @@ import { NavLink } from "react-router-dom";
 
 const Default = () => {
 
-   const test = () => {
-      console.log('hi');
-   }
-
    return (
       <div className={def.container}>
          <div className={def.wrapper}>
