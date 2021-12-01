@@ -15,6 +15,9 @@ let reducers = combineReducers({
    ProfilePage: profileReducer
 })
 
+type Reducers = typeof reducers;
+export type AppStateType = ReturnType<Reducers>;
+
 let store = createStore(reducers, composedEnhancer);
 
 

@@ -4,30 +4,20 @@ import filter from "./Filter.module.css";
 
 import PagintationContainer from "../../../common/Pagination/PagintationContainer";
 import MovieCardContainer from "../../../common/MovieCard/MovieCardContainer";
+import { FilterType } from "../../../types/type";
 
-import { GenreType, MovieType } from "../../../redux/reducers/mainReducer";
 
-type PropsType = {
-    changeGenre: (currentPage: number, optionGenres: string) => void
-    currentPage: number
-    changeYear: (currentPage: number, genre: number, optionYears: string) => void
-    genre: number
-    genres: Array<GenreType>
-    year: number
-    years: Array<number>
-    movies: Array<MovieType>
-    totalPages: number
-}
 
-const Filter: FC<PropsType> = ({ changeGenre, currentPage, changeYear, genre, genres, year, years, movies, totalPages }) => {
+const Filter: FC<FilterType> = ({ changeGenre, currentPage, changeYear, genre, genres, year, years, movies, totalPages }) => {
 
     const changeGenreOption = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        let optionGenres = e.target.value;
+        let optionGenres = +e.target.value;
         changeGenre(currentPage, optionGenres)
     }
 
+
     const changeYearOption = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        let optionYears = e.target.value;
+        let optionYears = +e.target.value;
         changeYear(currentPage, genre, optionYears);
     }
 

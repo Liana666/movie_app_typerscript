@@ -1,17 +1,10 @@
+import { ThunkAction } from "redux-thunk";
 import { getCast } from "../../api/api";
+import { ActorsType, CrewType } from "../../types/type";
+import { AppStateType } from "../store";
 
-type ActorsType = {
-    name: string
-    id: number
-    profile_path: string
-    character: string
-}
-
-type CrewType = {
-    id: number
-    job: string
-    name: string
-}
+const GET_ACTORS = "GET_ACTORS"
+const GET_CREW = "GET_CREW"
 
 type initialStateType = {
     actors: Array<ActorsType>
@@ -23,13 +16,13 @@ let initialState: initialStateType = {
     crew: []
 }
 
-const singleReducer = (state = initialState, action: any) => {
+const singleReducer = (state = initialState, action: ActionType) => {
     switch (action.type) {
 
-        case "GET_ACTORS":
+        case GET_ACTORS:
             return { ...state, actors: action.actors }
 
-        case "GET_CREW":
+        case GET_CREW:
             return { ...state, crew: action.crew }
 
         default:
@@ -38,10 +31,17 @@ const singleReducer = (state = initialState, action: any) => {
     }
 }
 
-export const getActorsAC = (actors: Array<ActorsType>) => ({ type: "GET_ACTORS", actors });
-export const getCrewAC = (crew: Array<CrewType>) => ({ type: "GET_CREW", crew });
+type ActionType = getActorsType | getCrewType
 
-export const addActorsWithCrewThunk = (id: number) => async (dispatch: any) => {
+type getActorsType = { type: typeof GET_ACTORS, actors: Array<ActorsType> }
+export const getActorsAC = (actors: Array<ActorsType>): getActorsType => ({ type: GET_ACTORS, actors });
+
+type getCrewType = { type: typeof GET_CREW, crew: Array<CrewType> }
+export const getCrewAC = (crew: Array<CrewType>): getCrewType => ({ type: GET_CREW, crew });
+
+type ThunkPromiseType = ThunkAction<Promise<void>, AppStateType, unknown, ActionType>;
+
+export const addActorsWithCrewThunk = (id: number): ThunkPromiseType => async (dispatch) => {
     getCast(id)
         .then((response: any) => {
             dispatch(getActorsAC(response.data.cast));

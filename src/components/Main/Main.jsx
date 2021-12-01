@@ -1,9 +1,10 @@
 import React from "react";
 
-import FilterContainer from "./Filter/FilterContainer";
 import PopularContainer from "./Popular/PopularContainer.jsx";
+import FilterContainer from "./Filter/FilterContainer";
 
 import styled from "styled-components";
+
 
 const Main = () => {
     return (

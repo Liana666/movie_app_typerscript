@@ -1,6 +1,6 @@
 import React from "react";
 
-import popular from "./Popular.module.css";
+import popularcss from "./Popular.module.css";
 
 import MovieCardContainer from "../../../common/MovieCard/MovieCardContainer";
 
@@ -31,8 +31,8 @@ const Popular = ({ changePage, currentPagePopular, popular, moviesName, genre, y
                         </div>
 
                         {currentPagePopular < totalPages ?
-                            <div className={popular.wrapper}>
-                                <div className={popular.btn} onClick={changeCurrentPage}>Загрузить еще</div>
+                            <div className={popularcss.wrapper}>
+                                <div className={popularcss.btn} onClick={changeCurrentPage}>Загрузить еще</div>
                             </div>
 
                             : null
