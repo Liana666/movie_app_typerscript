@@ -1,16 +1,17 @@
-import React from "react";
+import React, { FC } from "react";
 import { useDispatch } from "react-redux";
 import { getNewPageAC } from "../../../redux/reducers/mainReducer";
 
 import loop from "../../../img/lupa2.png";
 
 import search from "./Search.module.css";
+import { SearchType } from "../../../types/type";
 
 
-const Search = ({ searchMovie, addMovie, moviesName, currentPage }) => {
+const Search: FC<SearchType> = ({ searchMovie, addMovie, moviesName, currentPage }) => {
    const dispatch = useDispatch();
 
-   let searchNewMovie = (e) => {
+   let searchNewMovie = (e: React.ChangeEvent<HTMLInputElement>) => {
       dispatch(getNewPageAC(1));
       let newMovieRequest = e.target.value;
       searchMovie(newMovieRequest);

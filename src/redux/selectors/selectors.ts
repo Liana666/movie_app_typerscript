@@ -1,7 +1,7 @@
 import { createSelector } from "reselect";
+import { AppStateType } from "../store";
 
-
-export const VoteAdd = (state) => {
+export const VoteAdd = (state: AppStateType) => {
     return state.ProfilePage.rated;
 }
 

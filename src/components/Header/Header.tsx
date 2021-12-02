@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
 
 import logo from "../../img/logo.png";
 import eye from "../../img/eye.png";
@@ -7,10 +7,12 @@ import { NavLink } from "react-router-dom";
 import { useLocation } from 'react-router-dom'
 
 import header from "./Header.module.css";
-
 import SearchContainer from "../Main/Search/SearchContainer";
 
-const Header = () => {
+type HeaderType = {}
+
+
+const Header: FC<HeaderType> = () => {
     let [isTrue, setIsTrue] = useState(false);
     let location = useLocation();
 

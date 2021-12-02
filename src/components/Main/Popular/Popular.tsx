@@ -1,10 +1,11 @@
-import React from "react";
+import React, { FC } from "react";
 
 import popularcss from "./Popular.module.css";
 
 import MovieCardContainer from "../../../common/MovieCard/MovieCardContainer";
+import { PopularType } from "../../../types/type";
 
-const Popular = ({ changePage, currentPagePopular, popular, moviesName, genre, year, totalPages }) => {
+const Popular: FC<PopularType> = ({ changePage, currentPagePopular, popular, moviesName, genre, year, totalPages }) => {
 
     const changeCurrentPage = () => {
         changePage(currentPagePopular + 1);

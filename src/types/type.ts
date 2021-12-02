@@ -49,3 +49,27 @@ export type FilterType = {
     movies: Array<MovieType>
     totalPages: number
 }
+
+export type PopularType = {
+    popular: Array<MovieType>
+    genre: number
+    year: number
+    moviesName: string
+    totalPages: number
+    currentPagePopular: number
+    changePage: (page: number) => void
+}
+
+export type SearchType = {
+    searchMovie: (moviesName: string) => void
+    addMovie: (moviesName: string, currentPage: number) => void
+    moviesName: string
+    currentPage: number
+}
+
+
+export type MoviesType = {
+    favoriteMovies: Array<string>
+    viewedMovies: Array<number>
+    assessedMovies:
+}

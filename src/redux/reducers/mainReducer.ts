@@ -125,6 +125,7 @@ export const getNewMovieAC = (moviesName: string): getNewMovieType => ({ type: G
 
 type ThunkVoidType = ThunkAction<void, AppStateType, unknown, ActionType>;
 type ThunkPromiseType = ThunkAction<Promise<void>, AppStateType, unknown, ActionType>;
+
 /*get state element*/
 
 export const changeGenreThunk = (page: number, genre: number,

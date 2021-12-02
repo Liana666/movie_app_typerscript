@@ -1,12 +1,13 @@
-import React from "react";
+import React, { FC } from "react";
 
-import PopularContainer from "./Popular/PopularContainer.jsx";
+import PopularContainer from "./Popular/PopularContainer";
 import FilterContainer from "./Filter/FilterContainer";
 
 import styled from "styled-components";
 
+type MainType = {}
 
-const Main = () => {
+const Main: FC<MainType> = () => {
     return (
         <MainWrapper>
             <FilterContainer />

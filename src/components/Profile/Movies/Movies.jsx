@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import { Route, Switch } from "react-router";
 
@@ -5,23 +6,7 @@ import movies from "./Movies.module.css";
 
 import FavoriteCardContainer from "./FavoriteCard/FavoriteCardContainer";
 
-const Movies = ({ viewed, favoriteMovies, assessed }) => {
-   const [viewedMovies, setViewedMovies] = useState([]);
-   const [assessedMovies, setAssessedMovies] = useState([]);
-
-   useEffect(() => {
-      if (viewed.length > 0 && favoriteMovies.length > 0) {
-         let viewedMovies = viewed.filter(v => favoriteMovies.includes(v));
-         setViewedMovies(viewedMovies);
-      }
-   }, [viewed]);
-
-   useEffect(() => {
-      if (assessed.length > 0 && favoriteMovies.length > 0) {
-         let assessedMovies = assessed.filter(a => favoriteMovies.includes(a));
-         setAssessedMovies(assessedMovies);
-      }
-   }, [assessed]);
+const Movies = ({ favoriteMovies, viewedMovies, assessedMovies }) => {
 
 
    return (
