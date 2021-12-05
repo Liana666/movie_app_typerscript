@@ -1,12 +1,13 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, FC } from "react";
 import { Route, Switch } from "react-router";
 
 import movies from "./Movies.module.css";
 
 import FavoriteCardContainer from "./FavoriteCard/FavoriteCardContainer";
+import { MoviesType } from "../../../types/type";
 
-const Movies = ({ favoriteMovies, viewedMovies, assessedMovies }) => {
+const Movies: FC<MoviesType> = ({ favoriteMovies, viewedMovies, assessedMovies }) => {
 
 
    return (
@@ -15,7 +16,7 @@ const Movies = ({ favoriteMovies, viewedMovies, assessedMovies }) => {
             <Route path="/profile/all-movies">
                {favoriteMovies.length > 0 ?
                   favoriteMovies.map(movie =>
-                     < FavoriteCardContainer key={movie.id} movie={movie} />
+                     < FavoriteCardContainer key={movie} movie={movie} />
                   )
                   : <span>Вы еще не добавили в избранное</span>
                }
@@ -23,7 +24,7 @@ const Movies = ({ favoriteMovies, viewedMovies, assessedMovies }) => {
             <Route path="/profile/viewed-movies">
                {viewedMovies.length > 0 ?
                   viewedMovies.map(movie =>
-                     < FavoriteCardContainer key={movie.id} movie={movie} />
+                     < FavoriteCardContainer key={movie} movie={movie} />
                   )
                   : <span>Вы еще не добавили в просмотренное</span>
                }
@@ -31,7 +32,7 @@ const Movies = ({ favoriteMovies, viewedMovies, assessedMovies }) => {
             <Route path="/profile/assessed-movies">
                {assessedMovies.length > 0 ?
                   assessedMovies.map(movie =>
-                     < FavoriteCardContainer key={movie.id} movie={movie} />
+                     < FavoriteCardContainer key={movie} movie={movie} />
                   )
                   : <span>Вы еще ничего не оценили</span>
                }

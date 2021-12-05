@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { removeFavoriteMoviesAC, removeFavoriteIdAC } from "../../redux/reducers/profileReducer";
+import { removeFavoriteMoviesAC, removeFavoriteIdAC, addFavoriteIdAC, addFavoriteMoviesAC } from "../../redux/reducers/profileReducer";
 
 import fire from "../../img/fire-abs.png";
 import favorites from "../../img/favorites.png";
@@ -23,8 +23,10 @@ const MovieCard = ({ poster_path, addFavorite, id, favoriteMovies,
     const imgSrc = 'https://image.tmdb.org/t/p/original/' + poster_path;
 
     const addNewFavorite = () => {
-        addFavorite(imgSrc, id);
+        dispatch(addFavoriteIdAC(id));
+        dispatch(addFavoriteMoviesAC(imgSrc));
     }
+
 
     const removeFavorite = () => {
         dispatch(removeFavoriteIdAC(id));

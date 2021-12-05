@@ -70,6 +70,6 @@ export type SearchType = {
 
 export type MoviesType = {
     favoriteMovies: Array<string>
-    viewedMovies: Array<number>
-    assessedMovies:
+    viewedMovies: Array<any>
+    assessedMovies: Array<any>
 }

@@ -6,7 +6,7 @@ import profile from "./Profile.module.css";
 const ProfileContainer = () => {
     return (
         <div className={profile.wrapper}>
-            <Profile />
+            {/* <Profile /> */}
         </div>
     )
 }

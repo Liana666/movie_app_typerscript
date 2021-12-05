@@ -1,12 +1,15 @@
+import React, { FC } from "react";
 import { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { compose } from "redux";
 import { IngAddSelector } from "../../../redux/selectors/selectors";
+import { AppStateType } from "../../../redux/store";
 import Movies from "./Movies";
 
-const MoviesContainer = ({ viewed, favoriteMovies, assessed }) => {
+const MoviesContainer: FC<MapStatePropsType> = ({ viewed, favoriteMovies, assessed }) => {
 
-    const [viewedMovies, setViewedMovies] = useState([]);
-    const [assessedMovies, setAssessedMovies] = useState([]);
+    const [viewedMovies, setViewedMovies] = useState<any>([]);
+    const [assessedMovies, setAssessedMovies] = useState<any>([]);
 
     useEffect(() => {
         if (viewed.length > 0 && favoriteMovies.length > 0) {
@@ -14,6 +17,8 @@ const MoviesContainer = ({ viewed, favoriteMovies, assessed }) => {
             setViewedMovies(viewedMovies);
         }
     }, [viewed]);
+
+    console.log(viewed)
 
     useEffect(() => {
         if (assessed.length > 0 && favoriteMovies.length > 0) {
@@ -24,17 +29,21 @@ const MoviesContainer = ({ viewed, favoriteMovies, assessed }) => {
 
     return (
         <Movies
-            viewed={viewed}
             favoriteMovies={favoriteMovies}
-            assessed={assessed}
             viewedMovies={viewedMovies}
             assessedMovies={assessedMovies}
         />
     )
 }
 
+type MapStatePropsType = {
+    favoriteMovies: Array<string>
+    viewed: Array<any>
+    assessed: Array<any>
+}
 
-let mapStateToProps = (state) => {
+
+let mapStateToProps = (state: AppStateType) => {
     return {
         favoriteMovies: state.ProfilePage.favoriteMovies,
         viewed: state.ProfilePage.viewed,
@@ -43,4 +52,5 @@ let mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps)(MoviesContainer);
+export default compose<React.ComponentType>(connect<MapStatePropsType, null, null, AppStateType>(mapStateToProps))
+    (MoviesContainer);
