@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -12,9 +12,17 @@ import plus from "../../img/plus.png";
 import PieChard from "./PieChard";
 
 import card from "./MovieCard.module.css";
+import { MovieType, RatedType } from "../../types/type";
 
+type OwnPropsType = {
+    favoriteId: Array<number>
+    rated: Array<RatedType>
+    single_genres: Array<RatedType>
+}
 
-const MovieCard = ({ poster_path, addFavorite, id, favoriteMovies,
+type PropsType = OwnPropsType & MovieType;
+
+const MovieCard: FC<PropsType> = ({ poster_path, id,
     favoriteId, adult, rated, title, single_genres,
     vote_average, release_date, overview, backdrop_path }) => {
 
@@ -69,7 +77,7 @@ const MovieCard = ({ poster_path, addFavorite, id, favoriteMovies,
                     <div>
                         <div>Дата: <span className={card.date}>{release_date}</span></div>
                         <div className={card.genre_wrapper}><span className={card.genre_title}>Жанры:</span>
-                            {single_genres.length !== 0 ? single_genres.map(g => <span key={g.id} className={card.genre}>{g}</span>)
+                            {single_genres.length !== 0 ? single_genres.map(g => <span className={card.genre}>{g}</span>)
                                 : null}
                         </div>
                         <div className={card.vote_mob}>Рейтинг: <span className={card.date}>{vote_average}</span></div>

@@ -10,12 +10,11 @@ export type MovieType = {
     poster_path: string
     release_date: number
     vote_average: number
-    genres: Array<GenreType>
+    genre_ids: Array<GenreType>
     adult: boolean
     backdrop_path: string
     id: number
     video?: string
-    genre_ids?: Array<number>
 }
 
 export type RatedType = {
