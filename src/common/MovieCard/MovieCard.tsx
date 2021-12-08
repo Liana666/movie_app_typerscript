@@ -22,9 +22,19 @@ type OwnPropsType = {
 
 type PropsType = OwnPropsType & MovieType;
 
-const MovieCard: FC<PropsType> = ({ poster_path, id,
-    favoriteId, adult, rated, title, single_genres,
-    vote_average, release_date, overview, backdrop_path }) => {
+const MovieCard: FC<PropsType> = ({
+    poster_path,
+    id,
+    favoriteId,
+    adult, rated,
+    title,
+    single_genres,
+    vote_average,
+    release_date,
+    overview,
+    backdrop_path
+}) => {
+
 
     const dispatch = useDispatch();
 
@@ -45,18 +55,36 @@ const MovieCard: FC<PropsType> = ({ poster_path, id,
         <div className={card.grid_item}>
             {favoriteId.includes(id) ?
                 <div onClick={removeFavorite} className={card.favorites}>
-                    <img className={card.favorite_item} src={favorites} />
-                    <img className={card.favorite} src={check} />
+                    <img
+                        className={card.favorite_item}
+                        src={favorites}
+                        alt=""
+                    />
+                    <img
+                        className={card.favorite}
+                        src={check}
+                        alt=""
+                    />
                 </div>
                 : <div onClick={addNewFavorite} className={card.favorites}>
-                    <img className={card.favorite_item} src={favorites} />
-                    <img className={card.favorite} src={plus} />
+                    <img
+                        className={card.favorite_item}
+                        src={favorites}
+                        alt=""
+                    />
+                    <img
+                        className={card.favorite}
+                        src={plus}
+                        alt=""
+                    />
                 </div>
             }
 
-
-
-            <img className={card.card_img} src={fire} />
+            <img
+                className={card.card_img}
+                src={fire}
+                alt=""
+            />
             <span className={card.card_age}>
                 {adult ? <span>18+</span> : null}
             </span>
@@ -68,7 +96,11 @@ const MovieCard: FC<PropsType> = ({ poster_path, id,
                     : null
                 )}
 
-                <img src={imgSrc} className={card.movie_img} alt="" />
+                <img
+                    src={imgSrc}
+                    className={card.movie_img}
+                    alt=""
+                />
             </div>
 
             <div className={card.card_info_top}>

@@ -29,7 +29,10 @@ const Header: FC<HeaderType> = () => {
             <header className={header.headerWrapper}>
                 <NavLink to="/">
                     <div className={header.logo}>
-                        <img src={logo} alt={logo.toString()} />
+                        <img
+                            src={logo}
+                            alt={logo.toString()}
+                        />
                         <span className={header.logo_title}>MovieFire</span>
                     </div>
                 </NavLink>
@@ -44,7 +47,12 @@ const Header: FC<HeaderType> = () => {
                 <div className={header.mob_header} >
                     {isTrue ?
                         <>
-                            <img className={header.icon_active} onClick={changeMenuIconFalse} src={eye} />
+                            <img
+                                className={header.icon_active}
+                                onClick={changeMenuIconFalse}
+                                src={eye}
+                                alt=""
+                            />
                             <div className={header.back_active}>
                                 <div className={header.menu}>
                                     <NavLink className={header.menu_link} to="/movie">Фильмы</NavLink>

@@ -8,15 +8,20 @@ import { MovieType } from "../../../types/type";
 import { AppStateType } from "../../../redux/store";
 import { compose } from "redux";
 
+type PropsType = MapDispatchPropsType & MapStatePropsType;
 
-const SearchContainer: FC<PropsType> = ({ searchMovie, addMovie, movies, moviesName, currentPage }) => {
+const SearchContainer: FC<PropsType> = ({
+   searchMovie,
+   addMovie,
+   moviesName,
+   currentPage
+}) => {
 
    return (
       <>
          <Search
             searchMovie={searchMovie}
             addMovie={addMovie}
-            // movies={movies}
             moviesName={moviesName}
             currentPage={currentPage}
          />
@@ -34,9 +39,6 @@ type MapDispatchPropsType = {
    searchMovie: (moviesName: string) => void
    addMovie: (moviesName: string, currentPage: number) => void
 }
-
-type PropsType = MapDispatchPropsType & MapStatePropsType;
-
 
 const mapStatetoProps = (state: AppStateType): MapStatePropsType => {
    return {

@@ -120,9 +120,6 @@ export const getTotalPagesAC = (totalPages: number): getTotalPageType => ({ type
 type getNewMovieType = { type: typeof GET_NEW_MOVIETITLE, moviesName: string }
 export const getNewMovieAC = (moviesName: string): getNewMovieType => ({ type: GET_NEW_MOVIETITLE, moviesName });
 
-// type getVideoType = { type: string, key: string }
-// export const getVideoAC = (key: string): getVideoType => ({ type: 'GET_VIDEO', key });
-
 type ThunkVoidType = ThunkAction<void, AppStateType, unknown, ActionType>;
 type ThunkPromiseType = ThunkAction<Promise<void>, AppStateType, unknown, ActionType>;
 

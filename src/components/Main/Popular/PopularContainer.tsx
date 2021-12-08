@@ -9,11 +9,22 @@ import { AppStateType } from "../../../redux/store";
 import Popular from "./Popular";
 import { compose } from "redux";
 
-const PopularContainer: FC<PropsType> = ({ popular, genre, year, moviesName, totalPages, changePage, currentPagePopular, addPopular }) => {
+type PropsType = MapDispatchPropsType & MapStatePropsType;
+
+const PopularContainer: FC<PropsType> = ({
+    popular,
+    genre,
+    year,
+    moviesName,
+    totalPages,
+    changePage,
+    currentPagePopular,
+    addPopular
+}) => {
 
     useEffect(() => {
         addPopular();
-    }, [changePage])
+    }, [])
 
     return (
         <>
@@ -30,7 +41,6 @@ const PopularContainer: FC<PropsType> = ({ popular, genre, year, moviesName, tot
     )
 }
 
-
 type MapStatePropsType = {
     popular: Array<MovieType>
     genre: number
@@ -44,9 +54,6 @@ type MapDispatchPropsType = {
     addPopular: () => void
     changePage: (page: number) => void
 }
-
-type PropsType = MapDispatchPropsType & MapStatePropsType;
-
 
 const mapStatetoProps = (state: AppStateType): MapStatePropsType => {
     return {

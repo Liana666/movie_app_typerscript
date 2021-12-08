@@ -3,7 +3,14 @@ import React from "react";
 import paginator from "./Pagination.module.css";
 
 
-const Pagination = ({ getNeewMoviesPage, moviesName, currentPage, genre, year, popular }) => {
+const Pagination = ({
+    getNeewMoviesPage,
+    moviesName,
+    currentPage,
+    genre,
+    year,
+    popular
+}) => {
 
     const onChangePage = () => {
         getNeewMoviesPage(moviesName, currentPage + 1, genre, year, popular);

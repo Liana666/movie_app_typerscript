@@ -11,7 +11,11 @@ type ProfileType = {}
 const Profile: FC<ProfileType> = () => {
     return (
         <div className={profile.wrapper}>
-            <img src={back} className={profile.back} />
+            <img
+                src={back}
+                className={profile.back}
+                alt=""
+            />
             <div className={profile.container}>
                 <SidebarContainer />
                 <MoviesContainer />

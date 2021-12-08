@@ -4,28 +4,34 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { IngAddSelector } from "../../../redux/selectors/selectors";
 import { AppStateType } from "../../../redux/store";
+import { RatedType } from "../../../types/type";
 import Movies from "./Movies";
 
-const MoviesContainer: FC<MapStatePropsType> = ({ viewed, favoriteMovies, assessed }) => {
+const MoviesContainer: FC<MapStatePropsType> = ({
+    viewed,
+    favoriteMovies,
+    assessed,
+    rated
+}) => {
 
-    const [viewedMovies, setViewedMovies] = useState<any>([]);
-    const [assessedMovies, setAssessedMovies] = useState<any>([]);
+    console.log(rated)
+
+    const [viewedMovies, setViewedMovies] = useState<number[]>([]);
+    const [assessedMovies, setAssessedMovies] = useState<string[]>([]);
 
     useEffect(() => {
         if (viewed.length > 0 && favoriteMovies.length > 0) {
-            let viewedMovies = viewed.filter(v => favoriteMovies.includes(v));
+            let viewedMovies = viewed.filter((v: any) => favoriteMovies.includes(v));
             setViewedMovies(viewedMovies);
         }
-    }, [viewed]);
-
-    console.log(viewed)
+    }, []);
 
     useEffect(() => {
         if (assessed.length > 0 && favoriteMovies.length > 0) {
             let assessedMovies = assessed.filter(a => favoriteMovies.includes(a));
             setAssessedMovies(assessedMovies);
         }
-    }, [assessed]);
+    }, []);
 
     return (
         <Movies
@@ -38,16 +44,18 @@ const MoviesContainer: FC<MapStatePropsType> = ({ viewed, favoriteMovies, assess
 
 type MapStatePropsType = {
     favoriteMovies: Array<string>
-    viewed: Array<any>
-    assessed: Array<any>
+    viewed: Array<number>
+    assessed: Array<string>
+    rated: Array<RatedType>
 }
 
 
-let mapStateToProps = (state: AppStateType) => {
+let mapStateToProps = (state: AppStateType): MapStatePropsType => {
     return {
         favoriteMovies: state.ProfilePage.favoriteMovies,
         viewed: state.ProfilePage.viewed,
         assessed: IngAddSelector(state),
+        rated: state.ProfilePage.rated
     }
 }
 

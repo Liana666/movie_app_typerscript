@@ -10,8 +10,16 @@ const Default = () => {
    return (
       <div className={def.container}>
          <div className={def.wrapper}>
-            <img className={def.animation} src={anim} />
-            <img className={def.img} src={defImg} />
+            <img
+               className={def.animation}
+               src={anim}
+               alt=""
+            />
+            <img
+               className={def.img}
+               src={defImg}
+               alt=""
+            />
          </div>
          <div className={def.text}>
             <p>

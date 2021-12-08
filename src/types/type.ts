@@ -15,6 +15,20 @@ export type MovieType = {
     backdrop_path: string
     id: number
     video?: string
+    [key: string]: any;
+}
+
+
+export interface MovieProp {
+    [key: string]: any;
+}
+
+export interface MoviePropNumber {
+    [key: number]: any | string
+}
+
+export interface MovieProp2 {
+    [key: number]: number;
 }
 
 export type RatedType = {
@@ -66,9 +80,22 @@ export type SearchType = {
     currentPage: number
 }
 
+export type FavoriteType = {
+    movie: string
+    favoriteMovie: string
+    assessedMovie: string
+    viewedMovie: number
+    vote: Array<number>
+    viewed: Array<number>
+    rated: Array<RatedType>
+    assessed: Array<string>
+    addViewed: (currentViewed: number) => void
+    addRated: (currentRated: RatedType) => void
+}
+
 
 export type MoviesType = {
     favoriteMovies: Array<string>
-    viewedMovies: Array<any>
-    assessedMovies: Array<any>
+    viewedMovies: Array<number>
+    assessedMovies: Array<string>
 }

@@ -1,18 +1,32 @@
 import React, { useState, useEffect, FC } from "react";
-import MovieCard from "./MovieCard";
-
 import { connect } from "react-redux";
+import { compose } from "redux";
+
+import { AppStateType } from "../../redux/store";
+
+import { GenreType, MovieType, RatedType } from "../../types/type";
 
 import { getGenres } from "../../api/api";
 
-import { GenreType, MovieType, RatedType } from "../../types/type";
-import { AppStateType } from "../../redux/store";
-import { compose } from "redux";
+import MovieCard from "./MovieCard";
 
 
-const MovieCardContainer: FC<PropsType> = ({ title, overview,
-    poster_path, release_date, vote_average, genre_ids, backdrop_path,
-    adult, id, favoriteId, rated }) => {
+type PropsType = MapStatePropsType & MovieType;
+
+const MovieCardContainer = (props: PropsType) => {
+    const {
+        title,
+        overview,
+        poster_path,
+        release_date,
+        vote_average,
+        genre_ids,
+        backdrop_path,
+        adult,
+        id,
+        favoriteId,
+        rated,
+    } = props;
 
     const [genres, setGenres] = useState<GenreType[]>([]);
     let mapGenres = new Map();
@@ -62,9 +76,6 @@ type MapStatePropsType = {
     favoriteId: Array<number>
     rated: Array<RatedType>
 }
-
-
-type PropsType = MapStatePropsType & MovieType;
 
 const mapStatetoProps = (state: AppStateType): MapStatePropsType => {
     return {

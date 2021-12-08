@@ -9,7 +9,7 @@ import { AppStateType } from "../../../redux/store";
 import { compose } from "redux";
 
 
-const FilterContainer: FC<PropsType> = ({ genre, years, year, movies, currentPage, totalPages, changeGenre, changeYear }) => {
+const FilterContainer: React.FC<PropsType> = ({ genre, years, year, movies, currentPage, totalPages, changeGenre, changeYear }) => {
     const [genres, setGenres] = useState<GenreType[]>([]);
 
     useEffect(() => {
@@ -51,6 +51,8 @@ type MapDispatchPropsType = {
     changeGenre: (page: any, genre: number, year?: number) => void
     changeYear: (page: number, genre: number, year: number) => void
 }
+
+
 
 type PropsType = MapDispatchPropsType & MapStatePropsType;
 
