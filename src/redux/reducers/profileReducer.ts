@@ -10,26 +10,26 @@ const ADD_VIEWED = "ADD_VIEWED";
 const ADD_RATED = "ADD_RATED";
 
 type initialStateType = {
-    vote: Array<number>,
+    voteArray: Array<number>,
     favoriteMovies: Array<string>
     favoriteIdMovie: string
     favoriteId: Array<number>
     currentId: number
-    viewed: Array<number>
-    currentViewed: number
+    viewed: Array<string>
+    currentViewed: string
     rated: Array<RatedType>
     currentRated: RatedType
 }
 
 
 let initialState: initialStateType = {
-    vote: [1, 2, 3, 4, 5],
+    voteArray: [1, 2, 3, 4, 5],
     favoriteMovies: [],
     favoriteIdMovie: '',
     favoriteId: [],
     currentId: 0,
     viewed: [],
-    currentViewed: 0,
+    currentViewed: '',
     rated: [],
     currentRated: {
         img: '',
@@ -113,8 +113,8 @@ export const addFavoriteIdAC = (currentId: number): addFavoriteIdType => ({ type
 type removeFavoriteIdType = { type: typeof REMOVE_FAVORITE_ID, movieId: number }
 export const removeFavoriteIdAC = (movieId: number): removeFavoriteIdType => ({ type: REMOVE_FAVORITE_ID, movieId });
 
-type addViewedType = { type: typeof ADD_VIEWED, currentViewed: number }
-export const addViewedAC = (currentViewed: number): addViewedType => ({ type: ADD_VIEWED, currentViewed });
+type addViewedType = { type: typeof ADD_VIEWED, currentViewed: string }
+export const addViewedAC = (currentViewed: string): addViewedType => ({ type: ADD_VIEWED, currentViewed });
 
 type addRateType = { type: typeof ADD_RATED, currentRated: RatedType }
 export const addRatedAC = (currentRated: RatedType): addRateType => ({ type: ADD_RATED, currentRated });
@@ -130,7 +130,7 @@ export const addFavoriteMoviesThunk = (favoriteIdMovie: string, currentId: numbe
 };
 
 /*Add viewed movies */
-export const addViewedThunk = (currentViewed: number): ThunkVoidType => (dispatch) => {
+export const addViewedThunk = (currentViewed: string): ThunkVoidType => (dispatch) => {
     dispatch(addViewedAC(currentViewed));
 };
 

@@ -3,7 +3,17 @@ import React from "react";
 import sidebar from "./Sidebar.module.css";
 import { Link } from "react-router-dom";
 
-const Sidebar = ({ favoriteMovies, viewed, assessed }) => {
+type PropsType = {
+   viewed: Array<string>
+   assessed: Array<string>
+   favoriteMovies: Array<string>
+}
+
+const Sidebar: React.FC<PropsType> = ({
+   favoriteMovies,
+   viewed,
+   assessed
+}) => {
    return (
       <div className={sidebar.wrapper}>
          <Link to="/profile/all-movies">

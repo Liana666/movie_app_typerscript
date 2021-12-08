@@ -82,20 +82,17 @@ export type SearchType = {
 
 export type FavoriteType = {
     movie: string
-    favoriteMovie: string
-    assessedMovie: string
-    viewedMovie: number
-    vote: Array<number>
-    viewed: Array<number>
+    voteArray: Array<number>
+    viewed: Array<string>
     rated: Array<RatedType>
     assessed: Array<string>
-    addViewed: (currentViewed: number) => void
+    addViewed: (currentViewed: string) => void
     addRated: (currentRated: RatedType) => void
 }
 
 
 export type MoviesType = {
     favoriteMovies: Array<string>
-    viewedMovies: Array<number>
+    viewedMovies: Array<string>
     assessedMovies: Array<string>
 }

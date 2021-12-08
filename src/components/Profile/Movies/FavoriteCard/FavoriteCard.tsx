@@ -13,14 +13,13 @@ import starGr from "../../../../img/Star2.png";
 import starActive from "../../../../img/Star 4.png";
 import { FavoriteType, RatedType } from "../../../../types/type";
 
+
 const FavoriteCard: React.FC<FavoriteType> = ({
-    favoriteMovie,
-    viewedMovie,
-    assessedMovie,
+    movie,
     addViewed,
     addRated,
     viewed,
-    vote,
+    voteArray,
     rated,
     assessed
 }) => {
@@ -30,19 +29,20 @@ const FavoriteCard: React.FC<FavoriteType> = ({
     const dispatch = useDispatch();
 
     const moviesVoteandPath: RatedType = {
-        img: '',
-        vote: 0
+        vote: 0,
+        img: ''
+
     };
 
     const removeMovie = () => {
-        dispatch(removeFavoriteMoviesAC(favoriteMovie));
+        dispatch(removeFavoriteMoviesAC(movie));
     }
 
-    const addNewViewed = () => { addViewed(viewedMovie) }
+    const addNewViewed = () => { addViewed(movie) }
 
     const changeVote = (addVote: number) => {
-        moviesVoteandPath.img = favoriteMovie;
-        moviesVoteandPath.vote = viewedMovie;
+        moviesVoteandPath.img = movie;
+        moviesVoteandPath.vote = addVote;
         addRated(moviesVoteandPath);
         setVote(addVote);
     }
@@ -51,13 +51,13 @@ const FavoriteCard: React.FC<FavoriteType> = ({
         <div className={favoriteCard.item}>
             <img
                 className={favoriteCard.img}
-                src={favoriteMovie}
+                src={movie}
                 alt=""
             />
             <img onClick={removeMovie} className={favoriteCard.cross} src={cross} alt="" />
 
             <div onClick={addNewViewed} className={favoriteCard.box}>
-                {viewed.includes(viewedMovie) ?
+                {viewed.includes(movie) ?
                     <img
                         className={favoriteCard.eye_icon}
                         src={eyeActive}
@@ -72,8 +72,8 @@ const FavoriteCard: React.FC<FavoriteType> = ({
             </div>
 
             <div className={favoriteCard.box2}>
-                {vote.map(vote => rated.length > 0 ?
-                    assessed.includes(favoriteMovie) && currentVote >= vote ?
+                {voteArray.map((vote: number) => rated.length > 0 ?
+                    assessed.includes(movie) && currentVote >= vote ?
                         <div className={favoriteCard.vote_wrapper}>
                             <img
                                 className={favoriteCard.star_icon}
@@ -104,7 +104,7 @@ const FavoriteCard: React.FC<FavoriteType> = ({
                     </div>
                 )}
 
-                {assessed.includes(favoriteMovie) ?
+                {assessed.includes(movie) ?
                     <img
                         src={starGr}
                         className={favoriteCard.active_change_icon}

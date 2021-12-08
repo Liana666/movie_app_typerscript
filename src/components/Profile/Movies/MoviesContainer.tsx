@@ -10,28 +10,25 @@ import Movies from "./Movies";
 const MoviesContainer: FC<MapStatePropsType> = ({
     viewed,
     favoriteMovies,
-    assessed,
-    rated
+    assessed
 }) => {
 
-    console.log(rated)
-
-    const [viewedMovies, setViewedMovies] = useState<number[]>([]);
+    const [viewedMovies, setViewedMovies] = useState<string[]>([]);
     const [assessedMovies, setAssessedMovies] = useState<string[]>([]);
 
     useEffect(() => {
         if (viewed.length > 0 && favoriteMovies.length > 0) {
-            let viewedMovies = viewed.filter((v: any) => favoriteMovies.includes(v));
+            let viewedMovies = viewed.filter(v => favoriteMovies.includes(v));
             setViewedMovies(viewedMovies);
         }
-    }, []);
+    }, [viewed, favoriteMovies]);
 
     useEffect(() => {
         if (assessed.length > 0 && favoriteMovies.length > 0) {
             let assessedMovies = assessed.filter(a => favoriteMovies.includes(a));
             setAssessedMovies(assessedMovies);
         }
-    }, []);
+    }, [assessed, favoriteMovies]);
 
     return (
         <Movies
@@ -44,7 +41,7 @@ const MoviesContainer: FC<MapStatePropsType> = ({
 
 type MapStatePropsType = {
     favoriteMovies: Array<string>
-    viewed: Array<number>
+    viewed: Array<string>
     assessed: Array<string>
     rated: Array<RatedType>
 }

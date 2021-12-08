@@ -19,17 +19,17 @@ const Movies: FC<MoviesType> = ({
       <div className={movies.wrapper}>
          <Switch>
             <Route path="/profile/all-movies">
-               {favoriteMovies.length > 0  ?
+               {favoriteMovies.length > 0 ?
                   favoriteMovies.map((m: MoviePropNumber) => {
-                     return (< FavoriteCardContainer movie={m} />)
+                     return (< FavoriteCardContainer>{m}</FavoriteCardContainer>)
                   })
                   : <span>Вы еще не добавили в избранное</span>
                }
             </Route>
             <Route path="/profile/viewed-movies">
                {viewedMovies.length > 0 ?
-                  viewedMovies.map((m: any) => {
-                     return (< FavoriteCardContainer> {m} </FavoriteCardContainer>)
+                  viewedMovies.map((m: MoviePropNumber) => {
+                     return (< FavoriteCardContainer>{m}</FavoriteCardContainer>)
                   })
                   : <span>Вы еще не добавили в просмотренное</span>
                }
@@ -37,7 +37,7 @@ const Movies: FC<MoviesType> = ({
             <Route path="/profile/assessed-movies">
                {assessedMovies.length > 0 ?
                   assessedMovies.map((m: MoviePropNumber) => {
-                     return (< FavoriteCardContainer> {m} </FavoriteCardContainer>)
+                     return (< FavoriteCardContainer>{m}</FavoriteCardContainer>)
                   })
                   : <span>Вы еще ничего не оценили</span>
                }
