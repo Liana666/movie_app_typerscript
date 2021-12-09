@@ -146,7 +146,7 @@ export const getMoviesThunk = (currentPage: number, genre: number, year?: number
 
    if (genre !== 0) {
       filterGenresMovies(currentPage, genre, year)
-         .then((response: any) => {
+         .then((response) => {
             let totalPages = response.data.total_pages;
             dispatch(getTotalPagesAC(totalPages));
             let data = response.data.results;
@@ -154,10 +154,9 @@ export const getMoviesThunk = (currentPage: number, genre: number, year?: number
          });
    }
 
-
    else {
       filterYearsMovies(currentPage, year)
-         .then((response: any) => {
+         .then((response) => {
             let totalPages = response.data.total_pages;
             dispatch(getTotalPagesAC(totalPages));
             let data = response.data.results;
@@ -169,7 +168,7 @@ export const getMoviesThunk = (currentPage: number, genre: number, year?: number
 
 export const getPopularThunk = (): ThunkPromiseType => async (dispatch) => {
    getMovies()
-      .then((response: any) => {
+      .then((response) => {
          let totalPages = response.data.total_pages;
          dispatch(getTotalPagesAC(totalPages));
          dispatch(addPopularAC(response.data.results));
@@ -184,7 +183,7 @@ export const changePageThunk = (moviesName: string, currentPage: number, genre: 
 
    if (moviesName !== '') {
       searchMovies(moviesName, currentPage)
-         .then((response: any) => {
+         .then((response) => {
             let data = response.data.results;
             dispatch(addNewMoviesAC(data));
          });
@@ -193,14 +192,14 @@ export const changePageThunk = (moviesName: string, currentPage: number, genre: 
    else {
       if (genre !== 0) {
          filterGenresMovies(currentPage, genre, year)
-            .then((response: any) => {
+            .then((response) => {
                let data = response.data.results;
                dispatch(addNewMoviesAC(data));
             });
       }
       else {
          filterYearsMovies(currentPage, year)
-            .then((response: any) => {
+            .then((response) => {
                let data = response.data.results;
                dispatch(addNewMoviesAC(data));
             });
@@ -212,7 +211,7 @@ export const changePagePopularThunk = (page: number): ThunkPromiseType => async 
    dispatch(getNewPopularPageAC(page));
 
    getMovies(page)
-      .then((response: any) => {
+      .then((response) => {
          dispatch(addNewPopularAC(response.data.results));
       });
 }
@@ -222,7 +221,7 @@ export const changePagePopularThunk = (page: number): ThunkPromiseType => async 
 export const searchMoviesThunk = (moviesName: string, currentPage: number): ThunkPromiseType => async (dispatch) => {
    dispatch(getNewPageAC(currentPage));
    searchMovies(moviesName, currentPage)
-      .then((response: any) => {
+      .then((response) => {
          let data = response.data.results;
          let totalPages = response.data.total_pages;
          dispatch(getTotalPagesAC(totalPages));

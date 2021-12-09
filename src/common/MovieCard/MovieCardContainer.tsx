@@ -34,20 +34,21 @@ const MovieCardContainer = (props: PropsType) => {
 
     useEffect(() => {
         getGenres()
-            .then((response: any) => {
+            .then((response) => {
                 let genres = response.data.genres;
                 setGenres(genres);
             });
     }, [setGenres]);
 
-    genres.map(g => {
-        mapGenres.set(g.id, g.name);
+    genres.map((g: GenreType) => {
+        return mapGenres.set(g.id, g.name);
     })
 
-    genre_ids.map(g => {
+    genre_ids.map((g: GenreType) => {
         if (mapGenres.has(g)) {
-            single_genres.push(mapGenres.get(g));
+            return single_genres.push(mapGenres.get(g));
         }
+        else { return null }
     })
 
 

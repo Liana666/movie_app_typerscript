@@ -43,7 +43,7 @@ type ThunkPromiseType = ThunkAction<Promise<void>, AppStateType, unknown, Action
 
 export const addActorsWithCrewThunk = (id: number): ThunkPromiseType => async (dispatch) => {
     getCast(id)
-        .then((response: any) => {
+        .then((response) => {
             dispatch(getActorsAC(response.data.cast));
             dispatch(getCrewAC(response.data.crew));
         });

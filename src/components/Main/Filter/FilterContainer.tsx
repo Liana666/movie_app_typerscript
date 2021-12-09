@@ -25,7 +25,7 @@ const FilterContainer: React.FC<PropsType> = ({
 
     useEffect(() => {
         getGenres()
-            .then((response: any) => {
+            .then((response) => {
                 let genres = response.data.genres;
                 setGenres(genres);
             });

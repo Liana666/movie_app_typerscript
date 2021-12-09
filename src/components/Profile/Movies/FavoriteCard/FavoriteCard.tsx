@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import favoriteCard from "./FavoriteCard.module.css";
 
-import { removeFavoriteMoviesAC } from "../../../../redux/reducers/profileReducer";
+import { removeFavoriteMoviesAC, removeRatedAC, removeVieweddAC } from "../../../../redux/reducers/profileReducer";
 
 import cross from "../../../../img/cross2.png";
 import eyeActive from "../../../../img/eyeactive.png";
@@ -36,6 +36,8 @@ const FavoriteCard: React.FC<FavoriteType> = ({
 
     const removeMovie = () => {
         dispatch(removeFavoriteMoviesAC(movie));
+        dispatch(removeVieweddAC(movie));
+        dispatch(removeRatedAC(movie));
     }
 
     const addNewViewed = () => { addViewed(movie) }
