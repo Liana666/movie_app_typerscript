@@ -8,7 +8,13 @@ import search from "./Search.module.css";
 import { SearchType } from "../../../types/type";
 
 
-const Search: FC<SearchType> = ({ searchMovie, addMovie, moviesName, currentPage }) => {
+const Search: FC<SearchType> = ({
+   searchMovie,
+   addMovie,
+   moviesName,
+   currentPage
+}) => {
+
    const dispatch = useDispatch();
 
    let searchNewMovie = (e: React.ChangeEvent<HTMLInputElement>) => {

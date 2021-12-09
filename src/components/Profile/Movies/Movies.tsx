@@ -1,11 +1,11 @@
 
-import React, { FC } from "react";
+import { FC } from "react";
 import { Route, Switch } from "react-router";
 
 import movies from "./Movies.module.css";
 
 import FavoriteCardContainer from "./FavoriteCard/FavoriteCardContainer";
-import { MovieProp2, MovieProp, MoviePropNumber, MoviesType } from "../../../types/type";
+import { MoviePropNumber, MoviesType } from "../../../types/type";
 
 const Movies: FC<MoviesType> = ({
    favoriteMovies,

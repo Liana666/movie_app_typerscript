@@ -11,13 +11,31 @@ import check from "../../img/check2.png";
 
 import { addFavoriteMoviesAC, addFavoriteIdAC, removeFavoriteIdAC, removeFavoriteMoviesAC } from "../../redux/reducers/profileReducer";
 import ActorsCard from "./ActorsCard/ActorsCard";
+import { SingleMovieType } from "../../types/type";
+import { AppStateType } from "../../redux/store";
 
-const SingleMovie = ({ key_video, id, poster, title, release_date, single_genres, vote_average, overview, crew, actors, back }) => {
+const SingleMovie = (props: SingleMovieType) => {
+
+
+    const {
+        key_video,
+        id,
+        poster,
+        title,
+        release_date,
+        single_genres,
+        vote_average,
+        overview,
+        crew,
+        actors,
+        back
+    } = props;
+
     const imgSrc = 'https://image.tmdb.org/t/p/original/';
     const videoUrl = 'https://www.youtube.com/watch?v=';
-    const video = key_video.slice(0, 1);
+    const video: Array<any> = key_video.slice(0, 1);
     const dispatch = useDispatch();
-    const favoriteId = useSelector((state) => state.ProfilePage.favoriteId);
+    const favoriteId = useSelector((state: AppStateType) => state.ProfilePage.favoriteId);
 
     const addFavorite = () => {
         dispatch(addFavoriteIdAC(id));
@@ -34,13 +52,20 @@ const SingleMovie = ({ key_video, id, poster, title, release_date, single_genres
         <>
             <div className={single.backgroundMovie}>
                 <div className={single.background_color}></div>
-                <img className={single.background} src={imgSrc + back} />
+                <img
+                    className={single.background}
+                    src={imgSrc + back}
+                    alt=""
+                />
                 <div className={single.container}>
                     <div className={single.wrapper}>
                         <div className={single.poster_wrapper}>
-                            <img className={single.poster} src={imgSrc + poster} />
+                            <img
+                                className={single.poster}
+                                src={imgSrc + poster}
+                                alt=""
+                            />
                         </div>
-
 
                         <div className={single.info_top}>
                             <div className={single.title}>
@@ -49,15 +74,18 @@ const SingleMovie = ({ key_video, id, poster, title, release_date, single_genres
                             <ul className={single.subtitle}>
                                 <span className={single.date}>{release_date}</span>
                                 <span className={single.marker}>·</span>
-                                {single_genres.map(g => <span key={g.id} className={single.date}>{g}</span>)}
+                                {single_genres.map(g => <span key={g} className={single.date}>{g}</span>)}
                             </ul>
-
 
                             <div className={single.info}>
                                 <div className={single.video_wrapper}>
                                     {video.map(k => <a href={videoUrl + k}>
                                         <div className={single.viedeo_container}>
-                                            <img className={single.arrow} src={arrow} />
+                                            <img
+                                                className={single.arrow}
+                                                src={arrow}
+                                                alt=""
+                                            />
                                             Трейлер
                                         </div>
                                     </a>)}
@@ -65,19 +93,25 @@ const SingleMovie = ({ key_video, id, poster, title, release_date, single_genres
                                     {favoriteId.includes(id) ?
                                         <div className={single.addfavorite}>
                                             <div onClick={removeFavorite} className={single.favorit}>
-                                                <img className={single.check} src={check} />
+                                                <img
+                                                    className={single.check}
+                                                    src={check}
+                                                    alt=""
+                                                />
                                             </div>
                                             <span className={single.favorit_title}>Удалить из избранного</span>
                                         </div>
 
                                         : <div className={single.addfavorite}>
                                             <div onClick={addFavorite} className={single.favorit}>
-                                                <img src={favorit} />
+                                                <img
+                                                    src={favorit}
+                                                    alt=""
+                                                />
                                             </div>
                                             <span className={single.favorit_title}>Добавить в избранное</span>
                                         </div>
                                     }
-
                                 </div>
 
                                 <div className={single.favorit_vote}>
@@ -101,7 +135,6 @@ const SingleMovie = ({ key_video, id, poster, title, release_date, single_genres
                             </div>
 
                             <div className={single.crewWrapper}>
-
                                 {crew.map(crew => crew.job === "Producer" ?
                                     <div className={single.crew_cart}>
                                         <div className={single.producer}>
@@ -112,7 +145,6 @@ const SingleMovie = ({ key_video, id, poster, title, release_date, single_genres
                                         </div>
                                     </div>
                                     : null)}
-
 
                                 {crew.map(crew => crew.job === "Director" ?
                                     <div className={single.crew_cart}>
@@ -125,7 +157,6 @@ const SingleMovie = ({ key_video, id, poster, title, release_date, single_genres
                                     </div>
                                     : null)}
 
-
                                 {crew.map(crew => crew.job === "Editor" ?
                                     <div className={single.crew_cart}>
                                         <div className={single.producer}>
@@ -136,9 +167,7 @@ const SingleMovie = ({ key_video, id, poster, title, release_date, single_genres
                                         </div>
                                     </div>
                                     : null)}
-
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -155,8 +184,6 @@ const SingleMovie = ({ key_video, id, poster, title, release_date, single_genres
                     />)}
                 </div>
             </div>
-
-
         </>
     )
 }

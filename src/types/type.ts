@@ -18,6 +18,14 @@ export type MovieType = {
     [key: string]: any;
 }
 
+export type PaginationType = {
+    getNeewMoviesPage: (moviesName: string, currentPage: number, genre: number, year: number) => void
+    moviesName: string
+    currentPage: number
+    genre: number
+    year: number
+}
+
 
 export interface MovieProp {
     [key: string]: any;
@@ -28,7 +36,7 @@ export interface MoviePropNumber {
 }
 
 export interface MovieProp2 {
-    [key: number]: number;
+    [key: number]: string;
 }
 
 export type RatedType = {
@@ -95,4 +103,24 @@ export type MoviesType = {
     favoriteMovies: Array<string>
     viewedMovies: Array<string>
     assessedMovies: Array<string>
+}
+
+export type SingleMovieType = {
+    title: string
+    back: string
+    poster: string
+    vote_average: any
+    overview: string
+    id: number
+    release_date: number
+    single_genres: Array<string>
+    key_video: any
+    actors: Array<ActorsType>
+    crew: Array<CrewType>
+}
+
+export type ActorsCardType = {
+    profile_path: string
+    name: string
+    character: string
 }

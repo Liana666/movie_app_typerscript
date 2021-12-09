@@ -25,5 +25,4 @@ const Profile: FC<ProfileType> = () => {
     )
 }
 
-
 export default Profile;

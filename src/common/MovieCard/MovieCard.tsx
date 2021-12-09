@@ -17,7 +17,7 @@ import { MovieType, RatedType } from "../../types/type";
 type OwnPropsType = {
     favoriteId: Array<number>
     rated: Array<RatedType>
-    single_genres: Array<RatedType>
+    single_genres: Array<string>
 }
 
 type PropsType = OwnPropsType & MovieType;
@@ -45,6 +45,7 @@ const MovieCard: FC<PropsType> = ({
         dispatch(addFavoriteMoviesAC(imgSrc));
     }
 
+    console.log(single_genres)
 
     const removeFavorite = () => {
         dispatch(removeFavoriteIdAC(id));

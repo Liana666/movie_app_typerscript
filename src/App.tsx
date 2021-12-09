@@ -7,7 +7,9 @@ import Profile from "./components/Profile/Profile";
 import SingleMovieContainer from "./components/SingleMovie/SingleMovieContainer";
 import Default from "./components/Default/Default";
 
-function App() {
+type AppType = {}
+
+const App: React.FC<AppType> = () => {
   return (
     <div className="App">
       <Header />

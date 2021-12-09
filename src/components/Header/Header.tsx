@@ -11,7 +11,6 @@ import SearchContainer from "../Main/Search/SearchContainer";
 
 type HeaderType = {}
 
-
 const Header: FC<HeaderType> = () => {
     let [isTrue, setIsTrue] = useState(false);
     let location = useLocation();

@@ -1,10 +1,15 @@
 import React from "react";
+import { ActorsCardType } from "../../../types/type";
 
 import card from "./ActorsCard.module.css";
 
-const ActorsCard = ({ profile_path, name, character }) => {
-    const imgSrc = 'https://image.tmdb.org/t/p/original/';
+const ActorsCard: React.FC<ActorsCardType> = ({
+    profile_path,
+    name,
+    character
+}) => {
 
+    const imgSrc = 'https://image.tmdb.org/t/p/original/';
     return (
         <>
             {profile_path ?
@@ -15,7 +20,6 @@ const ActorsCard = ({ profile_path, name, character }) => {
                 </div>
                 : null
             }
-
         </>
     )
 }

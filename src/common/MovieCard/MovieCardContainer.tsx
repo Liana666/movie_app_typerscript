@@ -30,7 +30,7 @@ const MovieCardContainer = (props: PropsType) => {
 
     const [genres, setGenres] = useState<GenreType[]>([]);
     let mapGenres = new Map();
-    let single_genres: any = [];
+    let single_genres: Array<string> = [];
 
     useEffect(() => {
         getGenres()

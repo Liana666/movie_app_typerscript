@@ -61,6 +61,6 @@ const mapStateToProps = (state: AppStateType): MapStatePropsType => {
    }
 }
 
-export default compose<React.ComponentType>(connect<MapStatePropsType, MapDispatchPropsType, null, AppStateType>(mapStateToProps,
+export default compose<React.ComponentType>(connect<MapStatePropsType, MapDispatchPropsType, OwnProps, AppStateType>(mapStateToProps,
    { addViewed: addViewedThunk, addRated: addRatedThunk }))
    (FavoriteCardContainer);

@@ -19,6 +19,7 @@ const Filter: React.FC<FilterType> = ({
     movies,
     totalPages
 }) => {
+
     const changeGenreOption = (e: React.ChangeEvent<HTMLSelectElement>) => {
         let optionGenres = +e.target.value;
         changeGenre(currentPage, optionGenres)
@@ -65,7 +66,6 @@ const Filter: React.FC<FilterType> = ({
                     return <MovieCardContainer {...m} />
                 })}
             </div>
-
 
             {movies.length > 0 && currentPage < totalPages ?
                 <PagintationContainer />

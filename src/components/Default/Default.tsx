@@ -37,8 +37,6 @@ const Default = () => {
                <NavLink to="/profile/all-movies"><div className={def.btn}>Избранные</div></NavLink>
             </div>
          </div>
-
-
       </div>
    )
 }

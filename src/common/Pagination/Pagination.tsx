@@ -1,19 +1,19 @@
 import React from "react";
+import { PaginationType } from "../../types/type";
 
 import paginator from "./Pagination.module.css";
 
 
-const Pagination = ({
+const Pagination: React.FC<PaginationType> = ({
     getNeewMoviesPage,
     moviesName,
     currentPage,
     genre,
-    year,
-    popular
+    year
 }) => {
 
     const onChangePage = () => {
-        getNeewMoviesPage(moviesName, currentPage + 1, genre, year, popular);
+        getNeewMoviesPage(moviesName, currentPage + 1, genre, year);
     }
 
     return (
