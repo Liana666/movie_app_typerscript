@@ -59,7 +59,7 @@ type MapStatePropsType = {
 }
 
 type MapDispatchPropsType = {
-    changeGenre: (page: any, genre: number, year?: number) => void
+    changeGenre: (page: number, genre: number, year?: number) => void
     changeYear: (page: number, genre: number, year: number) => void
 }
 

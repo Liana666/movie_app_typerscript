@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { getVideo } from "../../api/api";
 import { addActorsWithCrewThunk } from "../../redux/reducers/singleReducer";
 import { AppStateType } from "../../redux/store";
-import { ActorsType, CrewType } from "../../types/type";
+import { ActorsType, CrewType, VideoType } from "../../types/type";
 import { compose } from 'redux';
 import SingleMovie from './SingleMovie';
 
@@ -22,7 +22,7 @@ const SingleMovieContainer = (props: PropsType) => {
     const { state } = useLocation<OwnProps>();
 
     let key_video: Array<string> = [];
-    const [key, setKey] = useState<any[]>([]);
+    const [key, setKey] = useState<VideoType[]>([]);
 
     useEffect(() => {
         getVideo(state.id)
@@ -53,7 +53,7 @@ type OwnProps = {
     title: string
     back: string
     poster: string
-    vote_average: any
+    vote_average: number
     overview: string
     id: number
     release_date: number

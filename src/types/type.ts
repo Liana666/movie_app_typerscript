@@ -109,7 +109,7 @@ export type SingleMovieType = {
     title: string
     back: string
     poster: string
-    vote_average: any
+    vote_average: number
     overview: string
     id: number
     release_date: number
@@ -123,4 +123,18 @@ export type ActorsCardType = {
     profile_path: string
     name: string
     character: string
+}
+
+export type VideoType = {
+    iso_639_1: string
+    iso_3166_1: string
+    name: string
+    key: string
+    site: string
+    size: number
+    type: string
+    official: boolean
+    published_at: string
+    id: string
+
 }
