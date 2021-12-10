@@ -16,14 +16,14 @@ const MoviesContainer: FC<MapStatePropsType> = ({
     const [viewedMovies, setViewedMovies] = useState<string[]>([]);
     const [assessedMovies, setAssessedMovies] = useState<string[]>([]);
 
-    useEffect(() => {
+    useEffect(() => { // Из избранных фильмов получаем просмотренные
         if (viewed.length > 0 && favoriteMovies.length > 0) {
             let viewedMovies = viewed.filter(v => favoriteMovies.includes(v));
             setViewedMovies(viewedMovies);
         }
     }, [viewed, favoriteMovies]);
 
-    useEffect(() => {
+    useEffect(() => { // Из избранных фильмов получаем оцененные
         if (assessed.length > 0 && favoriteMovies.length > 0) {
             let assessedMovies = assessed.filter(a => favoriteMovies.includes(a));
             setAssessedMovies(assessedMovies);

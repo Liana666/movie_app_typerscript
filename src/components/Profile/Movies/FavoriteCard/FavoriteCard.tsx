@@ -25,7 +25,7 @@ const FavoriteCard: React.FC<FavoriteType> = ({
 }) => {
 
 
-    const [currentVote, setVote] = useState<number>(0);
+    const [currentVote, setVote] = useState<number>(0); // Для добавления текущей оценки
     const dispatch = useDispatch();
 
     const moviesVoteandPath: RatedType = {
@@ -34,15 +34,15 @@ const FavoriteCard: React.FC<FavoriteType> = ({
 
     };
 
-    const removeMovie = () => {
+    const removeMovie = () => {// Удаляем фильмы из избранных, просмотренных, оцененных
         dispatch(removeFavoriteMoviesAC(movie));
         dispatch(removeVieweddAC(movie));
         dispatch(removeRatedAC(movie));
     }
 
-    const addNewViewed = () => { addViewed(movie) }
+    const addNewViewed = () => { addViewed(movie) } // Добавляем в просмотренные
 
-    const changeVote = (addVote: number) => {
+    const changeVote = (addVote: number) => { // Добавляем в оценненые (постер фильма и выбранный рейтинг)
         moviesVoteandPath.img = movie;
         moviesVoteandPath.vote = addVote;
         addRated(moviesVoteandPath);

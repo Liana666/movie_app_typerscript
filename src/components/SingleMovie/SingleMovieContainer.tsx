@@ -24,7 +24,7 @@ const SingleMovieContainer = (props: PropsType) => {
     let key_video: Array<string> = [];
     const [key, setKey] = useState<VideoType[]>([]);
 
-    useEffect(() => {
+    useEffect(() => {// Получаем трейлер фильма
         getVideo(state.id)
             .then((response: any) => {
                 setKey(response.data.results);
@@ -35,7 +35,7 @@ const SingleMovieContainer = (props: PropsType) => {
         key.map(key => key_video.push(key.key))
     }
 
-    useEffect(() => {
+    useEffect(() => { // Получаем список актеров
         addCrewAndActors(state.id);
     }, [state.id]);
 

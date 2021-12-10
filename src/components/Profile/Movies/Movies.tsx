@@ -13,8 +13,6 @@ const Movies: FC<MoviesType> = ({
    assessedMovies
 }) => {
 
-   console.log(assessedMovies)
-
    return (
       <div className={movies.wrapper}>
          <Switch>

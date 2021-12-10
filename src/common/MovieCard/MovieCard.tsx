@@ -37,23 +37,21 @@ const MovieCard: FC<PropsType> = ({
 
 
     const dispatch = useDispatch();
-
     const imgSrc = 'https://image.tmdb.org/t/p/original/' + poster_path;
 
-    const addNewFavorite = () => {
+    const addNewFavorite = () => { // Добавляем в избранные
         dispatch(addFavoriteIdAC(id));
         dispatch(addFavoriteMoviesAC(imgSrc));
     }
 
-    console.log(single_genres)
-
-    const removeFavorite = () => {
+    const removeFavorite = () => { // Удаляем с избранныx
         dispatch(removeFavoriteIdAC(id));
         dispatch(removeFavoriteMoviesAC(imgSrc));
     }
 
     return (
         <div className={card.grid_item}>
+            {/* Выбор иконки в зависимости от того, есть ли текущий фильм в массиве избранных*/}
             {favoriteId.includes(id) ?
                 <div onClick={removeFavorite} className={card.favorites}>
                     <img

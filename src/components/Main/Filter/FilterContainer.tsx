@@ -14,16 +14,18 @@ const FilterContainer: React.FC<PropsType> = ({
     genre,
     years,
     year,
+    popular,
     movies,
     currentPage,
     totalPages,
     changeGenre,
-    changeYear
+    changeYear,
+    isAddPopular
 }) => {
 
     const [genres, setGenres] = useState<GenreType[]>([]);
 
-    useEffect(() => {
+    useEffect(() => { // Получаем список всех жанров
         getGenres()
             .then((response) => {
                 let genres = response.data.genres;
@@ -40,10 +42,12 @@ const FilterContainer: React.FC<PropsType> = ({
                 years={years}
                 year={year}
                 movies={movies}
+                popular={popular}
                 currentPage={currentPage}
                 totalPages={totalPages}
                 changeGenre={changeGenre}
                 changeYear={changeYear}
+                isAddPopular={isAddPopular}
             />
         </>
     )
@@ -54,8 +58,10 @@ type MapStatePropsType = {
     year: number
     years: Array<number>
     movies: Array<MovieType>
+    popular: Array<MovieType>
     totalPages: number
     currentPage: number
+    isAddPopular: boolean
 }
 
 type MapDispatchPropsType = {
@@ -67,10 +73,12 @@ const mapStatetoProps = (state: AppStateType): MapStatePropsType => {
     return {
         genre: state.MainPage.genre,
         movies: state.MainPage.movies,
+        popular: state.MainPage.popular,
         totalPages: state.MainPage.totalPages,
         currentPage: state.MainPage.currentPage,
         years: state.MainPage.years,
-        year: state.MainPage.year
+        year: state.MainPage.year,
+        isAddPopular: state.MainPage.isAddPopular
     }
 }
 

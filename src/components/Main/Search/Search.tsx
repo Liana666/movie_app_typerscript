@@ -17,7 +17,7 @@ const Search: FC<SearchType> = ({
 
    const dispatch = useDispatch();
 
-   let searchNewMovie = (e: React.ChangeEvent<HTMLInputElement>) => {
+   let searchNewMovie = (e: React.ChangeEvent<HTMLInputElement>) => { // Меняем страницу на 1 (для случая изменения страницы до поиска фильма), делаем запрос по поиску фильма
       dispatch(getNewPageAC(1));
       let newMovieRequest = e.target.value;
       searchMovie(newMovieRequest);

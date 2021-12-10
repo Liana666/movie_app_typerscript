@@ -41,6 +41,7 @@ export const getCrewAC = (crew: Array<CrewType>): getCrewType => ({ type: GET_CR
 
 type ThunkPromiseType = ThunkAction<Promise<void>, AppStateType, unknown, ActionType>;
 
+/*Add Cast*/
 export const addActorsWithCrewThunk = (id: number): ThunkPromiseType => async (dispatch) => {
     getCast(id)
         .then((response) => {

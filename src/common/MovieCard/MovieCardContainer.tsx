@@ -32,7 +32,7 @@ const MovieCardContainer = (props: PropsType) => {
     let mapGenres = new Map();
     let single_genres: Array<string> = [];
 
-    useEffect(() => {
+    useEffect(() => {// Получаем список всх жанров (name, id)
         getGenres()
             .then((response) => {
                 let genres = response.data.genres;
@@ -40,11 +40,11 @@ const MovieCardContainer = (props: PropsType) => {
             });
     }, [setGenres]);
 
-    genres.map((g: GenreType) => {
+    genres.map((g: GenreType) => { // Добавляем в Map, где ключ id, значение name
         return mapGenres.set(g.id, g.name);
     })
 
-    genre_ids.map((g: GenreType) => {
+    genre_ids.map((g: GenreType) => { // Получаем соотвутсвующие имена жанров на основе массива жанров текущего фильма
         if (mapGenres.has(g)) {
             return single_genres.push(mapGenres.get(g));
         }

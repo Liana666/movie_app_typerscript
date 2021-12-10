@@ -68,7 +68,9 @@ export type FilterType = {
     year: number
     years: Array<number>
     movies: Array<MovieType>
+    popular: Array<MovieType>
     totalPages: number
+    isAddPopular: boolean
 }
 
 export type PopularType = {

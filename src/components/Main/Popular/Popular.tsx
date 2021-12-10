@@ -15,7 +15,7 @@ const Popular: FC<PopularType> = ({
     totalPages
 }) => {
 
-    const changeCurrentPage = () => {
+    const changeCurrentPage = () => { // Изменяем текущую страницу на +1
         changePage(currentPagePopular + 1);
     }
 

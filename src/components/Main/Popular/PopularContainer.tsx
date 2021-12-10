@@ -1,7 +1,7 @@
 import React, { useEffect, FC } from "react";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 
-import { getPopularThunk, changePagePopularThunk } from "../../../redux/reducers/mainReducer";
+import { getPopularThunk, changePagePopularThunk, chandePopularAC } from "../../../redux/reducers/mainReducer";
 
 import { MovieType } from "../../../types/type";
 import { AppStateType } from "../../../redux/store";
@@ -19,12 +19,13 @@ const PopularContainer: FC<PropsType> = ({
     totalPages,
     changePage,
     currentPagePopular,
-    addPopular
+    addPopular,
 }) => {
 
-    useEffect(() => {
+    useEffect(() => { //Получаем популярные фильмы (должен отрендерится всего один разБ поэтому не указываем зависимостей)
         addPopular();
     }, [])
+
 
     return (
         <>

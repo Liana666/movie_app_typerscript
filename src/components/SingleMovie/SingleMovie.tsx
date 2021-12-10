@@ -33,16 +33,16 @@ const SingleMovie = (props: SingleMovieType) => {
 
     const imgSrc = 'https://image.tmdb.org/t/p/original/';
     const videoUrl = 'https://www.youtube.com/watch?v=';
-    const video: Array<any> = key_video.slice(0, 1);
+    const video: Array<string> = key_video.slice(0, 1);
     const dispatch = useDispatch();
     const favoriteId = useSelector((state: AppStateType) => state.ProfilePage.favoriteId);
 
-    const addFavorite = () => {
+    const addFavorite = () => { // Добавляем в избранные
         dispatch(addFavoriteIdAC(id));
         dispatch(addFavoriteMoviesAC(imgSrc + poster));
     }
 
-    const removeFavorite = () => {
+    const removeFavorite = () => { // Удаляем из избранных
         dispatch(removeFavoriteIdAC(id));
         dispatch(removeFavoriteMoviesAC(imgSrc + poster));
     }

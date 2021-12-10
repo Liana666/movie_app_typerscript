@@ -15,17 +15,19 @@ const Filter: React.FC<FilterType> = ({
     genre,
     genres,
     year,
+    popular,
     years,
     movies,
-    totalPages
+    totalPages,
+    isAddPopular
 }) => {
 
-    const changeGenreOption = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const changeGenreOption = (e: React.ChangeEvent<HTMLSelectElement>) => { // Добавляем в state выбранный жанр и делаем запрос на фильмы (при запросе указываем страницу и жанр)
         let optionGenres = +e.target.value;
         changeGenre(currentPage, optionGenres)
     }
 
-    const changeYearOption = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const changeYearOption = (e: React.ChangeEvent<HTMLSelectElement>) => { // Добавляем в state выбранный год и делаем запрос на фильмы (при запросе указываем страницу, жанр и год)
         let optionYears = +e.target.value;
         changeYear(currentPage, genre, optionYears);
     }
@@ -61,15 +63,20 @@ const Filter: React.FC<FilterType> = ({
                 </select>
             </div>
 
+
             <div className="container_grid">
-                {movies.map((m: MovieProp) => {
-                    return <MovieCardContainer {...m} />
-                })}
+                {movies.length > 0 || isAddPopular ?
+                    movies.map((m: MovieProp) => {
+                        return <MovieCardContainer {...m} />
+                    })
+                    : <div>По вашему запросу ничего не найдено</div>
+                }
             </div>
 
-            {movies.length > 0 && currentPage < totalPages ?
-                <PagintationContainer />
-                : null
+            {
+                movies.length > 0 && currentPage < totalPages ?
+                    <PagintationContainer />
+                    : null
             }
         </>
     )

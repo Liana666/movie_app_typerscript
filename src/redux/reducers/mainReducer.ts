@@ -16,11 +16,13 @@ const GET_CURRENT_PAGE = "GET_CURRENT_PAGE";
 const GET_CURRENT_POPULAR_PAGE = "GET_CURRENT_POPULAR_PAGE";
 const GET_TOTAL_PAGES = "GET_TOTAL_PAGES";
 const GET_NEW_MOVIETITLE = "GET_NEW_MOVIETITLE";
+const CHANGE_POPULAR = "CHANGE_POPULAR";
 
 type initialStateType = {
    moviesName: string
    genre: number
    popular: Array<MovieType>
+   isAddPopular: boolean
    movies: Array<MovieType>
    totalPages: number
    currentPage: number
@@ -33,6 +35,7 @@ let initialState: initialStateType = {
    moviesName: '',
    genre: 0,
    popular: [],
+   isAddPopular: true,
    movies: [],
    totalPages: 1,
    currentPage: 1,
@@ -82,13 +85,16 @@ const mainReducer = (state = initialState, action: ActionType) => {
       case GET_NEW_MOVIETITLE:
          return { ...state, moviesName: action.moviesName }
 
+      case CHANGE_POPULAR:
+         return { ...state, isAddPopular: action.isAddPopular }
+
       default:
          return state;
    }
 }
 
 type ActionType = addGenreType | addYearType | AddMoviesType | AddNewMoviesType | AddPopularType | AddNewPopularType | getNewPageType
-   | getNewPopularPageType | getTotalPageType | getNewMovieType;
+   | getNewPopularPageType | getTotalPageType | getNewMovieType | chandePopularType;
 
 type addGenreType = { type: typeof ADD_GENRE, genre: number }
 export const addGenreAC = (genre: number): addGenreType => ({ type: ADD_GENRE, genre });
@@ -119,6 +125,9 @@ export const getTotalPagesAC = (totalPages: number): getTotalPageType => ({ type
 
 type getNewMovieType = { type: typeof GET_NEW_MOVIETITLE, moviesName: string }
 export const getNewMovieAC = (moviesName: string): getNewMovieType => ({ type: GET_NEW_MOVIETITLE, moviesName });
+
+type chandePopularType = { type: typeof CHANGE_POPULAR, isAddPopular: boolean }
+export const chandePopularAC = (isAddPopular: boolean): chandePopularType => ({ type: CHANGE_POPULAR, isAddPopular });
 
 type ThunkVoidType = ThunkAction<void, AppStateType, unknown, ActionType>;
 type ThunkPromiseType = ThunkAction<Promise<void>, AppStateType, unknown, ActionType>;
@@ -220,6 +229,7 @@ export const changePagePopularThunk = (page: number): ThunkPromiseType => async 
 
 export const searchMoviesThunk = (moviesName: string, currentPage: number): ThunkPromiseType => async (dispatch) => {
    dispatch(getNewPageAC(currentPage));
+   dispatch(chandePopularAC(false));
    searchMovies(moviesName, currentPage)
       .then((response) => {
          let data = response.data.results;
