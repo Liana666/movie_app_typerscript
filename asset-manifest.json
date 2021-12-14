@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/movie_app_typerscript/static/css/main.c5804646.chunk.css",
+    "main.js": "/movie_app_typerscript/static/js/main.5c9a0446.chunk.js",
+    "main.js.map": "/movie_app_typerscript/static/js/main.5c9a0446.chunk.js.map",
+    "runtime-main.js": "/movie_app_typerscript/static/js/runtime-main.b5b7b23c.js",
+    "runtime-main.js.map": "/movie_app_typerscript/static/js/runtime-main.b5b7b23c.js.map",
+    "static/js/2.55cb29f5.chunk.js": "/movie_app_typerscript/static/js/2.55cb29f5.chunk.js",
+    "static/js/2.55cb29f5.chunk.js.map": "/movie_app_typerscript/static/js/2.55cb29f5.chunk.js.map",
+    "index.html": "/movie_app_typerscript/index.html",
+    "static/css/main.c5804646.chunk.css.map": "/movie_app_typerscript/static/css/main.c5804646.chunk.css.map",
+    "static/js/2.55cb29f5.chunk.js.LICENSE.txt": "/movie_app_typerscript/static/js/2.55cb29f5.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/movie_app_typerscript/static/media/Nunito-SemiBold.dfe112bb.woff",
+    "static/media/anim.1b2a40e2.png": "/movie_app_typerscript/static/media/anim.1b2a40e2.png",
+    "static/media/check2.7b86ac1e.png": "/movie_app_typerscript/static/media/check2.7b86ac1e.png",
+    "static/media/def.4e9ee70e.png": "/movie_app_typerscript/static/media/def.4e9ee70e.png",
+    "static/media/fire-abs.93692536.png": "/movie_app_typerscript/static/media/fire-abs.93692536.png",
+    "static/media/profile.0ccc197d.png": "/movie_app_typerscript/static/media/profile.0ccc197d.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b5b7b23c.js",
+    "static/js/2.55cb29f5.chunk.js",
+    "static/css/main.c5804646.chunk.css",
+    "static/js/main.5c9a0446.chunk.js"
+  ]
+}
