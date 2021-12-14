@@ -22,7 +22,7 @@ type OwnPropsType = {
 
 type PropsType = OwnPropsType & MovieType;
 
-const MovieCard: FC<PropsType> = ({
+const MovieCard: React.FC<PropsType> = ({
     poster_path,
     id,
     favoriteId,
@@ -108,7 +108,7 @@ const MovieCard: FC<PropsType> = ({
                     <div>
                         <div>Дата: <span className={card.date}>{release_date}</span></div>
                         <div className={card.genre_wrapper}><span className={card.genre_title}>Жанры:</span>
-                            {single_genres.length !== 0 ? single_genres.map(g => <span className={card.genre}>{g}</span>)
+                            {single_genres.length !== 0 ? single_genres.map(g => <span key={g.toString()} className={card.genre}>{g}</span>)
                                 : null}
                         </div>
                         <div className={card.vote_mob}>Рейтинг: <span className={card.date}>{vote_average}</span></div>

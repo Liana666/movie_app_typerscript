@@ -3,7 +3,7 @@ import React, { FC } from "react";
 import popularcss from "./Popular.module.css";
 
 import MovieCardContainer from "../../../common/MovieCard/MovieCardContainer";
-import { MovieProp, PopularType } from "../../../types/type";
+import { MovieProp, MovieType, PopularType } from "../../../types/type";
 
 const Popular: FC<PopularType> = ({
     changePage,
@@ -25,7 +25,7 @@ const Popular: FC<PopularType> = ({
                 <>
                     <div className="container_grid">
                         {popular.map((m: MovieProp) => {
-                            return <MovieCardContainer {...m} />
+                            return <MovieCardContainer key={m.id.toString()} {...m} />
                         })}
                     </div>
 
