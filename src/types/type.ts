@@ -142,22 +142,6 @@ export type VideoType = {
 }
 
 /***********************TYPE RESPONSE************************/
-// type resultType = {
-//     adult: boolean
-//     backdrop_path: string
-//     genre_ids: Array<number>
-//     id: number
-//     original_language: string
-//     original_title: string
-//     overview: string
-//     popularity: number
-//     poster_path: string
-//     release_date: number
-//     title: string
-//     video: boolean
-//     vote_average: number
-//     vote_count: number
-// }
 
 export type filterGenresMoviesType = {
     page: number

@@ -28,7 +28,7 @@ export const getGenres = () => {
 };
 
 export const searchMovies = (parametr: string, page: number) => {
-    return axios.get<filterGenresMoviesType>(`https://api.themoviedb.org/3/search/movie?page=${page}&query=${parametr}&api_key=d495d35d47c329b48d81d83ed0f10265&language=ru-RU&region=RU`);
+    return axios.get<filterGenresMoviesType>(`https://api.themoviedb.org/3/search/movie?page=${page}&query=${parametr}&` + key + lang + region);
 };
 
 export const getCast = (movie_id: number) => {
