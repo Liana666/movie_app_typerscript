@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/movie_app_typerscript/static/css/main.2f8079a2.chunk.css",
-    "main.js": "/movie_app_typerscript/static/js/main.2c99a2b2.chunk.js",
-    "main.js.map": "/movie_app_typerscript/static/js/main.2c99a2b2.chunk.js.map",
+    "main.js": "/movie_app_typerscript/static/js/main.a2d17dde.chunk.js",
+    "main.js.map": "/movie_app_typerscript/static/js/main.a2d17dde.chunk.js.map",
     "runtime-main.js": "/movie_app_typerscript/static/js/runtime-main.b5b7b23c.js",
     "runtime-main.js.map": "/movie_app_typerscript/static/js/runtime-main.b5b7b23c.js.map",
-    "static/js/2.ada0776e.chunk.js": "/movie_app_typerscript/static/js/2.ada0776e.chunk.js",
-    "static/js/2.ada0776e.chunk.js.map": "/movie_app_typerscript/static/js/2.ada0776e.chunk.js.map",
+    "static/js/2.f6c191eb.chunk.js": "/movie_app_typerscript/static/js/2.f6c191eb.chunk.js",
+    "static/js/2.f6c191eb.chunk.js.map": "/movie_app_typerscript/static/js/2.f6c191eb.chunk.js.map",
     "index.html": "/movie_app_typerscript/index.html",
     "static/css/main.2f8079a2.chunk.css.map": "/movie_app_typerscript/static/css/main.2f8079a2.chunk.css.map",
-    "static/js/2.ada0776e.chunk.js.LICENSE.txt": "/movie_app_typerscript/static/js/2.ada0776e.chunk.js.LICENSE.txt",
+    "static/js/2.f6c191eb.chunk.js.LICENSE.txt": "/movie_app_typerscript/static/js/2.f6c191eb.chunk.js.LICENSE.txt",
     "static/media/index.css": "/movie_app_typerscript/static/media/Nunito-SemiBold.dfe112bb.woff",
     "static/media/anim.1b2a40e2.png": "/movie_app_typerscript/static/media/anim.1b2a40e2.png",
     "static/media/check2.7b86ac1e.png": "/movie_app_typerscript/static/media/check2.7b86ac1e.png",
@@ -19,8 +19,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.b5b7b23c.js",
-    "static/js/2.ada0776e.chunk.js",
+    "static/js/2.f6c191eb.chunk.js",
     "static/css/main.2f8079a2.chunk.css",
-    "static/js/main.2c99a2b2.chunk.js"
+    "static/js/main.a2d17dde.chunk.js"
   ]
 }
