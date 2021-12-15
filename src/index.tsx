@@ -8,7 +8,7 @@ import App from './App';
 
 
 ReactDOM.render(
-  <HashRouter>
+  <HashRouter basename={process.env.PUBLIC_URL}>
     <Provider store={store}>
       <App />
     </Provider>
