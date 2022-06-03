@@ -31,10 +31,6 @@ export interface MovieProp {
     [key: string]: any;
 }
 
-export interface MoviePropNumber {
-    [key: number]: any | string
-}
-
 export interface MovieProp2 {
     [key: number]: string;
 }

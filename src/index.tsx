@@ -3,16 +3,16 @@ import './index.css';
 import ReactDOM from 'react-dom';
 import store from './redux/store';
 import { Provider } from 'react-redux';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import App from './App';
 
 
 ReactDOM.render(
-  <HashRouter basename={process.env.PUBLIC_URL}>
-    <Provider store={store}>
+  <Provider store={store}>
+    <BrowserRouter>
       <App />
-    </Provider>
-  </HashRouter>,
+    </BrowserRouter>
+  </Provider>,
   document.getElementById('root')
 );
 

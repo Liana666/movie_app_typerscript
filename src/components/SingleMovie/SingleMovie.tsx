@@ -79,7 +79,7 @@ const SingleMovie = (props: SingleMovieType) => {
 
                             <div className={single.info}>
                                 <div className={single.video_wrapper}>
-                                    {video.map(k => <a href={videoUrl + k}>
+                                    {video.map(k => <a key={k} href={videoUrl + k}>
                                         <div className={single.viedeo_container}>
                                             <img
                                                 className={single.arrow}
@@ -136,9 +136,9 @@ const SingleMovie = (props: SingleMovieType) => {
 
                             <div className={single.crewWrapper}>
                                 {crew.map(crew => crew.job === "Producer" ?
-                                    <div className={single.crew_cart}>
+                                    <div key={crew.id} className={single.crew_cart}>
                                         <div className={single.producer}>
-                                            <div key={crew.id}>{crew.name}</div>
+                                            <div >{crew.name}</div>
                                         </div>
                                         <div className={single.crew_job}>
                                             Продюсер
@@ -147,9 +147,9 @@ const SingleMovie = (props: SingleMovieType) => {
                                     : null)}
 
                                 {crew.map(crew => crew.job === "Director" ?
-                                    <div className={single.crew_cart}>
+                                    <div key={crew.id} className={single.crew_cart}>
                                         <div className={single.producer}>
-                                            <div key={crew.id}>{crew.name}</div>
+                                            <div >{crew.name}</div>
                                         </div>
                                         <div className={single.crew_job}>
                                             Режиссер
@@ -158,9 +158,9 @@ const SingleMovie = (props: SingleMovieType) => {
                                     : null)}
 
                                 {crew.map(crew => crew.job === "Editor" ?
-                                    <div className={single.crew_cart}>
+                                    <div key={crew.id} className={single.crew_cart}>
                                         <div className={single.producer}>
-                                            <div key={crew.id}>{crew.name}</div>
+                                            <div >{crew.name}</div>
                                         </div>
                                         <div className={single.crew_job}>
                                             Автор

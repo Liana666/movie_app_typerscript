@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router";
+import { Link } from "react-router-dom";
 
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
@@ -9,7 +10,7 @@ import Default from "./components/Default/Default";
 
 type AppType = {}
 
-const App: React.FC<AppType> = () => {
+export const App: React.FC<AppType> = () => {
   return (
     <div className="App">
       <Header />

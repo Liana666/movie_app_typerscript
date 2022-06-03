@@ -90,7 +90,7 @@ const MovieCard: React.FC<PropsType> = ({
             <div className={card.path_wrapper}>
                 {rated.map(rate => rate.img === imgSrc ?
                     <div className={card.over}>
-                        <span className={card.over_vote}>{rate.vote}/5</span>
+                        <span key={rate.vote} className={card.over_vote}>{rate.vote}/5</span>
                     </div>
                     : null
                 )}
@@ -108,7 +108,7 @@ const MovieCard: React.FC<PropsType> = ({
                     <div>
                         <div>Дата: <span className={card.date}>{release_date}</span></div>
                         <div className={card.genre_wrapper}><span className={card.genre_title}>Жанры:</span>
-                            {single_genres.length !== 0 ? single_genres.map(g => <span key={g.toString()} className={card.genre}>{g}</span>)
+                            {single_genres.length !== 0 ? single_genres.map(g => <span key={g} className={card.genre}>{g}</span>)
                                 : null}
                         </div>
                         <div className={card.vote_mob}>Рейтинг: <span className={card.date}>{vote_average}</span></div>

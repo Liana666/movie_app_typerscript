@@ -9,7 +9,7 @@ type MainType = {}
 
 const Main: FC<MainType> = () => {
     return (
-        <MainWrapper>
+        <MainWrapper data-testid="movie-page">
             <FilterContainer />
             <PopularContainer />
         </MainWrapper>

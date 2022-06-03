@@ -10,7 +10,7 @@ type ProfileType = {}
 
 const Profile: FC<ProfileType> = () => {
     return (
-        <div className={profile.wrapper}>
+        <div data-testid="profile-page" className={profile.wrapper}>
             <img
                 src={back}
                 className={profile.back}

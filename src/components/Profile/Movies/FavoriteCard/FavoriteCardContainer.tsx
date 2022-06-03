@@ -22,8 +22,6 @@ const FavoriteCardContainer = (props: PropsType) => {
       children
    } = props
 
-   console.log(children)
-
 
    return <FavoriteCard
       viewed={viewed}

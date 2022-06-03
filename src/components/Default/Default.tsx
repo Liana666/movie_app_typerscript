@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 const Default = () => {
 
    return (
-      <div className={def.container}>
+      <div data-testid="default-page" className={def.container}>
          <div className={def.wrapper}>
             <img
                className={def.animation}

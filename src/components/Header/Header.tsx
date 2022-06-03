@@ -37,8 +37,8 @@ const Header: FC<HeaderType> = () => {
                 </NavLink>
 
                 <div className={header.link_wrapper}>
-                    <NavLink to="/movie">Фильмы</NavLink>
-                    <NavLink className={header.link} to="/profile/all-movies">Избранное</NavLink>
+                    <NavLink data-testid="movie-link" to="/movie">Фильмы</NavLink>
+                    <NavLink data-testid="profile-link" className={header.link} to="/profile/all-movies">Избранное</NavLink>
                     {location.pathname === "/movie" ? <SearchContainer /> : null}
                 </div>
 

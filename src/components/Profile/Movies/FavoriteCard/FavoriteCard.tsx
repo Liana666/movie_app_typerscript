@@ -76,7 +76,7 @@ const FavoriteCard: React.FC<FavoriteType> = ({
             <div className={favoriteCard.box2}>
                 {voteArray.map((vote: number) => rated.length > 0 ?
                     assessed.includes(movie) && currentVote >= vote ?
-                        <div className={favoriteCard.vote_wrapper}>
+                        <div key={vote} className={favoriteCard.vote_wrapper}>
                             <img
                                 className={favoriteCard.star_icon}
                                 src={starActive}
@@ -85,7 +85,7 @@ const FavoriteCard: React.FC<FavoriteType> = ({
                             />
                             <span className={favoriteCard.star_vote}>{vote}/5</span>
                         </div>
-                        : <div className={favoriteCard.vote_wrapper}>
+                        : <div key={vote} className={favoriteCard.vote_wrapper}>
                             <img
                                 className={favoriteCard.star_icon}
                                 src={star}
@@ -95,7 +95,7 @@ const FavoriteCard: React.FC<FavoriteType> = ({
                             <span className={favoriteCard.star_vote}>{vote}/5</span>
                         </div>
 
-                    : <div className={favoriteCard.vote_wrapper}>
+                    : <div key={vote} className={favoriteCard.vote_wrapper}>
                         <img
                             className={favoriteCard.star_icon}
                             src={star}
