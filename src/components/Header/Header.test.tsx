@@ -1,31 +1,24 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { MemoryRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import userEvent from "@testing-library/user-event";
 
-import store from "./redux/store";
+import store from "../../redux/store";
 
-import App from "./App";
+import Header from "./Header";
 
-test("Routing check", () => {
+test("Search input only rendering on the movieы page", () => {
   render(
     <Provider store={store}>
       <MemoryRouter>
-        <App />
+        <Header />
       </MemoryRouter>
     </Provider>
   );
   const movieLink = screen.getByTestId("movie-link");
-  const profileLink = screen.getByTestId("profile-link");
 
-  expect(movieLink).toBeInTheDocument();
-  expect(profileLink).toBeInTheDocument();
-
+  expect(screen.queryByTestId("seacrch-page")).toBeNull();
   userEvent.click(movieLink);
-  expect(screen.getByTestId("movie-page")).toBeInTheDocument();
-
-  userEvent.click(profileLink);
-  expect(screen.getByTestId("profile-page")).toBeInTheDocument();
+  expect(screen.getByTestId("seacrch-page")).toBeInTheDocument();
 });

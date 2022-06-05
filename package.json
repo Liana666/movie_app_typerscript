@@ -2,7 +2,7 @@
   "name": "movie-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://liana666.github.io/movie_app_typerscript/",
+  "homepage": "https://liana666.github.io/",
   "dependencies": {
     "@testing-library/react": "^11.2.7",
     "@types/react": "^17.0.37",

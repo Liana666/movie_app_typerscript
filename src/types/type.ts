@@ -15,7 +15,6 @@ export type MovieType = {
     backdrop_path: string
     id: number
     video?: string
-    [key: string]: any;
 }
 
 export type PaginationType = {
@@ -64,9 +63,9 @@ export type FilterType = {
     year: number
     years: Array<number>
     movies: Array<MovieType>
-    popular: Array<MovieType>
+    popular?: Array<MovieType>
     totalPages: number
-    isAddPopular: boolean
+    isAddPopular?: boolean
 }
 
 export type PopularType = {
